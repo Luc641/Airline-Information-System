@@ -6,7 +6,7 @@
 - As a sales officer I want to enable temporary price reductions providing customers with lucrative offers, they might be interested in. 
 
 ## Customer
-- As a Customer, I want to fly to my desired destination with minimal amount of money.
+- As a Customer, I want to fly to my desired destination with fair amount of money.
 - As a Customer, I want to have a pleasant and safe experience during my flight.
 
 ## Sales Manager
