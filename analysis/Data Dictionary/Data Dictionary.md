@@ -23,7 +23,31 @@ something that is chosen as an “extra” addon. For example, extra legroom, fo
 A TPR is a temporary price reduction of the original price of your item that is executed by the retailer, but agreed upon by the brand, distributor, and retailer. 
 there are Static and Dynamic reductions. For example,
 
+## Total revenue
+Total revenue is the full amount of total sales.
+
+## Luggage
+A suitcases or other bags in which to pack personal belongings for travelling.
+
+## Seats
+An airline seat is a seat on an airliner in which passengers are accommodated for the duration of the journey.
+
+## Class
+A travel class is a quality of accommodation on public transport. 
+
+## Statistics
 
 
+## Total revenue
+Total revenue is the full amount of total sales.
 
+## Tickets sold
 
+## Flight number
+A flight number is a code for an airline service consisting of letters and numbers.
+
+## Destination
+The place where someone is going or where something is being sent
+
+## Origin
+The place from where a jorney is starting.
