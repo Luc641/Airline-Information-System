@@ -1,10 +1,17 @@
 # Data Dictionary prj2
 
+
+## Booking:
+A reservation of a flight. A booking is made for one or more people for a specific flight and can include options.
+
 ## Class:
 A travel class is a quality of accommodation on public transport.
 
 ## Co pilot:
 The second pilot in an aircraft.
+
+## Customer:
+The user group, which will be able to buy tickets through a sales employee to a flight and will be going on flights.
 
 ## Destination:
 The place where someone is going or where something is being sent.
@@ -17,6 +24,9 @@ Based on the number of times a flight is searched, the price will increase or de
 
 ## Flight number:
 The code for an airline service consisting of letters and numbers.
+
+## Flight schedule:
+A plan to a flight including a route and a time of when the plane flies and lands.
 
 ## Id number:
 A numeral or string of numerals that is used for identification.
@@ -61,8 +71,12 @@ A group of pwople employed to look.
 ## Takeoff:
 Takeoff is the phase of flight in which the airplane leaves the ground.
 
-## Tickets sold:
-A number representing the amount of tickets bought for a flight.
+## Temporary price reduction: 
+A TPR is a temporary price reduction of the original price of your item that is executed by the retailer, but agreed upon by the brand, distributor, and retailer. 
+there are Static and Dynamic reductions.
+
+## Ticket:
+A ticket to a flight, purchased by a customer. The prices of tickets need to be calculated by the software and depend on the chosen options, class, availability of seats in that class, applicable discounts and the number of days left before the flight departs.
 
 ## Time:
 A point as measured in hours and minutes happening thought the day.
@@ -70,6 +84,3 @@ A point as measured in hours and minutes happening thought the day.
 ## Total revenue:
 Total revenue is the full amount of total sales.
 
-## TPR: 
-A TPR is a temporary price reduction of the original price of your item that is executed by the retailer, but agreed upon by the brand, distributor, and retailer. 
-there are Static and Dynamic reductions.
