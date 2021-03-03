@@ -62,7 +62,7 @@ An airline seat is a seat on an airliner in which passengers are accommodated fo
 ## Seat number:
 The number belonging.
 
-## Static: 
+## Static:
 10% price reduction for a limited period. 
 
 ## Stewards:
@@ -71,9 +71,9 @@ A group of pwople employed to look.
 ## Takeoff:
 Takeoff is the phase of flight in which the airplane leaves the ground.
 
-## Temporary price reduction: 
-A TPR is a temporary price reduction of the original price of your item that is executed by the retailer, but agreed upon by the brand, distributor, and retailer. 
-there are Static and Dynamic reductions.
+## Temporary price reduction:
+A TPR is a temporary price reduction of the original price of your item that is executed by the retailer, but agreed upon by the brand, distributor, and retailer. Usually happens when booking 'early bird' or in the last minute. Reduction is given in procentages.
+There are Static and Dynamic reductions.
 
 ## Ticket:
 A ticket to a flight, purchased by a customer. The prices of tickets need to be calculated by the software and depend on the chosen options, class, availability of seats in that class, applicable discounts and the number of days left before the flight departs.
