@@ -1,17 +1,17 @@
 
-## Name : 	
+# Name : 	
 Provide price reductions
 
-## Actor : 	
+# Actor : 	
 Sales officer
 
-## Description : 	
+# Description : 	
 Sales officer enable temporary price reductions
 
-## Pre-condition :	
+# Pre-condition :	
 Sales Officer registered an upcomming flight and started the sales proccess for that registered flight.
 
-## Scenario :	
+# Scenario :	
 1.	Sales officer ask the system for available price reductions for the registered flight.  
 2.	The system outputs the available discounts to choose from, „static discount” or ”dynamic discount”
 3.	The sales officer selects which discount is available
@@ -20,16 +20,16 @@ Sales Officer registered an upcomming flight and started the sales proccess for 
 
 
 
-## Result	
+# Result	
 The sales officer enabled the price reduction successfully for the registered flight.
-## Extentions:
+# Extentions:
 3a. the sales officer selected  ”static discounts” 
   1.	The system output available price reductions.
   2.	Sales officer selects the available discount. Returns to step 4.
 3b. the sales officer selected  ”dynamic discounts”
   1.	The system output available price reductions.
   2.	Sales officer selects the available discount. Returns to step 4.
-## Exceptions	
+# Exceptions	
   1.	System output : ”No discounts available ”.
   1.1 Use case ends here. 
 
