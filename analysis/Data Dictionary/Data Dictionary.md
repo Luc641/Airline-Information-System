@@ -86,6 +86,7 @@ is a person who is responsible for selling tickets to a customer
 An airline seat is a seat on an airliner in which passengers are accommodated for the duration of the journey.
 
 ## Schedule:
+a plan for carrying out a process or procedure, giving lists of intended events and times.
 
 ## Seat number:
 The number belonging to a specific chair from the aircraft.
