@@ -1,12 +1,10 @@
- Name : 
-  Provide price reductions
+| Name :        | Provide price reductions                        |
+| Actor :       | Sales officer                                   |
+|Description :  | Sales officer enable temporary price reductions |
+ 
 
-
-Actor : 	
-  Sales officer
-
-Description : 	
-  Sales officer enable temporary price reductions
+	
+  
 
 Pre-condition :	
   Sales Officer registered an upcomming flight and started the sales proccess for that registered flight.
