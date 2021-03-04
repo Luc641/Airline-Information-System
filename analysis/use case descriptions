@@ -2,8 +2,12 @@
 | Actor :       | Sales officer                                   |
 |Description :  | Sales officer enable temporary price reductions |
  
+| Names          | Descriptions                                             |    
+|----------------|----------------------------------------------------------|
+| Name :         |  Provide price reductions                                |   
+| Actor :        | Sales officer                                            |       
+| Description :  | Sales officer enable temporary price reductions          |     
 
-	
   
 
 Pre-condition :	
