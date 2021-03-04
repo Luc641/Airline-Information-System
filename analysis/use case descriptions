@@ -1,14 +1,13 @@
-| Name :        | Provide price reductions                        |
-| Actor :       | Sales officer                                   |
-|Description :  | Sales officer enable temporary price reductions |
- 
-| Names          | Descriptions                                             |    
-|----------------|----------------------------------------------------------|
-| Name :         |  Provide price reductions                                |   
-| Actor :        | Sales officer                                            |       
-| Description :  | Sales officer enable temporary price reductions          |     
 
-  
+
+ Name :  
+ Provide price reductions  
+ 
+ Actor : 
+ Sales officer 
+ 
+ Description : 
+ Sales officer enable temporary price reductions              
 
 Pre-condition :	
   Sales Officer registered an upcomming flight and started the sales proccess for that registered flight.
@@ -20,10 +19,9 @@ Scenario :
   4.	The system add the discount to the registered flight.
   5.	The system informs the sales officer that the price reduction was made
 
-
-
 Result:
 The sales officer enabled the price reduction successfully for the registered flight.
+
 Extentions:
   3a. the sales officer selected  ”static discounts” 
     1.	The system output available price reductions.
