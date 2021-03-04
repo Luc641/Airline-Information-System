@@ -1,5 +1,7 @@
 # Data Dictionary prj2
 
+## airport: 
+A complex of runways and buildings for the take-off, landing, and maintenance of civil aircraft, with facilities for passengers.
 
 ## Booking:
 A reservation of a flight. A booking is made for one or more people for a specific flight and can include options.
@@ -22,6 +24,12 @@ The deduction from the usual price of a product.(eg. the ticket)
 ## Dynamic: 
 Based on the number of times a flight is searched, the price will increase or decrease. When something is searched a lot, the price will increase. If it is not searched a lot, it might decrease after a certain amount of time. 
 
+## Employee: 
+An individual who was hired by an employer to work on a specific job.
+
+## Flight:
+an act of flying; a journey made through the air or in space, especially a timetabled journey made by an airline
+
 ## Flight number:
 The code for an airline service consisting of letters and numbers.
 
@@ -30,6 +38,9 @@ A plan to a flight including a route and a time of when the plane flies and land
 
 ## Id number:
 A numeral or string of numerals that is used for identification.
+
+## inbetween stop:
+
 
 ## KPI: 
 A Key Performance Indicator is a measurable value that demonstrates how effectively a company is achieving key business objectives.
@@ -42,7 +53,7 @@ A customer is allowed to bring a maximum X amount kg hand luggage with them to t
 A management dashboard is a tool used to present all important management KPIs in a single place. For example, see the total revenue numbers, numbers of tickets sold in each class, and statistics on all options sold.
 
 ## Name:
-A word by which a person is known.
+A word by which a person is known. Every individual has a name.
 
 ## Options: 
 Something that is chosen as an “extra” addon. For example, extra legroom, food, luggage, and seats chosen options, class, availability of seats in that class, applicable discounts, and the number left before the flight departs.
@@ -56,17 +67,33 @@ A string of characters that allows access to an account.
 ## Pilot:
 A person who operates the flying controls of an aircraft.
 
+## plane:
+a powered flying vehicle with fixed wings and a weight greater than that of the air, which can transport people from a location to a destination.
+
+## sale:
+the exchange of a commodity for money; the action of selling something.
+
+## Sales manager:
+
+## sales officer:
+
+## sales employee:
+
+
 ## Seats:
 An airline seat is a seat on an airliner in which passengers are accommodated for the duration of the journey.
 
+## Schedule:
+
 ## Seat number:
 The number belonging.
+
 
 ## Static:
 10% price reduction for a limited period. 
 
 ## Stewards:
-A group of pwople employed to look.
+A group of people employed to work in a aircraft.
 
 ## Takeoff:
 Takeoff is the phase of flight in which the airplane leaves the ground.
