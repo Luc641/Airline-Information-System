@@ -4,7 +4,7 @@
 A complex of runways and buildings for the take-off, landing, and maintenance of civil aircraft, with facilities for passengers.
 
 ## Arrival time:
-
+the moment at which a public conveyance is scheduled to get to a given destination.
 
 ## Booking:
 A reservation of a flight. A booking is made for one or more people for a specific flight and can include options.
