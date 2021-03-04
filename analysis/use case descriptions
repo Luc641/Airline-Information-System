@@ -34,3 +34,31 @@ Exceptions:
   1.	System output : ”No discounts available ”.
   1.1 Use case ends here. 
 
+
+Name:
+ Create bookings
+
+Actor: 
+ Sales employee 
+
+Description:
+ Sales employee creates the booking for the customer 
+
+Pre-condition:
+ The sales employee needs to be logged in 
+ Flight needs to exist in the system 
+
+Scenario:
+ 1.Sales employee looks up flights 
+ 2.System gives option to book a flight 
+ 3.Sales employee selects flight 
+ 4.System asks for data (name, e-mail, id number, ...) 
+ 5.Sales employee enters the data 
+
+Result:
+ Booking has been made 
+
+Extension:
+ 5a. Sales employee choses to add options for the booking 
+  1.System lets sales employee edit the ticket options 
+
