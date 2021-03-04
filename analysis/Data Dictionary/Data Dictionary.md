@@ -39,7 +39,7 @@ A plan to a flight including a route and a time of when the plane flies and land
 ## Id number:
 A numeral or string of numerals that is used for identification.
 
-## inbetween stop:
+## in between stop:
 
 
 ## KPI: 
@@ -74,11 +74,13 @@ a powered flying vehicle with fixed wings and a weight greater than that of the 
 the exchange of a commodity for money; the action of selling something.
 
 ## Sales manager:
+someone who is responsible for leading and guiding a team of sales people in an organization.They set sales goals & quotas, build a sales plan, analyze data, assign sales training and sales territories, mentor the members of his/her sales team and are involved in the hiring and firing process.
 
 ## sales officer:
+An executive that works with companies' sales teams to determine the best strategies to increase customer purchases. They assist higher management in developing reasonable sales goals, oversee the activities of sales employees, and collaborate with marketing teams to expand brand presence.
 
 ## sales employee:
-
+is a person who is responsible for selling tickets to a customer
 
 ## Seats:
 An airline seat is a seat on an airliner in which passengers are accommodated for the duration of the journey.
@@ -86,7 +88,7 @@ An airline seat is a seat on an airliner in which passengers are accommodated fo
 ## Schedule:
 
 ## Seat number:
-The number belonging.
+The number belonging to a specific chair from the aircraft.
 
 
 ## Static:
