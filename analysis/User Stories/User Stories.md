@@ -17,9 +17,6 @@
 - As a sales employee I want to create bookings for one or more persons for a specific flight to reserve that flight and create income.
 - As a sales employee I want to edit flight options to provide customers who changed their mind with the options they want.
 
-## Flight Crew
-- As a flight attendant, I want to assure the safety of the passengers to keep them calm and relaxed.
-- As a flight attendant, I want to maintain the flight deck’s security for safety reasons.
 
 
 
