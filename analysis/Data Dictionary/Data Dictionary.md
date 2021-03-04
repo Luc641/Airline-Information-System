@@ -39,8 +39,8 @@ A plan to a flight including a route and a time of when the plane flies and land
 ## Id number:
 A numeral or string of numerals that is used for identification.
 
-## in between stop:
-
+## In between stop:
+The break between two flights, when the flights belong to one booking.
 
 ## KPI: 
 A Key Performance Indicator is a measurable value that demonstrates how effectively a company is achieving key business objectives.
