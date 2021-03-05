@@ -99,6 +99,15 @@
 
 
 
-
+<br><br>
+|Name: | Look for bookings|
+|-|-|
+| Actor: | Customer |
+| Description: | Customer looks for available booking options |
+| Pre-condition | Different booking options available to choose from |
+| Main success scenario: | 1.The actor selects the option Search for available bookings, from the main page.<br>2.System returns a list of possible bookings for flights.<br>3.The actor defines his priorities by setting filters.<br>4.System returns possible bookings, that fit the users filters. |
+| Result: | Actor successfully looked up available booking options |
+| Extensions: | - |
+| Exceptions: | 4a. Nothing fits the preferred filters the actor set.<br>4b.Use case ends here.|
 
 
