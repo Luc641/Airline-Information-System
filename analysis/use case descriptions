@@ -1,357 +1,101 @@
 
-
- Name :  
- Provide price reductions  
- 
- Actor : 
- Sales officer 
- 
- Description : 
- Sales officer enable temporary price reductions              
-
-Pre-condition :	
-  Sales Officer registered an upcomming flight and started the sales proccess for that registered flight.
-
-Scenario :	
-  1.	Sales officer ask the system for available price reductions for the registered flight.  
-  2.	The system outputs the available discounts to choose from, „static discount” or ”dynamic discount”
-  3.	The sales officer selects which discount is available
-  4.	The system add the discount to the registered flight.
-  5.	The system informs the sales officer that the price reduction was made
-
-Result:
-The sales officer enabled the price reduction successfully for the registered flight.
-
-Extentions:
-  3a. the sales officer selected  ”static discounts” 
-    1.	The system output available price reductions.
-    2.	Sales officer selects the available discount. Returns to step 4.
-  3b. the sales officer selected  ”dynamic discounts”
-    1.	The system output available price reductions.
-    2.	Sales officer selects the available discount. Returns to step 4.
-    
-Exceptions:
-  1.	System output : ”No discounts available ”.
-  1.1 Use case ends here. 
-  
-  
-  
-  
-Name: 
-
-Provide price reductions 
-
-Actor:  
-
-Sales officer 
-
-Description: 
-
- 
-
-Pre-condition: 
-
-Logged in and permission to price reductions 
-
-Scenario: 
-
-1.Actor tells the system he wants to create a price reduction 
-
-2.System presents the actor the price reduction creation form 
-
-3.Actor selects static price reduction 
-
-4.Actor configures the form 
-
-5.Actor submits the form  
-
-6.System save the price reduction 
-
-Result :
-
-A price reduction has been created 
-
-Extension :
-
-none 
-
-Exception :
-
-5a: The Actor has not configured the form correctly 
-
-      5a1. The use case ends here 
-
-
-
-
-Name:
- Create bookings
-
-Actor: 
- Sales employee 
-
-Description:
- Sales employee creates the booking for the customer 
-
-Pre-condition:
- The sales employee needs to be logged in 
- Flight needs to exist in the system 
-
-Scenario:
- 1.Sales employee looks up flights 
- 2.System gives option to book a flight 
- 3.Sales employee selects flight 
- 4.System asks for data (name, e-mail, id number, ...) 
- 5.Sales employee enters the data 
-
-Result:
- Booking has been made 
-
-Extension:
- 5a. Sales employee choses to add options for the booking 
-  1.System lets sales employee edit the ticket options 
-
-
-
-
-Name:  
-
-Register flight 
-
-Actor: 
-
-Sales officer 
-
-Description :
-
-Sales officer wants to register upcoming flights 
-
-Pre-condition: 
-
-Flight is not registered yet 
-
-Scenario: 
-
-Actor opens register page. 
-
-System returns register page. 
-
-Actor fills in the required data and submits it. 
-
-System registers the flight. 
-
-Result: 
-
-Actor has registered a flight 
-
-Etension: 
-
-none 
-
-Exception: 
-
-3. System message: “NOT ALL FIELDS ARE FILLED IN!”. 
-
-3.1 use case ends here. 
-
-4.System message: “Flight is already registered” 
-
-4.1 use case end here 
-
-
-
-
-
-Name :
-
-Request to change flight options 
-
-Actor :
-
-Sales employee 
-
-Description: 
-
-A sales employee selects certain flight options, to optimize a customers flight experience 
-
-Pre-condition: 
-
-Have a customer that books a flight 
-
-Scenario :
-
-1.Sales employee opens the program 
-
-2.System displays the log-in site 
-
-3.Sales employee logs-in with his credentials 
-
-4.System checks for valid credentials 
-
-5.System displays the sales employee homepage with different functions 
-
-6.Sales employee chooses the customers request function 
-
-7.System displays different requests of customers 
-
-8.Sales employee chooses the latest one 
-
-9.System displays the request in detail 
-
-10.Sales employee looks at the customers request 
-
-11.Sales employee goes back to the homepage and looks up the relating flight 
-
-12.Sales employee changes the options for the flight 
-
-13.Sales employee changes the options of the flight for the customer 
-
-14.Sales employee goes back to the customer requests and confirms his request 
-
-Result: 
-
-Sales employee has successfully changes options for the customer 
-
-Extension :
-
-- 
-
-Exception :
-
-4.1 The credentials are incorrect 
-
-4.2 System out prints:”Invalid credentials” 
-
-4.3 Use case ends here 
-
-7.1 No new request has been filed 
-
-7.2 Use case ends here 
-
-13. The options cannot be changed in a way a customer wants to 
-
-13.1 Sales employee declined the customers request 
-
-13.2 Use case ends here 
-
-
-
-
-Name :
-
-Sell tickets 
-
-Actor: 
-
-Sales officer  
-
-Description: 
-
-Selling a ticket to a customer 
-
-Pre-condition: 
-
-The sales officer is logged in and authorized to sell tickets 
-
-Scenario: 
-
-1.The sales officer asks the customer which flight he would like to book  
-
-2.The sales officer asks for the customers details 
-
-3.The sales officer loads up  available flights from the system matching the customer s request for date/time 
-
-4.The sales officer 
-
-Result: 
-
-A ticket has been sold  
-
-Extension : 
-none
-
-Exception :
-none
-
-
-
-
-Name: 
-
-Revenue numbers 
-
-Actor: 
-
-Sales manager 
-
-Description: 
-
- 
-
-Pre-condition: 
-
-Logged in as a Sales manager 
-
-Scenario: 
-
-1.Actor opens Management Dashboard 
-
-2.System calculates revenue numbers from Sales and other Entities 
-
-3.System presents the Actor the Management Dashboard with the revenue numbers 
-
-Result: 
-
-Actor successfully opened Management Dashboard 
-
-Extension :
-
-2a. Nothing to calculate with 
-
-2a 1. System presents the Actor the Management Dashboard with default value 
-
-Exception: 
-none
-
-
-
-Name :
-
-Tickets sold 
-
-Actor :
-
-Sales manager 
-
-Description: 
-
-Looking at the sold tickets for a flight 
-
-Pre-condition: 
-
-The sales manager is logged in 
-
-Scenario :
-
-1.The actor selects the option sales from the Management Dashboard 
-
-2.System returns the list of flight 
-
-3.The actor selects which flight the sold tickets need to be displayed 
-
-4.System returns list of tickets sold for that flight 
-
-Result :
-
-Actor successfully displayed the sold tickets 
-
-Extension: 
-
-- 
-
-Exception :
-
-- 
+| Name: | Provide price reductions |
+|-|-|
+| Actor: | Sales officer |
+| Description: | Sales officer enable temporary price reductions |
+| Pre-condition: | Sales Officer registered an upcomming flight and started the sales proccess for that registered flight. |
+| Main success scenario: | 1.Sales officer ask the system for available price reductions for the registered flight.<br>2.The system outputs the available discounts to choose from, „static discount” or ”dynamic discount”<br>3.The sales officer selects which discount is available<br>4.The system add the discount to the registered flight.<br>5.The system informs the sales officer that the price reduction was made |
+| Result: | The sales officer enabled the price reduction successfully for the registered flight. |
+| Extensions: | 3a. the sales officer selected  ”static discounts” <br>    1.The system output available price reductions.<br>    2.Sales officer selects the available discount. Returns to step 4.<br><br>3b. the sales officer selected  ”dynamic discounts”<br>    1.The system output available price reductions.<br>    2.Sales officer selects the available discount. Returns to step 4. |
+| Exceptions: | 1.System output : ”No discounts available ”.<br>  1.1 Use case ends here. |
+
+
+<br><br>
+| Name: | Provide price reductions (2?) |
+|-|-|
+| Actor: | Sales officer |
+| Description: | ?? |
+| Pre-condition: | Logged in and permission to price reductions |
+| Main success scenario: | 1.Actor tells the system he wants to create a price reduction <br>2.System presents the actor the price reduction creation form <br>3.Actor selects static price reduction <br>4.Actor configures the form <br>5.Actor submits the form  <br>6.System save the price reduction |
+| Result: | A price reduction has been created |
+| Extensions: | - |
+| Exceptions: | 5a: The Actor has not configured the form correctly <br>    a1. The use case ends here |
+
+
+<br><br>
+| Name: | Create bookings |
+|-|-|
+| Actor: | Sales officer |
+| Description: | Sales employee creates the booking for the customer |
+| Pre-condition: | 1. The sales employee needs to be logged in <br>2. Flight needs to exist in the system |
+| Main success scenario: | 1.Sales employee looks up flights <br>2.System gives option to book a flight <br>3.Sales employee selects flight <br>4.System asks for data (name, e-mail, id number, ...) <br>5.Sales employee enters the data |
+| Result: | Booking has been made |
+| Extensions: | 5a. Sales employee choses to add options for the booking <br>  1.System lets sales employee edit the ticket options |
+| Exceptions: | - |
+
+
+
+<br><br>
+| Name: | Register flight |
+|-|-|
+| Actor: | Sales officer |
+| Description: | Sales officer wants to register upcoming flights |
+| Pre-condition: | Flight is not registered yet |
+| Main success scenario: | 1. Actor opens register page.<br>2. System returns register page.<br>3. Actor fills in the required data and submits it.<br>4. System registers the flight. |
+| Result: | Actor has registered a flight |
+| Extensions: | - |
+| Exceptions: | 3. System message: “NOT ALL FIELDS ARE FILLED IN!”. <br>3.1 use case ends here. <br>4.System message: “Flight is already registered” <br>4.1 use case end here |
+
+
+
+<br><br>
+| Name: | Request to change flight options |
+|-|-|
+| Actor: | Sales employee |
+| Description: | A sales employee selects certain flight options, to optimize a customers flight experience |
+| Pre-condition: | Have a customer that books a flight |
+| Main success scenario: | 1.Sales employee opens the program <br>2.System displays the log-in site <br>3.Sales employee logs-in with his credentials <br>4.System checks for valid credentials <br>5.System displays the sales employee homepage with different functions <br>6.Sales employee chooses the customers request function <br>7.System displays different requests of customers <br>8.Sales employee chooses the latest one <br>9.System displays the request in detail <br>10.Sales employee looks at the customers request <br>11.Sales employee goes back to the homepage and looks up the relating flight <br>12.Sales employee changes the options for the flight <br>13.Sales employee changes the options of the flight for the customer <br>14.Sales employee goes back to the customer requests and confirms his request |
+| Result: | Sales employee has successfully changes options for the customer |
+| Extensions: | - |
+| Exceptions: | 4.1 The credentials are incorrect <br>4.2 System out prints:”Invalid credentials” <br>4.3 Use case ends here <br>7.1 No new request has been filed <br>7.2 Use case ends here <br>13. The options cannot be changed in a way a customer wants to <br>13.1 Sales employee declined the customers request <br>13.2 Use case ends here |
+
+
+
+<br><br>
+| Name: | Sell tickets |
+|-|-|
+| Actor: | Sales officer |
+| Description: | Selling a ticket to a customer |
+| Pre-condition: | The sales officer is logged in and authorized to sell tickets |
+| Main success scenario: | 1.The sales officer asks the customer which flight he would like to book  <br>2.The sales officer asks for the customers details <br>3.The sales officer loads up  available flights from the system matching the customer s request for date/time <br>4.The sales officer |
+| Result: | A ticket has been sold |
+| Extensions: | - |
+| Exceptions: | - |
+
+
+<br><br>
+| Name: | Revenue numbers |
+|-|-|
+| Actor: | Sales manager |
+| Description: | - |
+| Pre-condition: | Logged in as a Sales manager |
+| Main success scenario: | 1.Actor opens Management Dashboard <br>2.System calculates revenue numbers from Sales and other Entities <br>3.System presents the Actor the Management Dashboard with the revenue numbers |
+| Result: | Actor successfully opened Management Dashboard |
+| Extensions: | 2a. Nothing to calculate with <br>1. System presents the Actor the Management Dashboard with default value |
+| Exceptions: | - |
+
+
+
+<br><br>
+| Name: | Tickets sold |
+|-|-|
+| Actor: | Sales manager |
+| Description: | Looking at the sold tickets for a flight |
+| Pre-condition: | The sales manager is logged in |
+| Main success scenario: | 1.The actor selects the option sales from the Management Dashboard <br>2.System returns the list of flight <br>3.The actor selects which flight the sold tickets need to be displayed <br>4.System returns list of tickets sold for that flight |
+| Result: | Actor successfully displayed the sold tickets |
+| Extensions: | - |
+| Exceptions: | - |
 
 
 
