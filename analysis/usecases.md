@@ -111,3 +111,13 @@
 | Exceptions: | 4a. Nothing fits the preferred filters the actor set.<br>4b.Use case ends here.|
 
 
+
+<br><br>
+|Name: | Receive price reductions |
+|-|-|
+| Actor: | Sales Officer |
+| Description: | Sales officer receives the price reduction for a ticket |
+| Pre-condition | Sales officer logged in |
+| Main success scenario: | 1. The sales officer selects a flight <br> 2. The system loads the details of the flight <br> 3. The sales officer looks at the price reduction |
+| Extensions: | - |
+| Exceptions: | 1a. The flight doesnt exist <br> 1. The system displays an error message|
