@@ -132,4 +132,4 @@
 | Pre-condition | Sales Manager is logged in |
 | Main success scenario: | 1. The sales Manager selects management board <br> 2. The system loads the management board <br> 3. The sales Manager chooses what statistic he/she wants to see <br> 4. The System loads the statistic for chosen selection |
 | Extensions: | - |
-| Exceptions: | 1a. System Message: "No statistics to show" <br> 1. End of use case |
+| Exceptions: | 4. System Message: "No statistics to show" <br> 4a. End of use case |
