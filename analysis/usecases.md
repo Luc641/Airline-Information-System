@@ -136,7 +136,7 @@
 
 
 <br><br>
-|Name: | Reschedule flight |
+|Name: | Reschedule flight | 
 |-|-|
 | Actor: | Customer |
 | Description: | Customer wants to change its flight |
@@ -150,7 +150,7 @@
 |-||-|
 | Actor: | Sales employee |
 | Description: | A sales employee wants to lookup available flights in order to create bookings for customers |
-| Pre-condition: | there must be registered flights and the sales process to be started |
+| Pre-condition: | There must be registered flights and the sales process to be started |
 | Main success scenario: | 1.The actor asks the system to show available upcoming flights.<br>2.The system outputs: "choose date and time"<br>3.THe sales employee choose the desired date and time for the registered upcoming flight.<br>4.The system displays the available flights. |
 | Extentions: | - |
 | Exceptions: | 4.System message: "There are no available flights for the chosen date and time."<br>4a.Return to step 3. |
