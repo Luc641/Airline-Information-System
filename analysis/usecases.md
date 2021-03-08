@@ -146,11 +146,11 @@
 | Exceptions: | - |
 
 <br><br>
-| Name: | Lookup flights |
-|-||-|
-| Actor: | Sales employee |
-| Description: | A sales employee wants to lookup available flights in order to create bookings for customers |
-| Pre-condition: | There must be registered flights and the sales process to be started |
-| Main success scenario: | 1.The actor asks the system to show available upcoming flights.<br>2.The system outputs: "choose date and time"<br>3.THe sales employee choose the desired date and time for the registered upcoming flight.<br>4.The system displays the available flights. |
-| Extentions: | - |
-| Exceptions: | 4.System message: "There are no available flights for the chosen date and time."<br>4a.Return to step 3. |
+| Name: | Lookup flights |<br>
+|-||-|<br>
+| Actor: | Sales employee |<br>
+| Description: | A sales employee wants to lookup available flights in order to create bookings for customers |<br>
+| Pre-condition: | There must be registered flights and the sales process to be started |<br>
+| Main success scenario: | 1. The actor asks the system to show available upcoming flights.<br>2. The system outputs: "choose date and time"<br>3. THe sales employee choose the desired date and time for the registered upcoming flight.<br>4. The system displays the available flights. |<br>
+| Extentions: | - |<br>
+| Exceptions: | 4.System message: "There are no available flights for the chosen date and time."<br>4a.Return to step 3. |<br>
