@@ -133,3 +133,14 @@
 | Main success scenario: | 1. The sales Manager selects management board <br> 2. The system loads the management board <br> 3. The sales Manager chooses what statistic he/she wants to see <br> 4. The System loads the statistic for chosen selection |
 | Extensions: | - |
 | Exceptions: | 4. System Message: "No statistics to show" <br> 4a. End of use case |
+
+
+<br><br>
+|Name: | Reschedule flight |
+|-|-|
+| Actor: | Customer |
+| Description: | Customer wants to change its flight |
+| Pre-condition | Customer needs to be registered and needs to have a ticket for an upcoming flight |
+| Main success scenario: | 1. The customer chooses to view an upcoming flight <br> 2. System displays flight information <br> 3. The customer selects to reschedule flight <br> 4. System shows available dates for reschedule |
+| Extensions: | - |
+| Exceptions: | - |
