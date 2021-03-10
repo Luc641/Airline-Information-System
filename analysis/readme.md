@@ -3,20 +3,29 @@
 ---
 
 # Contents
-1. [User Stories](#UserStories)<br>
-2. [Use Cases]()<br>
-		2.1 [Use Case Diagram]()<br>
-3. [Test Scenarios]()
-4. []()
-5. []()
-Put in here all analysis artefacts and documentation.
-
-> Below are only examples! You can also use Visual Paradigm Models. Remove this and this text. 
+1. [User Stories](#UserStories)
+2. [Use Cases](#UseCases)
+	2.1 [Use Case Diagram](#UseCaseDiagram)
+3. [Test Scenarios](#TestScenario)
+4. [Data Dictionary](#DataDictionary)
+5. [Project Charter](#ProjectCharter)
+6. [Work Breakdown Structure](#WBS)
 
 ## User Stories<a name="UserStories"></a>
 
 ![UC diagram](images/example-uc-diagram.jpg)
-
-## Use Cases
+---
+## Use Cases<a name="UseCases"></a>
 
 ![Domain model](images/example-domain-model.jpg)
+
+### Use Case Diagram<a name="UseCaseDiagram"></a>
+
+---
+## Test Scenario<a name="TestScenario"></a>
+---
+## Data Dictionary<a name="DataDictionary"></a>
+---
+## Project Charter<a name="ProjectCharter"></a>
+---
+## Work Breakdown Structure<a name="WBS"></a>
