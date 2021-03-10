@@ -46,10 +46,13 @@
 
 ---
 
-# Create Price Reduction
+# Provide Price Reduction
 | Step Number | Description |
 |-|-|
-|1|Do...|
+|1|Lookup price reduction options for specific registered flight|
+|2|Set discount option (static or dynamic) for specific flight|
+|3|Save the added discount|
+|4| Assert that the registered flight with discount shows the right (new) calculated<br> total price for the flight|
 
 ---
 
