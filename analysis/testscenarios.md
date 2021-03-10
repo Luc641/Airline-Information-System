@@ -3,7 +3,7 @@
 |-|-|
 |1|Fill in the required data for the flight|
 |2|Assign a crew|
-|3|Fit flight in the schedule|
+|3|place flight in the schedule|
 |4|Assert that the assigned crew is available for this flight|
 |5|Assert that the plane is available for this flight|
 |6|Assert that there are no complications in the schedule|
