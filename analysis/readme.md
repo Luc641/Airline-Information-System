@@ -17,7 +17,7 @@
 ## User Stories<a name="UserStories"></a>
 >The link below brings you to the User Stories file
 <br><br>
-https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/UserStories/User%20Stories.md
+![User Stories](https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/UserStories/User%20Stories.md)
 
 ---
 <br>
@@ -25,7 +25,7 @@ https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/UserS
 ## Use Cases<a name="UseCases"></a>
 >The link below brings you to the Use Cases file
 <br><br>
-https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/UseCase/usecases.md
+![Use Cases](https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/UseCase/usecases.md)
 
 >---
 
@@ -46,7 +46,7 @@ https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/UseCa
 ## Test Scenario<a name="TestScenario"></a>
 >The link below brings you to the Test Scenario file
 <br><br>
-https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/testscenarios.md
+![Test Scenario](https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/testscenarios.md)
 
 ---
 <br>
@@ -54,14 +54,14 @@ https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/tests
 ## Data Dictionary<a name="DataDictionary"></a>
 >The link below brings you to the Data Dictionary file
 <br><br>
-https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/DataDictionary/Data%20Dictionary.md
+![Data Dictionary](https://github.com/FontysVenlo/prj2-2021-prj2-2021-12/blob/master/analysis/DataDictionary/Data%20Dictionary.md)
 
 ---
 <br>
 
 ## Project Charter<a name="ProjectCharter"></a>
 
-![Model View Controller](ProjectChartWBS/Project%20Charter.pdf)
+![Project Charter](ProjectChartWBS/Project%20Charter.pdf)
 
 ---
 <br>
