@@ -27,7 +27,11 @@
 # Create Booking
 | Step Number | Description |
 |-|-|
-|1|Do...|
+|1|Lookup specific flight|
+|2|Choose flight|
+|3|Fill in according information|
+|4|Save booking information|
+|5|Assert that the booking has been created|
 
 ---
 
