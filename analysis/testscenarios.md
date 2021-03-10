@@ -13,7 +13,11 @@
 # Lookup Flight
 | Step Number | Description |
 |-|-|
-|1|Do...|
+|1|The system must let the actor to interact with it in order to start the use case|
+|2|The system must output that message|
+|3|Assert that the actor inputs some data(date & time)|
+|4|Assert that there are available flights|
+|Exception:|Assert that there aren't available flighs|
 
 ---
 
