@@ -13,19 +13,31 @@
 
 ## User Stories<a name="UserStories"></a>
 
-![UC diagram](images/example-uc-diagram.jpg)
+![Domain model](images/example-domain-model.jpg)
+
 ---
 ## Use Cases<a name="UseCases"></a>
 
-![Domain model](images/example-domain-model.jpg)
+
 
 ### Use Case Diagram<a name="UseCaseDiagram"></a>
 
+![UC Diagram](images/example-uc-diagram.jpg)
+
 ---
+
 ## Test Scenario<a name="TestScenario"></a>
+
 ---
+
 ## Data Dictionary<a name="DataDictionary"></a>
+
 ---
+
 ## Project Charter<a name="ProjectCharter"></a>
+
 ---
+
 ## Work Breakdown Structure<a name="WBS"></a>
+
+---
