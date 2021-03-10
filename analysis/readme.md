@@ -4,7 +4,7 @@
 
 # Contents
 1. [User Stories](#UserStories)
-2. [Use Cases](#UseCases)
+2. [Use Cases](#UseCases)<br>
 	2.1 [Use Case Diagram](#UseCaseDiagram)
 3. [Test Scenarios](#TestScenario)
 4. [Data Dictionary](#DataDictionary)
