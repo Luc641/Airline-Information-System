@@ -6,6 +6,7 @@
 1. [User Stories](#UserStories)
 2. [Use Cases](#UseCases)<br>
 	2.1 [Use Case Diagram](#UseCaseDiagram)
+3. [Domain Model](#DomainModel)
 3. [Test Scenarios](#TestScenario)
 4. [Data Dictionary](#DataDictionary)
 5. [Project Charter](#ProjectCharter)
@@ -13,7 +14,7 @@
 
 ## User Stories<a name="UserStories"></a>
 
-![Domain model](images/example-domain-model.jpg)
+
 
 ---
 ## Use Cases<a name="UseCases"></a>
@@ -22,7 +23,13 @@
 
 ### Use Case Diagram<a name="UseCaseDiagram"></a>
 
-![UC Diagram](images/example-uc-diagram.jpg)
+
+
+---
+## Domain Model<a name="DomainModel"></a>
+
+![Alt Text](../DomainModel/Domain%20Model.svg)
+<img src="../DomainModel/Domain%20Model.svg">
 
 ---
 
