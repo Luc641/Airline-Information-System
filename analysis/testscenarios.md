@@ -20,7 +20,13 @@
 # Reschedule Flight
 | Step Number | Description |
 |-|-|
-|1|Do...|
+|1|Lookup flight|
+|2|Choose flight|
+|3|Choose to edit flight|
+|4|Place flight in a new schedule|
+|5|Assert that the flight time is available for the flight|
+|6|Assert that the plane is available for the flight|
+|7|Assert that the crew is available for the flight|
 
 ---
 
