@@ -10,17 +10,6 @@
 | Exceptions: | 1.System output : ”No discounts available ”.<br>  1.1 Use case ends here. |
 
 
-<br><br>
-| Name: | Provide price reductions (2?) |
-|-|-|
-| Actor: | Sales officer |
-| Description: | ?? |
-| Pre-condition: | Logged in and permission to price reductions |
-| Main success scenario: | 1.Actor tells the system he wants to create a price reduction <br>2.System presents the actor the price reduction creation form <br>3.Actor selects static price reduction <br>4.Actor configures the form <br>5.Actor submits the form  <br>6.System save the price reduction |
-| Result: | A price reduction has been created |
-| Extensions: | - |
-| Exceptions: | 5a: The Actor has not configured the form correctly <br>    a1. The use case ends here |
-
 
 <br><br>
 | Name: | Create bookings |
