@@ -29,7 +29,11 @@
 # Change Booking Options
 | Step Number | Description |
 |-|-|
-|1|Do...|
+|1|Create a Booking|
+|2|Set specific options for the booking|
+|3|Save the booking|
+|4|Edit the bookings options|
+|5|Assert that the options of the booking have been changed to the inputted options|
 
 ---
 
