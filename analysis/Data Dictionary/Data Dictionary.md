@@ -7,7 +7,7 @@ A complex of runways and buildings for the take-off, landing, and maintenance of
 the moment at which a public conveyance is scheduled to get to a given destination.
 
 ## Booking:
-A reservation of a flight. A booking is made for one or more people for a specific flight and can include options.
+A reservation of a flight. A booking is made for one or more people for a specific flight and can include options. The flight is from Begin point to End point with all the stops inbetween
 
 ## Class:
 A travel class is a quality of accommodation on public transport.
@@ -96,7 +96,6 @@ A plan for carrying out a process or procedure, giving lists of intended events 
 
 ## Seat number:
 The number belonging to a specific chair from the aircraft.
-
 
 ## Static:
 Something(price) that doesn t change. it remains the same.10% price reduction for a limited period. 
