@@ -16,3 +16,4 @@ Put in here all design artefacts and documentation.
 
 ![Homepage](UI_Design/HomepageSketch.png)
 ![Login](UI_Design/LoginSketch.png)
+![RegisterFlight](UI_Design/RegisterFlightSketch.png)
