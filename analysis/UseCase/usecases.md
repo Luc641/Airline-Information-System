@@ -30,10 +30,10 @@
 | Actor: | Sales officer |
 | Description: | Sales officer wants to register upcoming flights |
 | Pre-condition: | Flight is not registered yet |
-| Main success scenario: | 1. Actor opens register page.<br>2. System returns register page.<br>3. Actor fills in the required data and submits it.<br>4. System registers the flight. |
+| Main success scenario: | 1. Actor opens the program <br>2. Actor fills in login credentials. <br>3. System verifies login credentials <br>4. Actor clicks on register flight. <br>5. System returns the register flight page.<br>6. Actor fills in the required data, like Departure (String) , Destination (String) , Date (date) , ID (int), Number of seats (int) , Plane (String) , Luggage (int) , Airport (String).<br>7. System checks if all the inforamtion has been fully filled.<br>8. System checks if a flight has already been registered with the same ID<br>8. System registers the flight. |
 | Result: | Actor has registered a flight |
 | Extensions: | - |
-| Exceptions: | 3. System message: “NOT ALL FIELDS ARE FILLED IN!”. <br>3.1 use case ends here. <br>4.System message: “Flight is already registered” <br>4.1 use case end here |
+| Exceptions: | 7. System message: “NOT ALL FIELDS ARE FILLED IN!”. <br>7.1 use case ends here. <br>8.System message: “Flight is already registered” <br>8.1 use case end here |
 
 
 
