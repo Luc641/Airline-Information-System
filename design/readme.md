@@ -6,7 +6,7 @@ Put in here all design artefacts and documentation.
 
 ## Class diagrams
 
-![class diagram](registerFlight.png)
+![registerFlight](images/registerFlight.png)
 
 ## Sequence diagrams
 
