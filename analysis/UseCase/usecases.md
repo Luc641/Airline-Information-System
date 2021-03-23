@@ -33,7 +33,7 @@
 | Main success scenario: | 1. Actor clicks on register flight. <br>2. System returns the register flight page.<br>3. Actor fills in data required to register a flight. <br>4.System checks if all the inforamtion has been fully filled.<br>5. System checks if the information entered matches an already registered flight<br>6. System registers the flight. |
 | Result: | Actor has registered a flight |
 | Extensions: | - |
-| Exceptions: | 5. System message: “NOT ALL FIELDS ARE FILLED IN!”. <br>5.1 use case ends here. <br>6.System message: “Flight is already registered” <br>8.1 use case end here |
+| Exceptions: | 5. System message: “NOT ALL FIELDS ARE FILLED IN!”. <br>5.1 use case ends here. <br>6.System message: “Flight is already registered” <br>6.1 use case end here |
 
 
 
