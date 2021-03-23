@@ -14,4 +14,4 @@ Put in here all design artefacts and documentation.
 
 ## UI-Design / Wireframes / Mockups
 
-![UI mockup](images/example-ui.jpg)
+![Homepage](UIDesign/HomepageSketch.png)
