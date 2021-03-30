@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>AirlineInformationSystem</artifactId>
-        <groupId>com.group_twelve</groupId>
+        <groupId>fontys</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>fontys</groupId>
@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>fontys</groupId>
-            <artifactId>Entities</artifactId>
+            <artifactId>BusinessEntitiesAPI</artifactId>
             <version>1.0-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
@@ -65,6 +65,11 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId> 
                 <configuration>
+                    <!-- add add-opens lines for **ALL** packages in your module that are tested.
+                        For testing it is fine to open your packages for the whole world, which includes
+                        e.g. junit, assertj, mockito, and jacoco, to name a few.
+                        Also leave ${argLine} because it is set/used by the coverage plugin.
+                    -->
                     <argLine> 
                         ${argLine}
                         --add-opens GUI_module/fontys.frontend=ALL-UNNAMED 
@@ -75,4 +80,5 @@
             </plugin>
         </plugins>
     </build>
+    
 </project>
