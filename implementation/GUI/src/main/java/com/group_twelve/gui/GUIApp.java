@@ -17,10 +17,12 @@ public class GUIApp extends Application {
 
     private static Scene scene;
     private static BusinessLogic businessLogicAPI;
+    private static registerFlight rf = new registerFlight();
 
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("registerFlight"));
+
         stage.setScene(scene);
         stage.show();
     }
@@ -31,7 +33,7 @@ public class GUIApp extends Application {
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GUIApp.class.getResource(fxml + ".fxml"));
-        
+        fxmlLoader.setController(rf);
         return fxmlLoader.load();
     }
     
