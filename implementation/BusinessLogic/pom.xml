@@ -17,7 +17,7 @@
             <exclusions>
                 <exclusion>
                     <groupId>fontys</groupId>
-                    <artifactId>BusinessLogicAPI</artifactId>
+                    <artifactId>BusinessLogic</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
