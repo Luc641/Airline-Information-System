@@ -18,11 +18,11 @@ public class Plane{
         this.maxWeight = maxWeight;
     }
 
-    public String getSeats() {
+    public int getSeats() {
         return seats;
     }
 
-    public String getMaxWeight() {
+    public int getMaxWeight() {
         return maxWeight;
     } 
     

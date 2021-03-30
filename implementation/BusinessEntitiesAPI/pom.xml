@@ -6,7 +6,7 @@
         <artifactId>AirlineInformationSystem</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>entities</artifactId>
+    <artifactId>BusinessEntitiesAPI</artifactId>
     <packaging>jar</packaging>
-    <name>Entities</name>
+    <name>BusinessEntitiesAPI</name>
 </project>

@@ -1,4 +1,4 @@
 module businessentities_api_module {
 
-    exports businessentities;
+    exports com.group_twelve.entities;
 }
