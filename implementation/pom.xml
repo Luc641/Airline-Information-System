@@ -19,7 +19,7 @@
         <module>GUI</module>
         <module>BusinessLogic</module>        
         <module>Persistence</module>
-        <module>BusinessEntitiesAPI</module>
+        <module>Entities</module>
     </modules>
     <name>AirlineInformationSystem</name>
 </project>
