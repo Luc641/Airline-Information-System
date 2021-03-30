@@ -26,6 +26,7 @@ public class Application {
         managerAPI.addManager(Airport.class, new AirportManager());
         managerAPI.addManager(Route.class, new RouteManager());
         managerAPI.addManager(Flight.class, new FlightManager());
+	managerAPI.addManager(Plane.class, new PlaneManager());
         
         PersistenceAPI persistenceAPI = businessLogic.getPersistenceAPI();
         String seperator = ";";
@@ -33,6 +34,7 @@ public class Application {
         persistenceAPI.addPersistence(Airport.class, new AirportPersistence(Paths.get("airport.dat"), seperator, lineFilter, AirportManager::create));
         persistenceAPI.addPersistence(Route.class, new RoutePersistence(Paths.get("route.dat"), seperator, lineFilter, RouteManager::create));
         persistenceAPI.addPersistence(Flight.class, new FlightPersistence(Paths.get("flight.dat"), seperator, lineFilter, FlightManager::create));
+	persistenceAPI.addPersistence(Plane.class, new PlanePersistence(Paths.get("plane.dat"), seperator, lineFilter, PlaneManager::create));
     }
     
 }

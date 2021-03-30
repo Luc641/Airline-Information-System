@@ -35,4 +35,9 @@ public class BusinesslogicTest {
     public void testAddRoute() {
         
     }
+
+    @Test
+    public void testAddPlane() {
+        
+    }
 }
