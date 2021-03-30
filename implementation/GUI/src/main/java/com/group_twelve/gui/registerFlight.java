@@ -12,6 +12,7 @@ public class registerFlight {
         return true;
     }
 
+    //LUC/PATRICK/RICK
     public void storeInformation() {
 
     }
