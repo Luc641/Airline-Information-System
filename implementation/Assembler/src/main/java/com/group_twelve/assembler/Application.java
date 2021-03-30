@@ -8,6 +8,7 @@ package com.group_twelve.assembler;
 
 import com.group_twelve.businesslogic.*;
 import com.group_twelve.entities.*;
+import com.group_twelve.gui.GUIApp;
 import com.group_twelve.persistence.*;
 
 
@@ -39,5 +40,9 @@ public class Application {
         persistenceAPI.addPersistence(Flight.class, new FlightPersistence(Paths.get("flight.dat"), seperator, lineFilter, FlightManager::create));
 	persistenceAPI.addPersistence(Plane.class, new PlanePersistence(Paths.get("plane.dat"), seperator, lineFilter, PlaneManager::create));
     }
-    
+     public static void main(String[] args) {
+         GUIApp app = new GUIApp();
+         app.startFrontEnd(businessLogic);
+
+    }
 }

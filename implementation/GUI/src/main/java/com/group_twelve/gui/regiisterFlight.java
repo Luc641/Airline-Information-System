@@ -12,7 +12,7 @@ public class regiisterFlight {
         return true;
     }
 
-    public void storeInromation() {
+    public void storeInformation() {
 
     }
 

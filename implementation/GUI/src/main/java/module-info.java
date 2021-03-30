@@ -5,5 +5,5 @@ module GUI_module {
     requires transitive businesslogic_module;
 
     opens fontys.frontend to javafx.fxml;
-    exports fontys.frontend;
+    exports com.group_twelve.gui;
 }
