@@ -1,5 +1,6 @@
 package com.group_twelve.gui;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -58,6 +59,11 @@ public class registerFlight {
     @FXML
     public void storeInformation() {
 
+    }
+
+    @FXML
+    public void cancelButton(ActionEvent e){
+        System.exit(0);
     }
 
     /**

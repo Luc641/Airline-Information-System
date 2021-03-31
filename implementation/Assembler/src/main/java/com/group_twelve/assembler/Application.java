@@ -43,6 +43,6 @@ public class Application {
      public static void main(String[] args) {
          GUIApp app = new GUIApp();
          app.startFrontEnd(businessLogic);
-
+        
     }
 }
