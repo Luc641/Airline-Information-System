@@ -15,7 +15,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <javafx.version>11</javafx.version>
-        <exec.mainClass>fontys.frontend.GUIApp</exec.mainClass>
+        <exec.mainClass>com.group_twelve.gui.GUIApp</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
