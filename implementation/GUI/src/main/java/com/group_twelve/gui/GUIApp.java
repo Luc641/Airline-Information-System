@@ -18,6 +18,9 @@ public class GUIApp extends Application {
     private static Scene scene;
     private static BusinessLogic businessLogicAPI;
 
+    // Controller definitions
+    private static registerFlight rf = new registerFlight();
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("registerFlight"));
@@ -32,6 +35,9 @@ public class GUIApp extends Application {
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GUIApp.class.getResource(fxml + ".fxml"));
+
+        // Set the controller depening on which view we load / which controller we need.
+        fxmlLoader.setController(rf);
         return fxmlLoader.load();
     }
     
