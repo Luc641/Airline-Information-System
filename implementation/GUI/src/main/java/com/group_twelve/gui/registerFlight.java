@@ -51,6 +51,8 @@ public class registerFlight {
 
             // Check business logic stuff
 
+            // airport manager -> retrieve list. if empty then no airplane
+
         }
         return false;
     }
