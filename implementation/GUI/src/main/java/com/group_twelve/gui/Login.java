@@ -1,4 +1,4 @@
-package fontys.frontend;
+package com.group_twelve.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

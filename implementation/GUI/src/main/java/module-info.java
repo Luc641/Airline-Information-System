@@ -4,6 +4,6 @@ module GUI_module {
     requires businessentities_api_module;
     requires transitive businesslogic_module;
 
-    opens fontys.frontend to javafx.fxml;
+    opens com.group_twelve.gui to javafx.fxml;
     exports com.group_twelve.gui;
 }
