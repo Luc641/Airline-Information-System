@@ -11,12 +11,13 @@ import java.time.LocalDateTime;
  * @author Timo Mattern (t.mattern@student.fontys.nl, github: @t-mattern)
  */
 public class Flight {
-    private int flightNumber;
+    private int ID, flightNumber;
     private LocalDateTime arrivalTime, departureTime;
     private Airport arrivalAirport, departureAirport;
     private Route route;
 
-    public Flight(int flightNumber , LocalDateTime departureTime, Airport departureAirport, Route route) {
+    public Flight(int ID, int flightNumber , LocalDateTime departureTime, Airport departureAirport, Route route) {
+        this.ID = ID;
         this.flightNumber = flightNumber;
         this.arrivalTime = null;
         this.departureTime = departureTime;
@@ -25,6 +26,10 @@ public class Flight {
         this.route = route;
     }
 
+    public int getID() {
+        return ID;
+    }
+    
     public int getFlightNumber() {
         return flightNumber;
     }
@@ -55,6 +60,5 @@ public class Flight {
             arrivalAirport = location;
         }
     }
-    
-    
+     
 }

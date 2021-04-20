@@ -10,14 +10,20 @@ package com.group_twelve.entities;
  * @author Siem Verrijt (s.verrijt@student.fontys.nl, github: @Siem1258)
  */
 public class Plane{
+    private int ID;
     private int seats;
     private int maxWeight;
 
-    public Plane(int seats, int maxWeight) {
+    public Plane(int ID, int seats, int maxWeight) {
+        this.ID = ID;
         this.seats = seats;
         this.maxWeight = maxWeight;
     }
 
+    public int getID() {
+        return ID;
+    }
+    
     public int getSeats() {
         return seats;
     }

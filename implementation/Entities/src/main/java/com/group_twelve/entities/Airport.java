@@ -10,12 +10,18 @@ package com.group_twelve.entities;
  * @author Timo Mattern (t.mattern@student.fontys.nl, github: @t-mattern)
  */
 public class Airport {
+    private int ID;
     private String name;
     private String location;
 
-    public Airport(String name, String location) {
+    public Airport(int ID, String name, String location) {
+        this.ID = ID;
         this.name = name;
         this.location = location;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public String getName() {
