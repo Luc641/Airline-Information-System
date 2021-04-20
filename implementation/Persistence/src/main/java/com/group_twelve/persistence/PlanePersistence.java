@@ -5,46 +5,47 @@
  */
 package com.group_twelve.persistence;
 
-import java.util.Collection;
 import com.group_twelve.entities.Plane;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.sql.*;
+import com.group_twelve.dbconnection.SQLConnection;
 /**
  *
  * @author Siem Verrijt (s.verrijt@student.fontys.nl, github: @Siem1258)
  */
 public class PlanePersistence implements Persistence<Plane>{
 
-    Path path;
-    String seperator;
-    Predicate<String> lineFilter;
+    SQLConnection database;
     Function<? super String[], ? extends Plane> creator;
     
-    public PlanePersistence(Path path, String seperator, Predicate<String> lineFilter, Function<? super String[], ? extends Plane> creator) {
-        this.path = path;
-        this.seperator = seperator;
-        this.lineFilter = lineFilter;
+    public PlanePersistence(SQLConnection database, Function<? super String[], ? extends Plane> creator) {
+        this.database = database;
         this.creator = creator;
     }
     
-    public void save(Collection<Plane> data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void save(ArrayList<Plane> data) {
+        String insertString = "INSERT INTO Plane (planeID) VALUES ";
+        for(Plane p : data ) {
+            insertString += String.format("(%d), ", p.getID());
+        }
+        insertString += "ON CONFLICT (planeID) DO NOTHING;";
+        
+        database.query(insertString);
     }
     
-    public ArrayList<Plane> load() throws IOException {
+    public ArrayList<Plane> load() throws SQLException {
         ArrayList<Plane> list = new ArrayList<>();
-        Stream<String> lines = Files.lines(path);
-        lines.distinct().forEach((String line) -> {
-                    if(lineFilter.test(line)) {
-                        list.add(creator.apply(line.split(seperator)));
-                    }
-                }
-        );
+        
+        try{
+            ResultSet planes = database.query("SELECT * from Plane");
+        
+            while(planes.next()) {
+                list.add(creator.apply(new String[]{planes.getString(1), planes.getString(2)}));
+            }
+        }catch(SQLException e){
+            //e.printStackTrace();
+        }
         
         return list;
     }

@@ -6,15 +6,10 @@
 package com.group_twelve.persistence;
 
 import com.group_twelve.entities.Route;
-import com.group_twelve.entities.Route;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.sql.*;
+import com.group_twelve.dbconnection.SQLConnection;
 
 /**
  *
@@ -22,31 +17,36 @@ import java.util.stream.Stream;
  */
 public class RoutePersistence implements Persistence<Route>{
 
-    Path path;
-    String seperator;
-    Predicate<String> lineFilter;
+    SQLConnection database;
     Function<? super String[], ? extends Route> creator;
     
-    public RoutePersistence(Path path, String seperator, Predicate<String> lineFilter, Function<? super String[], ? extends Route> creator) {
-        this.path = path;
-        this.seperator = seperator;
-        this.lineFilter = lineFilter;
+    public RoutePersistence(SQLConnection database, Function<? super String[], ? extends Route> creator) {
+        this.database = database;
         this.creator = creator;
     }
     
-    public void save(Collection<Route> data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void save(ArrayList<Route> data) {
+        String insertString = "INSERT INTO flightRoute (ID, routeName) VALUES ";
+        for(Route r : data ) {
+            insertString += String.format("(%d, %s), ", r.getID()/*, r.getName()*/);
+        }
+        insertString += "ON CONFLICT (airportID) DO NOTHING;";
+        
+        database.query(insertString);
     }
     
-    public ArrayList<Route> load() throws IOException {
+    public ArrayList<Route> load() throws SQLException {
         ArrayList<Route> list = new ArrayList<>();
-        Stream<String> lines = Files.lines(path);
-        lines.distinct().forEach((String line) -> {
-                    if(lineFilter.test(line)) {
-                        list.add(creator.apply(line.split(seperator)));
-                    }
-                }
-        );
+        
+        try{
+            ResultSet routes = database.query("SELECT * from Airport");
+        
+            while(routes.next()) {
+                list.add(creator.apply(new String[]{routes.getString(1), routes.getString(2)}));
+            }
+        }catch(SQLException e){
+            //e.printStackTrace();
+        }
         
         return list;
     }
