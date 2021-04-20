@@ -9,6 +9,9 @@
     <artifactId>Assembler</artifactId>
     <packaging>jar</packaging>
     <name>Assembler</name>
+    <properties>
+        <exec.mainClass>com.group_twelve.assembler.Application</exec.mainClass>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>fontys</groupId>
@@ -31,6 +34,12 @@
         <dependency>
             <groupId>fontys</groupId>
             <artifactId>GUI</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>fontys</groupId>
+            <artifactId>DBConnection</artifactId>
             <version>1.0-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
