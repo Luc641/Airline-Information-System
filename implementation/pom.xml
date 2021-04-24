@@ -20,6 +20,7 @@
         <module>BusinessLogic</module>        
         <module>Persistence</module>
         <module>Entities</module>
+        <module>DBConnection</module>
     </modules>
     <name>AirlineInformationSystem</name>
 </project>
