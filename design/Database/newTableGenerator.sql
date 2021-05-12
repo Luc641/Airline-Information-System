@@ -98,10 +98,10 @@ INSERT INTO Employee (ID, username, employeeType) VALUES
 	(1, 'hi', 1);
 
 INSERT INTO PRICEREDUCTIONTYPE (ID, typeName, description) VALUES
-	(1, 'test', 'price reduction');
+	(1, 'STATIC', 'static price reduction');
 
 INSERT INTO PRICEREDUCTION (ID, prName, description, amount, prType) VALUES
-	(1, 'prName', 'description', 0.95, 1);
+	(1, '35% static price reduction', 'description', 0.35, 1);
 
 INSERT INTO Booking(ID, bookingDate, routeID, employeeID, priceReductionID) VALUES
 	(1, '2020-04-21 08:51:22+1', 1, 1, 1);
