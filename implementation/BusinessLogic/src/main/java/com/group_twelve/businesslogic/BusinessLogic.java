@@ -20,7 +20,7 @@ public class BusinessLogic {
     
     public BusinessLogic() {
         this.managers = new HashMap<>();
-    }    
+    }
 
     public void addManager(Class managerClass, Manager manager){
         if(!managers.containsKey(managerClass))

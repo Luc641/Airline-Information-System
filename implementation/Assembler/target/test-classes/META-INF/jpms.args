@@ -1,0 +1,4 @@
+--patch-module
+assembler_module=_
+--add-reads
+assembler_module=ALL-UNNAMED

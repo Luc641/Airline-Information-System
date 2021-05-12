@@ -1,0 +1,4 @@
+--patch-module
+dbconnection_module=_
+--add-reads
+dbconnection_module=ALL-UNNAMED

@@ -6,6 +6,7 @@
 package com.group_twelve.businesslogic;
 
 import com.group_twelve.entities.PriceReduction;
+import com.group_twelve.entities.PriceReductionType;
 import com.group_twelve.persistence.PriceReductionPersistence;
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class PriceReductionManager implements Manager<PriceReduction>{
     }
     
     public static PriceReduction create(String[] args){
-        return null;
+        return new PriceReduction(Integer.valueOf(args[0]), args[1], args[2], Double.valueOf(args[3]), PriceReductionType.valueOf(args[4]));
     }
     
     public void save(PriceReduction pr) {
@@ -32,7 +33,9 @@ public class PriceReductionManager implements Manager<PriceReduction>{
         try{
             return persistence.load();
         }catch(Exception e){
-            //e.printStackTrace();
+            System.out.println("Error pulling PriceReductions");
+            e.printStackTrace();
         }
+        return new ArrayList<PriceReduction>();
     }
 }

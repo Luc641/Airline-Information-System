@@ -46,10 +46,12 @@ public class PriceReductionPersistence implements Persistence<PriceReduction>{
         ArrayList<PriceReduction> list = new ArrayList<>();
         
         try{
-            ResultSet priceReductions = database.query("SELECT * from PriceReduction");
+            ResultSet priceReductions = database.query("SELECT PR.ID, PR.prName, PR.description, PR.amount, PRT.typeName FROM PriceReduction PR "
+                    + "JOIN PriceReductionType PRT ON PR.prType = PRT.ID");
         
             while(priceReductions.next()) {
-                list.add(creator.apply(new String[]{priceReductions.getString(1), priceReductions.getString(2)}));
+                System.out.println(priceReductions.getString(1));
+                list.add(creator.apply(new String[]{priceReductions.getString(1), priceReductions.getString(2), priceReductions.getString(3), priceReductions.getString(4), priceReductions.getString(5)}));
             }
         }catch(SQLException e){
             //e.printStackTrace();

@@ -23,6 +23,12 @@ public class Application {
     public static BusinessLogic businessLogic;
 
     public static void main(String[] args) {
+        new Application();
+    }
+    
+    public Application() {
+        businessLogic = new BusinessLogic();
+        
         Properties prop = new Properties();
         
         try (InputStream input = new FileInputStream("src/main/resources/com/group_twelve/assembler/config.properties")) {
@@ -33,38 +39,15 @@ public class Application {
         }
         
         SQLConnection database = new SQLConnection();
-        boolean connect = database.connect(prop.getProperty("db.url"), prop.getProperty("db.user"), prop.getProperty("db.password"), true);
-    }
+        database.connect("jdbc:postgresql://127.0.0.1:5432/postgres", "postgres","password", false);
+        
+        //businessLogic.addManager(Airport.class, new AirportManager(new AirportPersistence(database, AirportManager::create)));
+        //businessLogic.addManager(Route.class, new RouteManager(new RoutePersistence(database, RouteManager::create)));
+        //businessLogic.addManager(Flight.class, new FlightManager(new FlightPersistence(database, FlightManager::create)));
+	//businessLogic.addManager(Plane.class, new PlaneManager(new PlanePersistence(database, PlaneManager::create)));
+        businessLogic.addManager(PriceReduction.class, new PriceReductionManager(new PriceReductionPersistence(database, PriceReductionManager::create)));
     
-    public Application() {
-//        businessLogic = new BusinessLogic(
-//                new ManagerAPI(),
-//                new PersistenceAPI()
-//        );
-//        
-//        Properties prop = new Properties();
-//        
-//        try (InputStream input = new FileInputStream("src/main/resources/com/group_twelve/assembler/config.properties")) {
-//            prop.load(input);
-//
-//        } catch (IOException ex) {
-//            //ex.printStackTrace();
-//        }
-//        
-//        SQLConnection database = new SQLConnection();
-//        database.connect(prop.getProperty("db.url"), prop.getProperty("db.user"), prop.getProperty("db.password"), false);
-//        
-//        ManagerAPI managerAPI = businessLogic.getManagerAPI();
-//        managerAPI.addManager(Airport.class, new AirportManager());
-//        managerAPI.addManager(Route.class, new RouteManager());
-//        managerAPI.addManager(Flight.class, new FlightManager());
-//	managerAPI.addManager(Plane.class, new PlaneManager());
-//        
-//        PersistenceAPI persistenceAPI = businessLogic.getPersistenceAPI();
-//        persistenceAPI.addPersistence(Airport.class, new AirportPersistence(database, AirportManager::create));
-//        persistenceAPI.addPersistence(Route.class, new RoutePersistence(database, RouteManager::create));
-//        persistenceAPI.addPersistence(Flight.class, new FlightPersistence(database, FlightManager::create));
-//	persistenceAPI.addPersistence(Plane.class, new PlanePersistence(database, PlaneManager::create));
+        GUIApp.startFrontEnd(businessLogic);
     } 
     
 }

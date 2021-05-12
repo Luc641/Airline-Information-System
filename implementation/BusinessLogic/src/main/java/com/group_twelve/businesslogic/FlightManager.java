@@ -14,38 +14,15 @@ import java.util.List;
  */
 public class FlightManager implements Manager<Flight>{
     
-    List<Flight> flights;
-    
     public FlightManager() {
-        this.flights = new ArrayList<>();
-    }
-    
-    public FlightManager(List<Flight> flights) {
-        this.flights = flights;
-    }
-    
-    public static Flight create() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public static Flight create(String[] args) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void add(Flight flight) {
-        flights.add(flight);
+    public void save() {
+        
     }
-    
-    public List<Flight> getAll() {
-        return flights;
-    }
-    
-    public void clear() {
-        flights.clear();
-    }
-    
-    public void setAll(List<Flight> flights) {
-        this.flights = flights;
-    }
-    
+
 }

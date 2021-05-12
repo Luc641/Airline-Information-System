@@ -48,7 +48,8 @@ public class registerFlight {
 
         // No empty fields, hurray! we can continue.
         if(emptyFields != 0){
-
+            //Flight flight = new Flight();
+            //new FlightMangaer().save(flight)
             // Check business logic stuff
 
             // airport manager -> retrieve list. if empty then no airplane
