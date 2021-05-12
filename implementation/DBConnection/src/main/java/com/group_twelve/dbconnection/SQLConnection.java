@@ -17,33 +17,41 @@ public class SQLConnection
     public SQLConnection(){}
 
     public boolean connect(String url, String username, String password, boolean verbose){
+        try{
+            Class.forName("org.postgresql.Driver");
+        }catch(Exception ex){
+            System.out.println("not found");
+        }
         String connectionUrl = url
                 /*+ "databaseName=dbName;"*/
-            + "user=" + username + ";"
-            + "password=" + password + ";"
-            + "encrypt=true;"
-            + "trustServerCertificate=true;"
-            + "loginTimeout=5;";
+            + "?user=" + username
+            + "&password=" + password;
+        //connectionUrl = "jdbc:postgresql://127.0.0.1:5432/prj2-postgres?user=postgres&password=password&ssl=true";
 
         connection = null;
-        //if(verbose) System.out.println("Parameter set.");
+        if(verbose) System.out.println("Parameter set.");
         try{
             connection = DriverManager.getConnection(connectionUrl);
-            //if(verbose) System.out.println("INFO: Database connection established.");
+            if(verbose) System.out.println("INFO: Database connection established.");
+            if (connection != null) {
+                if(verbose) System.out.println("Connected to the database!");
+            } else {
+                if(verbose) System.out.println("Failed to make connection!");
+            }
         }catch(SQLException e){
             if(verbose){
-                //System.out.println("ERROR: Database connection could not be established:\n");
-                //e.printStackTrace();
+                System.out.println("ERROR: Database connection could not be established:\n");
+                e.printStackTrace();
             }
             return false;
         }
 
         try{
             statement = connection.createStatement();
-            //if(verbose) System.out.println("INFO: Query received");
+            if(verbose) System.out.println("INFO: Query received");
         }catch(SQLException e){
-            //System.out.println("ERROR: Query could not be received:\n");
-            //e.printStackTrace();
+            System.out.println("ERROR: Query could not be received:\n");
+            e.printStackTrace();
         }
         
         connected = true;
@@ -80,15 +88,15 @@ public class SQLConnection
                 Mockito.when(resultSet.getString(1)).thenReturn("Success");
                 return resultSet;
             }else{
-                //System.out.println("No command found, query will be forwarded to database");
+                System.out.println("No command found, query will be forwarded to database");
                 statement.executeUpdate(query);
                 final ResultSet resultSet = Mockito.mock(ResultSet.class); // Placeholder so that NULL is reserved for errors
                 Mockito.when(resultSet.getString(1)).thenReturn("Success");
                 return resultSet;
             }
         }catch(SQLException e){
-            //System.out.println("Query could not be executed:\n");
-            //e.printStackTrace();
+            System.out.println("Query could not be executed:\n");
+            e.printStackTrace();
             return null;
         }
         //return null;

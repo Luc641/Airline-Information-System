@@ -1,52 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.group_twelve.businesslogic;
 
 import com.group_twelve.entities.Airport;
-import java.util.ArrayList;
-import java.util.List;
+import com.group_twelve.persistence.AirportPersistence;
 
 /**
  *
  * @author Timo Mattern (t.mattern@student.fontys.nl, github: @t-mattern)
  */
+
 public class AirportManager implements Manager<Airport>{
 
-    private List<Airport> airports;
+    private final AirportPersistence persistence;
     
-    public AirportManager() {
-        this.airports = new ArrayList<>();
+    public AirportManager(AirportPersistence persistence) {
+        this.persistence = persistence;
     }
     
-    public AirportManager(List<Airport> airports) {
-        this.airports = airports;
-    }
-    
-    public static Airport create() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public static Airport create(String[] args) {
+    public static Airport createAirportFromArgs(String[] args) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void add(Airport airport) {
-        airports.add(airport);
-    }
-    
-    public List<Airport> getAll() {
-        return airports;
-    }
-    
-    public void clear() {
-        airports.clear();
-    }
-    
-    public void setAll(List<Airport> airports) {
-        this.airports = airports;
+        //validate
+        //persistence.add(airport)
     }
     
 }
