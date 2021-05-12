@@ -1,4 +1,4 @@
- 
+
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 CREATE TABLE Airport (
@@ -56,6 +56,7 @@ CREATE table PriceReduction (
   ID SERIAL NOT NULL,
   prName varchar(255) NOT NULL,
   description varchar(255),
+  amount int NOT NULL,
   percentage decimal(5, 4),
   prType int4 NOT NULL,
   PRIMARY KEY (ID),
@@ -98,7 +99,7 @@ INSERT INTO FLIGHTROUTE (ID, routeName) VALUES
 	(1, 'idk lol');
 
 INSERT INTO EmployeeType (ID, typeName) VALUES
-	(1, 'Sales Officer')
+	(1, 'Sales Officer');
 
 INSERT INTO Employee (ID, username, employeeType) VALUES
 	(1, 'hi', 1);
