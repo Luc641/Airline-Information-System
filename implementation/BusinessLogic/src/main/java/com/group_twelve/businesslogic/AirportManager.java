@@ -6,6 +6,8 @@
 package com.group_twelve.businesslogic;
 
 import com.group_twelve.entities.Airport;
+import com.group_twelve.persistence.AirportPersistence;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,16 +17,13 @@ import java.util.List;
  */
 public class AirportManager implements Manager<Airport>{
 
-    private List<Airport> airports;
+    AirportPersistence airportPersistence;
     
-    public AirportManager() {
-        this.airports = new ArrayList<>();
+    public AirportManager(AirportPersistence ap) {
+        this.airportPersistence = ap;
+
     }
-    
-    public AirportManager(List<Airport> airports) {
-        this.airports = airports;
-    }
-    
+
     public static Airport create() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -34,19 +33,25 @@ public class AirportManager implements Manager<Airport>{
     }
     
     public void add(Airport airport) {
-        airports.add(airport);
     }
     
     public List<Airport> getAll() {
-        return airports;
+        try{
+            return airportPersistence.load();
+        }catch(Exception e){
+            System.out.println("Failed to get all airports");
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
     }
     
     public void clear() {
-        airports.clear();
     }
     
     public void setAll(List<Airport> airports) {
-        this.airports = airports;
     }
-    
+
+    public void init() {
+        System.out.println("hallo");
+    }
 }
