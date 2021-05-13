@@ -29,7 +29,7 @@ public class AirportManager implements Manager<Airport>{
     }
     
     public static Airport create(String[] args) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Airport(Integer.parseInt(args[0]), args[1]);
     }
     
     public void add(Airport airport) {

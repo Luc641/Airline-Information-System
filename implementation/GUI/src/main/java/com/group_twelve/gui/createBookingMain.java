@@ -31,6 +31,7 @@ public class createBookingMain {
     @FXML
     private Button btnCancel;
 
+    // Entity managers
 
     /**
      *
@@ -40,12 +41,11 @@ public class createBookingMain {
      */
     @FXML
     public void searchFlightRoutes(){
+        // Init managers
+        AirportManager apm = (AirportManager) GUIApp.getBusinessLogicAPI().getManager(Airport.class);
 
-        AirportManager apm = (AirportManager) GUIApp.getBusinessLogicAPI().getManager(AirportManager.class);
+        
 
-        ArrayList<Airport> list = (ArrayList<Airport>) apm.getAll();
-
-        System.out.println("ll");
     }
 
 }

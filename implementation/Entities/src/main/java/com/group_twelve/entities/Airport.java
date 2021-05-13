@@ -12,12 +12,12 @@ package com.group_twelve.entities;
 public class Airport {
     private int ID;
     private String name;
-    private String location;
+//    private String location;
 
-    public Airport(int ID, String name, String location) {
+    public Airport(int ID, String name) {
         this.ID = ID;
         this.name = name;
-        this.location = location;
+//        this.location = location;
     }
 
     public int getID() {
@@ -28,8 +28,8 @@ public class Airport {
         return name;
     }
 
-    public String getLocation() {
-        return location;
-    } 
+//    public String getLocation() {
+//        return location;
+//    }
     
 }
