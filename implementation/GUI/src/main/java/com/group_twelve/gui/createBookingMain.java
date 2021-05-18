@@ -59,7 +59,7 @@ public class createBookingMain {
         // Get flight route(s) that have matching airports
         List<Route> routes = rm.getRouteBasesOnAirports(apm.getAirportId(depAirport), apm.getAirportId(arAirport));
 
-        // Get all possible flights
+        //TODO: Get all flights attached to the available flight routes.
         
         // Show in listview
         observableList.addAll(routes.stream().map(s -> s.getRouteName()).collect(Collectors.toList()));
