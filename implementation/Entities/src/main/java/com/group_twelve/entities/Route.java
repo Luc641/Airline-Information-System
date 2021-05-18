@@ -27,4 +27,8 @@ public class Route {
         return ID;
     }
 
+    public String getRouteName(){
+        return routeName;
+    }
+
 }
