@@ -44,6 +44,15 @@ public class AirportManager implements Manager<Airport>{
         }
         return new ArrayList<>();
     }
+
+    public int getAirportId(String name){
+        try{
+            return airportPersistence.getAirportIdByName(name);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
     
     public void clear() {
     }
