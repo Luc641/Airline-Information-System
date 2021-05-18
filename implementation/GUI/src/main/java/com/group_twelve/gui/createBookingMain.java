@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class createBookingMain {
@@ -37,7 +38,7 @@ public class createBookingMain {
     @FXML
     private Button btnCancel;
 
-    // Entity managers
+    ObservableList observableList = FXCollections.observableArrayList();
 
     /**
      *
@@ -56,15 +57,16 @@ public class createBookingMain {
         String arAirport = txtArrivalAirport.getText();
 
         // Get flight route(s) that have matching airports
-//        List<Route> routes = rm.getRouteBasesOnAirports(apm.getAirportId(depAirport), apm.getAirportId(arAirport));
-        List<Route> routes = rm.getRouteBasesOnAirports(apm.getAirportId("Berlin"), apm.getAirportId("New York"));
+        List<Route> routes = rm.getRouteBasesOnAirports(apm.getAirportId(depAirport), apm.getAirportId(arAirport));
+
+        // Get all possible flights
+        
+        // Show in listview
+        observableList.addAll(routes.stream().map(s -> s.getRouteName()).collect(Collectors.toList()));
+        listAvailableRoutes.setItems(observableList);
 
 
-        // TODO: make listview work
-        ObservableList<String> test = FXCollections.observableArrayList("ee", "egeg", "gege");
-        listAvailableRoutes = new ListView<>(test);
-        listAvailableRoutes.setItems(test);
-        System.out.println(test);
+
     }
 
 }
