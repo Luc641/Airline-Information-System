@@ -4,6 +4,7 @@ import com.group_twelve.businesslogic.AirportManager;
 import com.group_twelve.businesslogic.FlightManager;
 import com.group_twelve.businesslogic.RouteManager;
 import com.group_twelve.entities.Airport;
+import com.group_twelve.entities.Flight;
 import com.group_twelve.entities.Route;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,6 +52,7 @@ public class createBookingMain {
         // Init managers
         AirportManager apm = (AirportManager) GUIApp.getBusinessLogicAPI().getManager(Airport.class);
         RouteManager rm = (RouteManager) GUIApp.getBusinessLogicAPI().getManager(Route.class);
+        FlightManager fm = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
 
         // Get values from UI
         String depAirport = txtDepatureAirport.getText();
@@ -60,7 +62,8 @@ public class createBookingMain {
         List<Route> routes = rm.getRouteBasesOnAirports(apm.getAirportId(depAirport), apm.getAirportId(arAirport));
 
         //TODO: Get all flights attached to the available flight routes.
-        
+
+
         // Show in listview
         observableList.addAll(routes.stream().map(s -> s.getRouteName()).collect(Collectors.toList()));
         listAvailableRoutes.setItems(observableList);

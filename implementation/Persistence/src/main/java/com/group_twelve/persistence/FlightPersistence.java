@@ -18,16 +18,17 @@ public class FlightPersistence implements Persistence<Flight>{
         this.database = database;
         this.creator = creator;
     }
-    
-    public void save(ArrayList<Flight> data) {
-        String insertString = "INSERT INTO Flight (ID, flightNr, arrivalTime, departureTime,  flightPrice) VALUES ";
-        for(Flight f : data ) {
-            insertString += String.format("(%d, %d, %s, %s, %d, %d), ", f.getID(), f.getFlightNumber(), f.getArrivalTime().toString(), f.getDepartureTime().toString());
-        }
-        insertString += "ON CONFLICT (flightID) DO NOTHING;";
-        
-        database.query(insertString);
-    }
+
+    // TODO: Refactor save method
+//    public void save(ArrayList<Flight> data) {
+//        String insertString = "INSERT INTO Flight (ID, flightNr, arrivalTime, departureTime,  flightPrice) VALUES ";
+//        for(Flight f : data ) {
+//            insertString += String.format("(%d, %d, %s, %s, %d, %d), ", f.getID(), f.getFlightNumber(), f.getArrivalTime().toString(), f.getDepartureTime().toString());
+//        }
+//        insertString += "ON CONFLICT (flightID) DO NOTHING;";
+//
+//        database.query(insertString);
+//    }
     
     public ArrayList<Flight> load() throws SQLException {
         ArrayList<Flight> list = new ArrayList<>();
