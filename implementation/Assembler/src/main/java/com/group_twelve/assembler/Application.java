@@ -43,7 +43,7 @@ public class Application {
         
         businessLogic.addManager(Airport.class, new AirportManager(new AirportPersistence(database, AirportManager::create)));
         businessLogic.addManager(Route.class, new RouteManager(new RoutePersistence(database, RouteManager::create)));
-//        businessLogic.addManager(Flight.class, new FlightManager(new FlightPersistence(database, FlightManager::create)));
+        businessLogic.addManager(Flight.class, new FlightManager(new FlightPersistence(database, FlightManager::create)));
 //	    businessLogic.addManager(Plane.class, new PlaneManager(new PlanePersistence(database, PlaneManager::create)));
         businessLogic.addManager(PriceReduction.class, new PriceReductionManager(new PriceReductionPersistence(database, PriceReductionManager::create)));
     
