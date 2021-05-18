@@ -14,27 +14,21 @@ import java.util.List;
  */
 public class Route {
     private int ID;
-    private double price;
-    private final List<Flight> flights;
+    private String routeName;
+    private int flightID;
 
-    public Route(int ID, double price, ArrayList<Flight> flights) {
+    public Route(int ID, String routeName, int flightID) {
         this.ID = ID;
-        this.price = price;
-        this.flights = flights;
+        this.routeName = routeName;
+        this.flightID = flightID;
     }
 
     public int getID() {
         return ID;
     }
-    
-    public double getPrice() {
-        return price;
+
+    public String getRouteName(){
+        return routeName;
     }
 
-    public List<Flight> getFlights() {
-        return flights;
-    }
-    
-    
-    
 }

@@ -7,8 +7,12 @@ package com.group_twelve.persistence;
 
 import com.group_twelve.entities.Airport;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.function.Function;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.group_twelve.dbconnection.SQLConnection;
 /**
  *
@@ -18,6 +22,7 @@ public class AirportPersistence implements Persistence<Airport>{
 
     SQLConnection database;
     Function<? super String[], ? extends Airport> creator;
+    Logger logger = Logger.getLogger(AirportPersistence.class.getName());
     
     public AirportPersistence(SQLConnection database, Function<? super String[], ? extends Airport> creator) {
         this.database = database;
@@ -49,5 +54,24 @@ public class AirportPersistence implements Persistence<Airport>{
         }
         
         return list;
+    }
+
+    public int getAirportIdByName(String name){
+        try{
+            String queryString = String.format("SELECT id FROM airport WHERE airportname = '%s'", name);
+            ResultSet result = database.query(queryString);
+
+            if(result.next()){
+                return result.getInt(1);
+            }else{
+                String warningString = String.format("Airport: '%s' could not be found. Did you enter the name correctly?", name);
+//                logger.log( Level.WARNING, ()-> warningString);
+                throw new IllegalArgumentException(warningString);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return -1;
     }
 }
