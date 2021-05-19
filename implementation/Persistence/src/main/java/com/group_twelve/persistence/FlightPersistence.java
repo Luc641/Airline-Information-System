@@ -1,5 +1,6 @@
 package com.group_twelve.persistence;
 
+import com.group_twelve.entities.Airport;
 import com.group_twelve.entities.Flight;
 import java.util.ArrayList;
 import java.util.function.Function;
@@ -13,6 +14,7 @@ public class FlightPersistence implements Persistence<Flight>{
     
     SQLConnection database;
     Function<? super String[], ? extends Flight> creator;
+    Function<? super String[], ? extends Airport> airportCreator;
     
     public FlightPersistence(SQLConnection database, Function<? super String[], ? extends Flight> creator) {
         this.database = database;
@@ -35,7 +37,6 @@ public class FlightPersistence implements Persistence<Flight>{
         
         try{
             ResultSet flights = database.query("SELECT * from Flight");
-        
             while(flights.next()) {
                 list.add(creator.apply(new String[]{flights.getString(1), flights.getString(2), flights.getString(3), flights.getString(4), flights.getString(5), flights.getString(6)}));
             }

@@ -5,6 +5,7 @@
  */
 package com.group_twelve.businesslogic;
 
+import com.group_twelve.entities.Airport;
 import com.group_twelve.entities.Flight;
 import com.group_twelve.persistence.FlightPersistence;
 

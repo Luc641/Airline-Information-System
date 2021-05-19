@@ -40,8 +40,8 @@ public class Application {
         
         SQLConnection database = new SQLConnection();
         database.connect("jdbc:postgresql://127.0.0.1:5432/postgres", "postgres","password", false);
-        
-        businessLogic.addManager(Airport.class, new AirportManager(new AirportPersistence(database, AirportManager::create)));
+
+        businessLogic.addManager(Airport.class, new AirportManager(new AirportPersistence(database, AirportManager::create, AirportManager::createFromID)));
         businessLogic.addManager(Route.class, new RouteManager(new RoutePersistence(database, RouteManager::create)));
         businessLogic.addManager(Flight.class, new FlightManager(new FlightPersistence(database, FlightManager::create)));
 //	    businessLogic.addManager(Plane.class, new PlaneManager(new PlanePersistence(database, PlaneManager::create)));

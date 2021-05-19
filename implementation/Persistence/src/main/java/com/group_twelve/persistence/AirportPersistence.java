@@ -22,6 +22,7 @@ public class AirportPersistence implements Persistence<Airport>{
 
     SQLConnection database;
     Function<? super String[], ? extends Airport> creator;
+    Function<? super String[], ? extends Airport> creator1;
     Logger logger = Logger.getLogger(AirportPersistence.class.getName());
     
     public AirportPersistence(SQLConnection database, Function<? super String[], ? extends Airport> creator) {
