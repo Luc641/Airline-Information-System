@@ -5,7 +5,6 @@
  */
 package com.group_twelve.businesslogic;
 
-import com.group_twelve.entities.Airport;
 import com.group_twelve.entities.Route;
 import com.group_twelve.persistence.RoutePersistence;
 
@@ -34,6 +33,10 @@ public class RouteManager implements Manager<Route>{
     
     public static Route create(String[] args) {
         return new Route(Integer.valueOf(args[0]), args[1], Integer.valueOf(args[2]));
+    }
+    
+    public static Route createFromID(Integer ID){
+        return new Route(1,"t", 1);
     }
     
     public void add(Route route) {

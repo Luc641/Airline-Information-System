@@ -32,7 +32,7 @@ public class AirportManager implements Manager<Airport>{
         return new Airport(Integer.parseInt(args[0]), args[1]);
     }
 
-    public static Airport createFromID(int ID){
+    public static Airport createFromID(Integer ID){
         return new Airport(1,"t");
     }
     

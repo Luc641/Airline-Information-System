@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="DBConnection" />
         <module name="Persistence" />
+        <module name="DBConnection" />
         <module name="BusinessLogic" />
+        <module name="GUI" />
         <module name="Assembler" />
         <module name="entities" />
       </profile>

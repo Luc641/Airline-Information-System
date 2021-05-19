@@ -25,7 +25,7 @@ public class GUIApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("createBookingMain"));
+        scene = new Scene(loadFXML("Homepage"));
 
         stage.setScene(scene);
         stage.show();
@@ -35,11 +35,11 @@ public class GUIApp extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    protected static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GUIApp.class.getResource(fxml + ".fxml"));
-
-        // Set the controller depening on which view we load / which controller we need.
-        fxmlLoader.setController(cbm);
+        System.out.println(fxml);
+        // Set the controller depending on which view we load / which controller we need.
+        //fxmlLoader.setController(homepage);
         return fxmlLoader.load();
     }
     

@@ -33,6 +33,10 @@ public class PlaneManager implements Manager<Plane>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public static Plane createFromID(Integer ID){
+        return new Plane(1,1,1);
+    }
+    
     public void add(Plane plane) {
         planes.add(plane);
     }
