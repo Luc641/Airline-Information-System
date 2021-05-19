@@ -31,6 +31,10 @@ public class AirportManager implements Manager<Airport>{
     public static Airport create(String[] args) {
         return new Airport(Integer.parseInt(args[0]), args[1]);
     }
+
+    public static Airport createFromID(int ID){
+        return new Airport(1,"t");
+    }
     
     public void add(Airport airport) {
     }
