@@ -23,7 +23,7 @@ public class FlightManager implements Manager<Flight>{
         this.persistence = per;
     }
     
-    public static Flight create(String[] args) {
+    public static Flight create(Object[] args) {
         //TODO: Convert some args to the desired entities.
 //        return new Flight(Integer.valueOf(args[0]), args[1], args[2], args[3], Integer.valueOf(args[4]), args[5], args[6]);
         return null;
