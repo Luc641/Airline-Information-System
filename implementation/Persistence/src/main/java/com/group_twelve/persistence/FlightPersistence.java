@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.function.Function;
 import java.sql.*;
 import com.group_twelve.dbconnection.SQLConnection;
+import com.group_twelve.entities.Plane;
+import com.group_twelve.entities.Route;
 /**
  *
  * @author Timo Mattern (t.mattern@student.fontys.nl, github: @t-mattern)
@@ -13,12 +15,22 @@ import com.group_twelve.dbconnection.SQLConnection;
 public class FlightPersistence implements Persistence<Flight>{
     
     SQLConnection database;
-    Function<? super String[], ? extends Flight> creator;
-    Function<? super String[], ? extends Airport> airportCreator;
+    Function<? super Object[], ? extends Flight> creator;
+    Function<? super Integer, ? extends Plane> planeCreator;
+    Function<? super Integer, ? extends Airport> airportCreator;
+    Function<? super Integer, ? extends Route> routeCreator;
     
-    public FlightPersistence(SQLConnection database, Function<? super String[], ? extends Flight> creator) {
+    public FlightPersistence(SQLConnection database, 
+            Function<? super Object[], ? extends Flight> creator,
+            Function<? super Integer, ? extends Plane> planeCreator,
+            Function<? super Integer, ? extends Airport> airportCreator,
+            Function<? super Integer, ? extends Route> routeCreator) {
+        
         this.database = database;
         this.creator = creator;
+        this.planeCreator = planeCreator;
+        this.airportCreator = airportCreator;
+        this.routeCreator = routeCreator;
     }
 
     // TODO: Refactor save method
@@ -38,7 +50,7 @@ public class FlightPersistence implements Persistence<Flight>{
         try{
             ResultSet flights = database.query("SELECT * from Flight");
             while(flights.next()) {
-                list.add(creator.apply(new String[]{flights.getString(1), flights.getString(2), flights.getString(3), flights.getString(4), flights.getString(5), flights.getString(6)}));
+                list.add(creator.apply(new Object[]{flights.getString(1), flights.getString(2), flights.getString(3), flights.getString(4), flights.getString(5), flights.getString(6)}));
             }
         }catch(SQLException e){
             //e.printStackTrace();
