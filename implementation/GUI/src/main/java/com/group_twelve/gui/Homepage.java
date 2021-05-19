@@ -35,4 +35,8 @@ public class Homepage {
 
     }
 
+    @FXML
+    private void loadSearchFlight(ActionEvent actionEvent) throws IOException {
+        GUIApp.setRoot("searchFLight");
+    }
 }

@@ -40,11 +40,12 @@
     <AnchorPane fx:id="rootPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <DialogPane contentText="Homepage" layoutX="268.0" layoutY="61.0" prefHeight="53.0" prefWidth="104.0" />
-            <ButtonBar layoutX="123.0" layoutY="114.0" prefHeight="94.0" prefWidth="364.0">
+            <ButtonBar layoutX="123.0" layoutY="114.0" prefHeight="94.0" prefWidth="343.0">
               <buttons>
                   <Button fx:id="priceReduction" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Price Reduction" />
                   <Button fx:id="registerFlight" mnemonicParsing="false" onAction="#loadRegisterFlight" prefHeight="25.0" text="Register Flight" />
                 <Button fx:id="createBooking" mnemonicParsing="false" onAction="#loadCreateBooking" prefHeight="25.0" prefWidth="137.0" text="Create Booking" />
+                  <Button fx:id="SearchFlight" mnemonicParsing="false" onAction="#loadSearchFlight" text="Search Flight" />
               </buttons>
             </ButtonBar>
          </children>
