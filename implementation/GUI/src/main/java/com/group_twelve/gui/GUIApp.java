@@ -25,7 +25,7 @@ public class GUIApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("Homepage"));
+        scene = new Scene(loadFXML("createBookingMain"));
 
         stage.setScene(scene);
         stage.show();

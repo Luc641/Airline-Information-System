@@ -5,15 +5,16 @@ import com.group_twelve.businesslogic.FlightManager;
 import com.group_twelve.businesslogic.RouteManager;
 import com.group_twelve.entities.Airport;
 import com.group_twelve.entities.Flight;
+import com.group_twelve.entities.Plane;
 import com.group_twelve.entities.Route;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.lang.reflect.Array;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +26,13 @@ public class createBookingMain {
     @FXML
     private TextField txtDepatureAirport;
     @FXML
-    private ListView listAvailableRoutes;
+    private TableView<Flight> tViewPossibleRoutes;
+    @FXML
+    public TableColumn<Flight, LocalDateTime> tColDepTime;
+    @FXML
+    public TableColumn<Flight, LocalDateTime> tColArrTime;
+    @FXML
+    public TableColumn<Flight, String> tColPrice;
     @FXML
     private TextField txtArrivalAirport;
     @FXML
@@ -39,7 +46,18 @@ public class createBookingMain {
     @FXML
     private Button btnCancel;
 
-    ObservableList observableList = FXCollections.observableArrayList();
+
+    /**
+     * Initialize the tableviews and their columns
+     */
+    @FXML
+    public void initialize(){
+
+        // Initialize the various TableView columns
+        tColDepTime.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
+        tColArrTime.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        tColPrice.setCellValueFactory(new PropertyValueFactory<>("flightPrice"));
+    }
 
     /**
      *
@@ -58,17 +76,47 @@ public class createBookingMain {
         String depAirport = txtDepatureAirport.getText();
         String arAirport = txtArrivalAirport.getText();
 
+        /**
+         * temp override
+         */
+        depAirport = "Berlin";
+        arAirport = "New York";
+
         // Get flight route(s) that have matching airports
         List<Route> routes = rm.getRouteBasesOnAirports(apm.getAirportId(depAirport), apm.getAirportId(arAirport));
 
         //TODO: Get all flights attached to the available flight routes.
 
+        /**
+         * From here on out stuff is mocked. The above calls work and are implemented.
+         * The mocked data assumes that the user entered "berlin" and "New york" as airports.
+         */
+        ObservableList<Flight> mockFlights = mockFlights();
 
-        // Show in listview
-        observableList.addAll(routes.stream().map(s -> s.getRouteName()).collect(Collectors.toList()));
-        listAvailableRoutes.setItems(observableList);
+        tViewPossibleRoutes.setItems(mockFlights);
+
+    }
 
 
+    private ObservableList<Flight> mockFlights(){
+        Plane p1 = new Plane(1, 100, 100000);
+        Airport berlin = new Airport(1, "Berlin");
+        Airport nyc = new Airport(2, "New York");
+        LocalDateTime f1da = LocalDateTime.now().plusDays(5); // Arrival
+        LocalDateTime fl1dd = LocalDateTime.now().plusDays(4); // Departure
+        Flight f1 = new Flight(1, p1, f1da, fl1dd, 10, berlin, nyc);
+
+        Plane p2 = new Plane(2, 50, 5000);
+        LocalDateTime f2da = LocalDateTime.now().plusDays(8); // Arrival
+        LocalDateTime fl2dd = LocalDateTime.now().plusDays(7); // Departure
+        Flight f2 = new Flight(2, p2, f2da, fl2dd, 100, berlin, nyc);
+
+        ObservableList<Flight> allFlights = FXCollections.observableArrayList();
+
+        allFlights.add(f1);
+        allFlights.add(f2);
+
+        return allFlights;
 
     }
 

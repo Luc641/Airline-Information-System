@@ -40,6 +40,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -57,19 +59,25 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="491.0" prefWidth="641.0" VBox.vgrow="ALWAYS">
       <children>
-            <TextField fx:id="txtDepatureAirport" layoutX="15.0" layoutY="46.0" prefHeight="27.0" prefWidth="293.0" promptText="Departure Airport" />
-            <ListView fx:id="listAvailableRoutes" layoutX="321.0" layoutY="40.0" prefHeight="200.0" prefWidth="318.0" style="-fx-region-border: black;" />
-            <TextField fx:id="txtArrivalAirport" layoutX="15.0" layoutY="90.0" prefHeight="27.0" prefWidth="293.0" promptText="Arrival Airport" />
-            <Button fx:id="btnSearchFlightRoutes" layoutX="115.0" layoutY="179.0" mnemonicParsing="false" onAction="#searchFlightRoutes" text="Search for route" />
-            <Separator layoutX="311.0" orientation="VERTICAL" prefHeight="252.0" prefWidth="19.0" />
-            <DatePicker fx:id="dpDepartureDate" layoutX="14.0" layoutY="133.0" prefHeight="27.0" prefWidth="293.0" promptText="Departure date" />
+            <TextField fx:id="txtDepatureAirport" layoutX="15.0" layoutY="46.0" prefHeight="27.0" prefWidth="142.0" promptText="Dep. Airport" />
+            <TextField fx:id="txtArrivalAirport" layoutX="15.0" layoutY="90.0" prefHeight="27.0" prefWidth="142.0" promptText="Arr. Airport" />
+            <Button fx:id="btnSearchFlightRoutes" layoutX="19.0" layoutY="178.0" mnemonicParsing="false" onAction="#searchFlightRoutes" prefHeight="27.0" prefWidth="136.0" text="Search for route" />
+            <Separator layoutX="167.0" orientation="VERTICAL" prefHeight="252.0" prefWidth="19.0" />
+            <DatePicker fx:id="dpDepartureDate" layoutX="14.0" layoutY="133.0" prefHeight="27.0" prefWidth="142.0" promptText="Departure date" />
             <Button fx:id="btnSaveBooking" disable="true" layoutX="209.0" layoutY="483.0" mnemonicParsing="false" style="-fx-background-color: green;" text="Save Booking" textAlignment="CENTER" />
             <Button fx:id="btnCancel" layoutX="321.0" layoutY="483.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="93.0" style="-fx-background-color: red;" text="Cancel" />
-            <Label layoutX="393.0" layoutY="14.0" text="2: Select one of the possible routes" />
+            <Label layoutX="316.0" layoutY="14.0" text="2: Select one of the possible routes" />
             <Label layoutX="243.0" layoutY="250.0" text="Selected flights overview" />
             <Separator layoutX="1.0" layoutY="242.0" prefHeight="3.0" prefWidth="640.0" />
-            <Label layoutX="101.0" layoutY="14.0" text="1: Enter desired details" />
+            <Label layoutX="33.0" layoutY="14.0" text="1: Enter desired details" />
             <ListView fx:id="listSelectedRoutes" layoutX="23.0" layoutY="267.0" prefHeight="200.0" prefWidth="595.0" />
+            <TableView fx:id="tViewPossibleRoutes" layoutX="179.0" layoutY="33.0" prefHeight="200.0" prefWidth="457.0">
+              <columns>
+                <TableColumn fx:id="tColDepTime" editable="false" prefWidth="180.0" text="Dep. Time" />
+                <TableColumn fx:id="tColArrTime" prefWidth="214.0" text="Arr. Time" />
+                  <TableColumn fx:id="tColPrice" prefWidth="68.0" text="Price" />
+              </columns>
+            </TableView>
       </children>
     </AnchorPane>
   </children>

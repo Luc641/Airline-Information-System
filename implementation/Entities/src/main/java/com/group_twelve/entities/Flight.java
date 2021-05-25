@@ -53,6 +53,10 @@ public class Flight {
         return ID;
     }
 
+    public int getFlightPrice(){
+        return flightPrice;
+    }
+
     public LocalDateTime getArrivalTime() {
         return arrivalTime;
     }
