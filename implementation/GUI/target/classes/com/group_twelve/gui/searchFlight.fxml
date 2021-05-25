@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="31.0" layoutY="73.0" promptText="Departure" />
+      <TextField layoutX="31.0" layoutY="108.0" promptText="Arrival" />
+      <DatePicker layoutX="193.0" layoutY="73.0" promptText="Date" />
+      <TableView layoutX="5.0" layoutY="140.0" prefHeight="225.0" prefWidth="591.0">
+        <columns>
+          <TableColumn minWidth="25.0" prefWidth="150.0" text="Departure" />
+          <TableColumn minWidth="25.0" prefWidth="150.0" text="Arrival" />
+            <TableColumn minWidth="25.0" prefWidth="150.0" text="Date" />
+            <TableColumn minWidth="25.0" prefWidth="150.0" text="Id" />
+        </columns>
+      </TableView>
+      <Label layoutX="131.0" layoutY="14.0" prefHeight="36.0" prefWidth="340.0" text="Search for a Registered Flight">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button layoutX="512.0" layoutY="108.0" mnemonicParsing="false" text="Search" textAlignment="CENTER" underline="true" />
+      <TextField layoutX="193.0" layoutY="108.0" promptText="Id" />
+   </children>
+</AnchorPane>

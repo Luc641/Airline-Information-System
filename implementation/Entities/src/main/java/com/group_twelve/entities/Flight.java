@@ -48,6 +48,12 @@ public class Flight {
         this.departureAirport = dp;
     }
 
+    public Flight() {
+        
+    }
+
+   
+
 
     public int getID() {
         return ID;
