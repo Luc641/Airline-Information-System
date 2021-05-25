@@ -39,13 +39,13 @@
   <children>
     <AnchorPane fx:id="rootPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <DialogPane contentText="Homepage" layoutX="268.0" layoutY="61.0" prefHeight="53.0" prefWidth="104.0" />
-            <ButtonBar layoutX="123.0" layoutY="114.0" prefHeight="94.0" prefWidth="343.0">
+            <DialogPane contentText="Hello, please choose the desired option :)" headerText="Homepage" layoutX="150.0" layoutY="49.0" prefHeight="53.0" prefWidth="318.0" AnchorPane.bottomAnchor="298.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="49.0" />
+            <ButtonBar layoutX="70.0" layoutY="119.0" prefHeight="232.0" prefWidth="500.0">
               <buttons>
-                  <Button fx:id="priceReduction" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Price Reduction" />
-                  <Button fx:id="registerFlight" mnemonicParsing="false" onAction="#loadRegisterFlight" prefHeight="25.0" text="Register Flight" />
                 <Button fx:id="createBooking" mnemonicParsing="false" onAction="#loadCreateBooking" prefHeight="25.0" prefWidth="137.0" text="Create Booking" />
                   <Button fx:id="SearchFlight" mnemonicParsing="false" onAction="#loadSearchFlight" text="Search Flight" />
+                  <Button fx:id="priceReduction" mnemonicParsing="false" onAction="#loadPriceReduction" prefHeight="25.0" prefWidth="104.0" text="Price Reduction" />
+                  <Button fx:id="registerFlight" mnemonicParsing="false" onAction="#loadRegisterFlight" prefHeight="25.0" text="Register Flight" />
               </buttons>
             </ButtonBar>
          </children>
