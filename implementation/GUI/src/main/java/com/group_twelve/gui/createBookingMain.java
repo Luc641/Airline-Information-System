@@ -45,6 +45,20 @@ public class createBookingMain {
     private Button btnSaveBooking;
     @FXML
     private Button btnCancel;
+    @FXML
+    private TableView<Flight> selectedRoutesTableView;
+    @FXML
+    public TableColumn<String, String> tsColNr;
+    @FXML
+    public TableColumn<Airport, String> tsColDepAirport;
+    @FXML
+    public TableColumn<Airport, String> tsColArrAirport;
+    @FXML
+    public TableColumn<Flight, LocalDateTime> tsColDepartureTime;
+    @FXML
+    public TableColumn<Flight, LocalDateTime> tsColArrivalTime;
+    @FXML
+    public TableColumn<Flight, String> tsColPrice;
 
 
     /**
@@ -53,10 +67,19 @@ public class createBookingMain {
     @FXML
     public void initialize(){
 
-        // Initialize the various TableView columns
+        // Init Select table columns
         tColDepTime.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
         tColArrTime.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
         tColPrice.setCellValueFactory(new PropertyValueFactory<>("flightPrice"));
+
+        // Init selected table columns
+        tsColPrice.setCellValueFactory(new PropertyValueFactory<>("nr"));
+        tsColDepAirport.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tsColArrAirport.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tsColDepartureTime.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
+        tsColArrivalTime.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        tsColPrice.setCellValueFactory(new PropertyValueFactory<>("flightPrice"));
+
     }
 
     /**
@@ -94,6 +117,7 @@ public class createBookingMain {
         ObservableList<Flight> mockFlights = mockFlights();
 
         tViewPossibleRoutes.setItems(mockFlights);
+        selectedRoutesTableView.setItems(mockFlights);
 
     }
 
