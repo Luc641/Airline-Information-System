@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -10,6 +9,9 @@
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_twelve.gui.registerFlight">
@@ -25,10 +27,9 @@
             <TextField fx:id="txtPlaneId" layoutX="12.0" layoutY="273.0" prefHeight="27.0" prefWidth="183.0" promptText="Plane ID" />
             <TextField fx:id="txtCrewId" layoutX="12.0" layoutY="236.0" prefHeight="27.0" prefWidth="183.0" promptText="Crew ID" />
             <TextArea fx:id="txtOptionalRemarkt" layoutX="220.0" layoutY="61.0" prefHeight="275.0" prefWidth="255.0" promptText="Additional remarkt (optional)" />
-            <Button fx:id="btnAccept" defaultButton="true" layoutX="512.0" layoutY="77.0" mnemonicParsing="false" onAction="#getFlightData" prefHeight="68.0" prefWidth="100.0" text="Submit" textAlignment="CENTER" />
-            <Button fx:id="btnCancel" cancelButton="true" layoutX="512.0" layoutY="158.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="68.0" prefWidth="100.0" text="Cancel" textAlignment="CENTER" />
-            <ButtonBar layoutX="440.0" layoutY="267.0" prefHeight="40.0" prefWidth="200.0" />
-            <Button fx:id="btnGoBack" alignment="CENTER" layoutX="530.0" layoutY="251.0" mnemonicParsing="false" onAction="#goBack" onMouseReleased="#back" text="Go Back" textAlignment="JUSTIFY" underline="true">
+            <Button fx:id="btnAccept" defaultButton="true" layoutX="482.0" layoutY="63.0" mnemonicParsing="false" onAction="#getFlightData" prefHeight="68.0" prefWidth="144.0" text="Submit" textAlignment="CENTER" />
+            <Button fx:id="btnCancel" cancelButton="true" layoutX="482.0" layoutY="266.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="68.0" prefWidth="144.0" text="Cancel" textAlignment="CENTER" />
+            <Button fx:id="btnGoBack" alignment="CENTER" layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" onMouseReleased="#back" text="Go Back" textAlignment="JUSTIFY" underline="true">
                <font>
                   <Font name="Times New Roman" size="13.0" />
                </font>
@@ -40,6 +41,27 @@
                <font>
                   <Font name="System Font" size="34.0" />
                </font>
+               <textFill>
+                  <RadialGradient centerX="0.5056179775280899" centerY="0.5" radius="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color green="0.2987857162952423" blue="0.8899999856948853" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.007518796992481203">
+                           <color>
+                              <Color green="0.2987857162952423" blue="0.8899999856948853" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="0.07999999821186066" blue="0.07999999821186066" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
             </Label>
       </children>
          <VBox.margin>

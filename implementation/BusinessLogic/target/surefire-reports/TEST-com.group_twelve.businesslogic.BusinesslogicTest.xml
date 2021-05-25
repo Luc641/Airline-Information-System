@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.group_twelve.businesslogic.BusinesslogicTest" time="0.058" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.group_twelve.businesslogic.BusinesslogicTest" time="0.035" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -16,7 +16,7 @@
     <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-11.0.11.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /Users/alex/Desktop/GitHub/prj2-2021-prj2-2021-12/implementation/BusinessLogic/target/surefire 2021-05-25T15-52-52_207-jvmRun1 surefire6526491329674252506tmp surefire_216564206288582866325tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /Users/alex/Desktop/GitHub/prj2-2021-prj2-2021-12/implementation/BusinessLogic/target/surefire 2021-05-26T01-34-17_835-jvmRun1 surefire427979724140207510tmp surefire_211121735981752409786tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/alex/Desktop/GitHub/prj2-2021-prj2-2021-12/implementation/BusinessLogic/target/test-classes:/Users/alex/.m2/repository/org/postgresql/postgresql/42.2.5/postgresql-42.2.5.jar:/Users/alex/.m2/repository/org/assertj/assertj-core/3.18.1/assertj-core-3.18.1.jar:/Users/alex/.m2/repository/org/mockito/mockito-core/3.5.13/mockito-core-3.5.13.jar:/Users/alex/.m2/repository/net/bytebuddy/byte-buddy/1.10.15/byte-buddy-1.10.15.jar:/Users/alex/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.15/byte-buddy-agent-1.10.15.jar:/Users/alex/.m2/repository/org/objenesis/objenesis/3.1/objenesis-3.1.jar:/Users/alex/.m2/repository/org/mockito/mockito-junit-jupiter/3.5.13/mockito-junit-jupiter-3.5.13.jar:/Users/alex/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/alex/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/alex/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/alex/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/alex/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.0/junit-jupiter-params-5.7.0.jar:/Users/alex/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/alex/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -60,8 +60,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="testAddPlane" classname="com.group_twelve.businesslogic.BusinesslogicTest" time="0.043"/>
-  <testcase name="testAddRoute" classname="com.group_twelve.businesslogic.BusinesslogicTest" time="0"/>
+  <testcase name="testAddPlane" classname="com.group_twelve.businesslogic.BusinesslogicTest" time="0.019"/>
+  <testcase name="testAddRoute" classname="com.group_twelve.businesslogic.BusinesslogicTest" time="0.001"/>
   <testcase name="testAddAirport" classname="com.group_twelve.businesslogic.BusinesslogicTest" time="0.002"/>
   <testcase name="testAddFlight" classname="com.group_twelve.businesslogic.BusinesslogicTest" time="0.001"/>
 </testsuite>

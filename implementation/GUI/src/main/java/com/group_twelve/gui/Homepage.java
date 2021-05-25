@@ -21,6 +21,8 @@ public class Homepage {
 
     @FXML
     private AnchorPane rootPane;
+    @FXML
+    private Button SearchFlight;
 
 
     @FXML
