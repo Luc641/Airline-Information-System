@@ -28,17 +28,17 @@
 | Name: | Register flight |
 |-|-|
 | Actor: | Sales officer |
-| Description: | Sales officer wants to register upcoming flights |
+| Description: | Sales officer wants to be able to register upcoming flights |
 | Pre-condition: | 1. Actor is logged in <br> 2. Actor has permission to register a flight |
-| Main success scenario: | 1. Actor clicks on register flight. <br>2. System returns the register flight page.<br>3. Actor fills in data required to register a flight. <br>4.System checks if all the information has been fully filled.<br>5. System checks if the information entered matches an already registered flight<br>6. System registers the flight. |
-| Result: | Actor has registered a flight |
+| Main success scenario: | 1. Actor clicks on register flight. <br>2. System returns the register flight page.<br>3. Actor fills in data required to register a flight. <br>4.System checks if all the information has been correctly fully filled.<br>5. System checks if the information entered matches an already registered flight<br>6. System registers the flight. |
+| Result: | Actor has registered a flight successfully|
 | Extensions: | - |
-| Exceptions: | 5. System message: “NOT ALL FIELDS ARE FILLED IN!”. <br>5.1 use case ends here. <br>6.System message: “Flight is already registered” <br>6.1 use case end here |
+| Exceptions: | 4.0 System message: “NOT ALL FIELDS ARE FILLED IN!”.<br>4.1 system outputs error massages  where the information have been incorrectly added.<br> 4.2 go back to step 3 .<br>5.System message: “Flight is already registered” <br>5.1 go back to step 3 |
 
 
 
 <br><br>
-| Name: | Change booking options |
+| Name: | reconfigure flight options |
 |-|-|
 | Actor: | Sales employee |
 | Description: | A sales employee selects certain flight options, to optimize a customers flight experience |
