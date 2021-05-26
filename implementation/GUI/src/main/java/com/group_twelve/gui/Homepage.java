@@ -41,4 +41,9 @@ public class Homepage {
     private void loadSearchFlight(ActionEvent actionEvent) throws IOException {
         GUIApp.setRoot("searchFLight");
     }
+
+    @FXML
+    private void loadPriceReduction(ActionEvent actionEvent) throws IOException {
+        GUIApp.setRoot("priceReductionNew");
+    }
 }

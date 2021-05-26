@@ -28,17 +28,17 @@
 | Name: | Register flight |
 |-|-|
 | Actor: | Sales officer |
-| Description: | Sales officer wants to register upcoming flights |
+| Description: | Sales officer wants to be able to register upcoming flights |
 | Pre-condition: | 1. Actor is logged in <br> 2. Actor has permission to register a flight |
-| Main success scenario: | 1. Actor clicks on register flight. <br>2. System returns the register flight page.<br>3. Actor fills in data required to register a flight. <br>4.System checks if all the information has been fully filled.<br>5. System checks if the information entered matches an already registered flight<br>6. System registers the flight. |
-| Result: | Actor has registered a flight |
+| Main success scenario: | 1. Actor clicks on register flight. <br>2. System returns the register flight page.<br>3. Actor fills in data required to register a flight. <br>4.System checks if all the information has been correctly fully filled.<br>5. System checks if the information entered matches an already registered flight<br>6. System registers the flight. |
+| Result: | Actor has registered a flight successfully|
 | Extensions: | - |
-| Exceptions: | 5. System message: “NOT ALL FIELDS ARE FILLED IN!”. <br>5.1 use case ends here. <br>6.System message: “Flight is already registered” <br>6.1 use case end here |
+| Exceptions: | 4.0 System message: “NOT ALL FIELDS ARE FILLED IN!”.<br>4.1 system outputs error massages  where the information have been incorrectly added.<br> 4.2 go back to step 3 .<br>5.System message: “Flight is already registered” <br>5.1 go back to step 3 |
 
 
 
 <br><br>
-| Name: | Change booking options |
+| Name: | reconfigure booking options |
 |-|-|
 | Actor: | Sales employee |
 | Description: | A sales employee selects certain flight options, to optimize a customers flight experience |
@@ -89,19 +89,6 @@
 
 
 <br><br>
-|Name: | Look for bookings|
-|-|-|
-| Actor: | Customer |
-| Description: | Customer looks for available booking options |
-| Pre-condition | Different booking options available to choose from |
-| Main success scenario: | 1.The actor selects the option Search for available bookings, from the main page.<br>2.System returns a list of possible bookings for flights.<br>3.The actor defines his priorities by setting filters.<br>4.System returns possible bookings, that fit the users filters. |
-| Result: | Actor successfully looked up available booking options |
-| Extensions: | - |
-| Exceptions: | 4a. Nothing fits the preferred filters the actor set.<br>4b.Use case ends here.|
-
-
-
-<br><br>
 |Name: | Receive price reductions |
 |-|-|
 | Actor: | Sales Officer |
@@ -124,15 +111,6 @@
 | Exceptions: | 4. System Message: "No statistics to show" <br> 4a. End of use case |
 
 
-<br><br>
-|Name: | Reschedule flight | 
-|-|-|
-| Actor: | Customer |
-| Description: | Customer wants to change its flight |
-| Pre-condition | Customer needs to be registered and needs to have a ticket for an upcoming flight |
-| Main success scenario: | 1. The customer chooses to view an upcoming flight <br> 2. System displays flight information <br> 3. The customer selects to reschedule flight <br> 4. System shows available dates for reschedule |
-| Extensions: | - |
-| Exceptions: | - |
 
 <br><br>
 |Name: | Lookup flights | 
