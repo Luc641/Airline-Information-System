@@ -38,7 +38,7 @@
 
 
 <br><br>
-| Name: | reconfigure flight options |
+| Name: | reconfigure booking options |
 |-|-|
 | Actor: | Sales employee |
 | Description: | A sales employee selects certain flight options, to optimize a customers flight experience |
