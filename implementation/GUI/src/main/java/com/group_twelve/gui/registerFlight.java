@@ -1,5 +1,6 @@
 package com.group_twelve.gui;
-
+// imports
+import com.group_twelve.businesslogic.FlightManager;
 import com.group_twelve.entities.Flight;
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -12,10 +13,10 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
+
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
+//define the GUI registerFlight class
 public class registerFlight {
 
     // Define all of the FXML textfield / labels.
@@ -38,15 +39,15 @@ public class registerFlight {
     @FXML
     private TextArea txtOptionalRemarkt;
     @FXML
-    private Button btnAccept;
-    @FXML
-    private Button btnCancel;
+    private Button btnCancel;//
     @FXML
     private Button btnGoBack;
     @FXML
     private AnchorPane registerFlightPane;
     @FXML
     private Label registerFlights;
+    @FXML
+    private Button btnSubmit;
 
 
     public boolean storeFlight() {
@@ -60,11 +61,13 @@ public class registerFlight {
         // No empty fields, hurray! we can continue.
         if(emptyFields != 0){
             Flight flight = new Flight();
-//           new FlightMangaer().save(flight);
+        // new FlightManager().save(flight);
             // Check business logic stuff
 
 //           airport manager -> retrieve list. if empty then no airplane
 
+        } else {
+          
         }
         return false;
     }
@@ -95,9 +98,9 @@ public class registerFlight {
         returnList.add(txtPlaneId.getText());
         returnList.add(txtCrewId.getText());
 
-        // Check if optional remarks has been filled in, otherwise enter false.
+        // Check if optional remarks has been filled in, otherwise enter none.
         if(txtOptionalRemarkt.getText().equals("")){
-            txtOptionalRemarkt.setText("false");
+            txtOptionalRemarkt.setText("none");
         }
 
         returnList.add(txtOptionalRemarkt.getText());
