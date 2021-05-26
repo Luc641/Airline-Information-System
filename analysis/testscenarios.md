@@ -1,12 +1,12 @@
 # Register Flight
 | Step Number | Description |
 |-|-|
-|1|Fill in the required data for the flight|
-|2|Assign a crew|
-|3|place flight in the schedule|
-|4|Assert that the assigned crew is available for this flight|
-|5|Assert that the plane is available for this flight|
-|6|Assert that there are no complications in the schedule|
+|1|check system behaviour when valid required data is entered|
+|2|check system behaviour when invalid required data is entered|
+|3|check system behaviour when "Submit" button is pressed and all required data is not entered|
+|4|check system behaviour when "Submit" button is pressed and all required data is  entered|
+|5|check system behaviour when "cancel" button is pressed and all required data is not entered
+|6| check system behaviour when "go Back" button is pressed |
 
 ---
 

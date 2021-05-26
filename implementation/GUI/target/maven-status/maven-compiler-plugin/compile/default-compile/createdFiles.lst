@@ -1,7 +1,9 @@
+com/group_twelve/gui/createBookingMain.class
 com/group_twelve/gui/registerFlight.class
-module-info.class
 com/group_twelve/gui/priceReductionList.class
+com/group_twelve/gui/searchFlight.class
+com/group_twelve/gui/GUIApp.class
+module-info.class
+com/group_twelve/gui/Homepage.class
 com/group_twelve/gui/priceReductionNew.class
 com/group_twelve/gui/Login.class
-fontys/frontend/Homepage.class
-com/group_twelve/gui/GUIApp.class

@@ -1,29 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_twelve.gui.registerFlight">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_twelve.gui.registerFlight">
   <children>
-    <MenuBar fx:id="btnGoBack" VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="Go back" />
-      </menus>
-    </MenuBar>
-    <AnchorPane fx:id="registerFlightPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="registerFlightPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="405.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
-            <TextField id="btnFlightId" fx:id="txtFlightId" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="183.0" promptText="Flight ID" />
-            <TextField id="btnFlightId" fx:id="txtDepartureAirport" layoutX="14.0" layoutY="54.0" prefHeight="27.0" prefWidth="183.0" promptText="Departure Airport" />
-            <TextField id="btnFlightId" fx:id="txtArrivalAirport" layoutX="14.0" layoutY="97.0" prefHeight="27.0" prefWidth="183.0" promptText="Arrival Airport" />
-            <DatePicker fx:id="dpDeparture" layoutX="12.0" layoutY="144.0" promptText="Departure Date/Time" />
-            <DatePicker fx:id="dpArrival" layoutX="12.0" layoutY="186.0" promptText="Arrival Date/Time" />
-            <TextField fx:id="txtRoute" layoutX="14.0" layoutY="317.0" prefHeight="27.0" prefWidth="183.0" promptText="Route" />
-            <TextField fx:id="txtPlaneId" layoutX="14.0" layoutY="273.0" prefHeight="27.0" prefWidth="183.0" promptText="Plane ID" />
-            <TextField fx:id="txtCrewId" layoutX="14.0" layoutY="231.0" prefHeight="27.0" prefWidth="183.0" promptText="Crew ID" />
-            <TextArea fx:id="txtOptionalRemarkt" layoutX="222.0" layoutY="12.0" prefHeight="333.0" prefWidth="252.0" promptText="Additional remarkt (optional)" />
-            <Button fx:id="btnAccept" defaultButton="true" layoutX="512.0" layoutY="20.0" mnemonicParsing="false" onAction="#getFlightData" prefHeight="68.0" prefWidth="100.0" text="Submit" textAlignment="CENTER" />
-            <Button fx:id="btnCancel" cancelButton="true" layoutX="512.0" layoutY="110.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="68.0" prefWidth="100.0" text="Cancel" textAlignment="CENTER" />
+            <TextField id="btnFlightId" fx:id="txtFlightId" layoutX="12.0" layoutY="61.0" prefHeight="27.0" prefWidth="183.0" promptText="Flight ID" />
+            <TextField id="btnFlightId" fx:id="txtDepartureAirport" layoutX="12.0" layoutY="97.0" prefHeight="27.0" prefWidth="183.0" promptText="Departure Airport" />
+            <TextField id="btnFlightId" fx:id="txtArrivalAirport" layoutX="12.0" layoutY="131.0" prefHeight="27.0" prefWidth="183.0" promptText="Arrival Airport" />
+            <DatePicker fx:id="dpDeparture" layoutX="10.0" layoutY="165.0" promptText="Departure Date/Time" />
+            <DatePicker fx:id="dpArrival" layoutX="10.0" layoutY="200.0" promptText="Arrival Date/Time" />
+            <TextField fx:id="txtRoute" layoutX="12.0" layoutY="309.0" prefHeight="27.0" prefWidth="183.0" promptText="Route" />
+            <TextField fx:id="txtPlaneId" layoutX="12.0" layoutY="273.0" prefHeight="27.0" prefWidth="183.0" promptText="Plane ID" />
+            <TextField fx:id="txtCrewId" layoutX="12.0" layoutY="236.0" prefHeight="27.0" prefWidth="183.0" promptText="Crew ID" />
+            <TextArea fx:id="txtOptionalRemarkt" layoutX="220.0" layoutY="61.0" prefHeight="275.0" prefWidth="255.0" promptText="Additional remarkt (optional)" />
+            <Button fx:id="btnAccept" defaultButton="true" layoutX="512.0" layoutY="77.0" mnemonicParsing="false" onAction="#getFlightData" prefHeight="68.0" prefWidth="100.0" text="Submit" textAlignment="CENTER" />
+            <Button fx:id="btnCancel" cancelButton="true" layoutX="512.0" layoutY="158.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="68.0" prefWidth="100.0" text="Cancel" textAlignment="CENTER" />
+            <ButtonBar layoutX="440.0" layoutY="267.0" prefHeight="40.0" prefWidth="200.0" />
+            <Button fx:id="btnGoBack" alignment="CENTER" layoutX="530.0" layoutY="251.0" mnemonicParsing="false" onAction="#goBack" onMouseReleased="#back" text="Go Back" textAlignment="JUSTIFY" underline="true">
+               <font>
+                  <Font name="Times New Roman" size="13.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </Button>
+            <Label fx:id="registerFlights" layoutX="210.0" layoutY="14.0" text="Register Flights">
+               <font>
+                  <Font name="System Font" size="34.0" />
+               </font>
+            </Label>
       </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
     </AnchorPane>
   </children>
 </VBox>

@@ -1,5 +1,7 @@
 package com.group_twelve.gui;
 
+import com.group_twelve.entities.Flight;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +11,10 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 public class registerFlight {
 
@@ -35,9 +41,14 @@ public class registerFlight {
     private Button btnAccept;
     @FXML
     private Button btnCancel;
-
-
     @FXML
+    private Button btnGoBack;
+    @FXML
+    private AnchorPane registerFlightPane;
+    @FXML
+    private Label registerFlights;
+
+
     public boolean storeFlight() {
         List<Object> flightData = getFlightData();
 
@@ -48,18 +59,17 @@ public class registerFlight {
 
         // No empty fields, hurray! we can continue.
         if(emptyFields != 0){
-            //Flight flight = new Flight();
-            //new FlightMangaer().save(flight)
+            Flight flight = new Flight();
+//           new FlightMangaer().save(flight);
             // Check business logic stuff
 
-            // airport manager -> retrieve list. if empty then no airplane
+//           airport manager -> retrieve list. if empty then no airplane
 
         }
         return false;
     }
 
     //LUC/PATRICK/RICK
-    @FXML
     public void storeInformation() {
 
     }
@@ -96,4 +106,20 @@ public class registerFlight {
 
         return returnList;
     }
-}
+
+    private void back(ActionEvent event) throws IOException {
+                GUIApp.setRoot("Homepage");
+
+    }
+
+    @FXML
+    private void back(MouseEvent event) {
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) throws IOException {
+                GUIApp.setRoot("Homepage");
+
+    }
+    }
+
