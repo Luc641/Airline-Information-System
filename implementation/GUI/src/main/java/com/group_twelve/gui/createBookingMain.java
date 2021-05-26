@@ -186,8 +186,16 @@ public class createBookingMain {
 
         // Remove flight from the selectedRoutes list
         for (int i = 0; i < selectedRoutes.size(); i++) {
-
+            if(selectedRoutes.get(i).getFlightID() == r.getFlightID()){
+                selectedRoutes.remove(i);
+                break;
+            }
         }
+
+        // Convert the selectedRoutes object back to a flight object
+        Flight t = new Flight(r.getFlightID(), r.getPlane(), r.getArrivalDateTime(), r.getDepartureDateTime(), r.getPrice(), r.getArrivalAirport(), r.getDepartureAirport());
+        // Add flight to the possible routes list
+        foundRoutes.add(t);
 
     }
 
