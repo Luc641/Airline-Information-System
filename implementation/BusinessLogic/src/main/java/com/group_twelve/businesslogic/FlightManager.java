@@ -7,8 +7,10 @@ package com.group_twelve.businesslogic;
 
 import com.group_twelve.entities.Airport;
 import com.group_twelve.entities.Flight;
+import com.group_twelve.entities.selectedRoutes;
 import com.group_twelve.persistence.FlightPersistence;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -46,6 +48,17 @@ public class FlightManager implements Manager<Flight>{
 
     public void save() {
         
+    }
+
+    public boolean checkForFlightOverlap(selectedRoutes f1, Flight f2){
+
+        LocalDateTime arrival = f1.getArrivalDateTime();
+        LocalDateTime departure = f2.getDepartureTime();
+
+        int overlap = arrival.compareTo(departure);
+
+        return overlap >= 0;
+
     }
 
 }

@@ -59,14 +59,25 @@ public class createBookingMain {
     public TableColumn<selectedRoutes, LocalDateTime> tsColArrivalTime;
     @FXML
     public TableColumn<selectedRoutes, String> tsColPrice;
+    @FXML
+    private Label lblWarning;
 
     private ObservableList<Flight> foundRoutes = FXCollections.observableArrayList();
     private ObservableList<selectedRoutes> selectedRoutes = FXCollections.observableArrayList();
+
+    AirportManager apm;
+    RouteManager rm;
+    FlightManager fm;
     /**
      * Initialize the tableviews and their columns
      */
     @FXML
     public void initialize(){
+
+        // Init managers
+        apm = (AirportManager) GUIApp.getBusinessLogicAPI().getManager(Airport.class);
+        rm = (RouteManager) GUIApp.getBusinessLogicAPI().getManager(Route.class);
+        fm = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
 
         // Enable the double-mouseclick functionality for the tables.
         tViewPossibleRoutes.setRowFactory(tv -> {
@@ -109,10 +120,6 @@ public class createBookingMain {
      */
     @FXML
     public void searchFlightRoutes(){
-        // Init managers
-        AirportManager apm = (AirportManager) GUIApp.getBusinessLogicAPI().getManager(Airport.class);
-        RouteManager rm = (RouteManager) GUIApp.getBusinessLogicAPI().getManager(Route.class);
-        FlightManager fm = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
 
         // Get values from UI
         String depAirport = txtDepatureAirport.getText();
@@ -133,8 +140,10 @@ public class createBookingMain {
          * From here on out stuff is mocked. The above calls work and are implemented.
          * The mocked data assumes that the user entered "berlin" and "New york" as airports.
          */
+        // Empty list before showing newly found routes.
+        foundRoutes = FXCollections.observableArrayList();
         foundRoutes.addAll(mockFlights());
-
+        
         tViewPossibleRoutes.setItems(foundRoutes);
 
     }
@@ -145,36 +154,43 @@ public class createBookingMain {
      * @param f = the selected flight
      */
     @FXML
-    public void selectRoute(Flight f){
+    public void selectRoute(Flight f) {
+        // Reset the warningLabel in case that there is a warning active.
+        lblWarning.setText("");
 
-        // TODO: Check if the arrival-and departure times overlap or not. if not, show an error!
+        // Check if the selected flight overlaps with the last inserted selected flight. (others dont have to be
+        // checked because those cannot overlap.
+        if (selectedRoutes.size() > 0 && fm.checkForFlightOverlap(selectedRoutes.get(selectedRoutes.size() - 1), f)) {
+            // If overlap, show error and cancel the selection of the route.
+            lblWarning.setText("ERROR: The departure and arrival times overlap!");
+        } else {
+            // Check if the flight hasn't been inserted into the hashmap already.
+            Long matchingFlights = selectedRoutes.stream()
+                    .map(v -> v.getFlightID())
+                    .filter(v -> v == f.getID())
+                    .count();
 
-        // Check if the flight hasn't been inserted into the hashmap already.
-        Long matchingFlights = selectedRoutes.stream()
-                .map(v -> v.getFlightID())
-                .filter(v -> v == f.getID())
-                .count();
-
-        // if equal to 0, then no matching flights are already in the arraylist.
-        if(matchingFlights == 0){
-            // Remove the flight from the found-flights tableview
-            for (int i = 0; i < foundRoutes.size(); i++) {
-                if(foundRoutes.get(i).getID() == f.getID()){
-                    foundRoutes.remove(i);
-                    break;
+            // if equal to 0, then no matching flights are already in the arraylist.
+            if (matchingFlights == 0) {
+                // Remove the flight from the found-flights tableview
+                for (int i = 0; i < foundRoutes.size(); i++) {
+                    if (foundRoutes.get(i).getID() == f.getID()) {
+                        foundRoutes.remove(i);
+                        break;
+                    }
                 }
+
+                // Create a new selectedRoute entity.
+                selectedRoutes sl = new selectedRoutes(f.getID(), f.getPlane(), f.getArrivalAirport(), f.getDepartureAirport(), f.getDepartureTime(), f.getArrivalTime(), f.getFlightPrice());
+
+                // Add to the selected routes tableview
+                selectedRoutes.add(sl);
+                selectedRoutesTableView.setItems(selectedRoutes);
+            } else {
+                lblWarning.setText("You have already selected this flight!");
             }
 
-            // Create a new selectedRoute entity.
-            selectedRoutes sl = new selectedRoutes(f.getID(), f.getPlane(), f.getArrivalAirport(), f.getDepartureAirport(), f.getDepartureTime(), f.getArrivalTime(), f.getFlightPrice());
-
-            // Add to the selected routes tableview
-            selectedRoutes.add(sl);
-            selectedRoutesTableView.setItems(selectedRoutes);
-        }else{
-            System.out.println("Flight already selected");
         }
-
     }
 
     /**
@@ -208,9 +224,10 @@ public class createBookingMain {
         Flight f1 = new Flight(1, p1, f1da, fl1dd, 10, berlin, nyc);
 
         Plane p2 = new Plane(2, 50, 5000);
+        Airport amsterdam = new Airport(2, "Amsterdam");
         LocalDateTime f2da = LocalDateTime.now().plusDays(8); // Arrival
         LocalDateTime fl2dd = LocalDateTime.now().plusDays(7); // Departure
-        Flight f2 = new Flight(2, p2, f2da, fl2dd, 100, berlin, nyc);
+        Flight f2 = new Flight(2, p2, f2da, fl2dd, 100, amsterdam, nyc);
 
         ObservableList<Flight> allFlights = FXCollections.observableArrayList();
 
