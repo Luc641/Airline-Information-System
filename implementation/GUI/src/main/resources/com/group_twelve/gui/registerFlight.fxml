@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -10,35 +9,157 @@
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_twelve.gui.registerFlight">
   <children>
-    <AnchorPane fx:id="registerFlightPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="405.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="registerFlightPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
       <children>
-            <TextField id="btnFlightId" fx:id="txtFlightId" layoutX="12.0" layoutY="61.0" prefHeight="27.0" prefWidth="183.0" promptText="Flight ID" />
-            <TextField id="btnFlightId" fx:id="txtDepartureAirport" layoutX="12.0" layoutY="97.0" prefHeight="27.0" prefWidth="183.0" promptText="Departure Airport" />
-            <TextField id="btnFlightId" fx:id="txtArrivalAirport" layoutX="12.0" layoutY="131.0" prefHeight="27.0" prefWidth="183.0" promptText="Arrival Airport" />
-            <DatePicker fx:id="dpDeparture" layoutX="10.0" layoutY="165.0" promptText="Departure Date/Time" />
-            <DatePicker fx:id="dpArrival" layoutX="10.0" layoutY="200.0" promptText="Arrival Date/Time" />
-            <TextField fx:id="txtRoute" layoutX="12.0" layoutY="309.0" prefHeight="27.0" prefWidth="183.0" promptText="Route" />
-            <TextField fx:id="txtPlaneId" layoutX="12.0" layoutY="273.0" prefHeight="27.0" prefWidth="183.0" promptText="Plane ID" />
-            <TextField fx:id="txtCrewId" layoutX="12.0" layoutY="236.0" prefHeight="27.0" prefWidth="183.0" promptText="Crew ID" />
-            <TextArea fx:id="txtOptionalRemarkt" layoutX="220.0" layoutY="61.0" prefHeight="275.0" prefWidth="255.0" promptText="Additional remarkt (optional)" />
-            <Button fx:id="btnAccept" defaultButton="true" layoutX="512.0" layoutY="77.0" mnemonicParsing="false" onAction="#getFlightData" prefHeight="68.0" prefWidth="100.0" text="Submit" textAlignment="CENTER" />
-            <Button fx:id="btnCancel" cancelButton="true" layoutX="512.0" layoutY="158.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="68.0" prefWidth="100.0" text="Cancel" textAlignment="CENTER" />
-            <ButtonBar layoutX="440.0" layoutY="267.0" prefHeight="40.0" prefWidth="200.0" />
-            <Button fx:id="btnGoBack" alignment="CENTER" layoutX="530.0" layoutY="251.0" mnemonicParsing="false" onAction="#goBack" onMouseReleased="#back" text="Go Back" textAlignment="JUSTIFY" underline="true">
+            <TextField id="btnFlightId" fx:id="txtFlightId" layoutX="6.0" layoutY="88.0" prefHeight="27.0" prefWidth="183.0" promptText="Flight ID" style="-fx-border-color: blue;" />
+            <TextField id="btnFlightId" fx:id="txtDepartureAirport" layoutX="3.0" layoutY="153.0" prefHeight="27.0" prefWidth="183.0" promptText="Departure Airport" style="-fx-border-color: blue;" />
+            <TextField id="btnFlightId" fx:id="txtArrivalAirport" layoutX="3.0" layoutY="220.0" prefHeight="27.0" prefWidth="183.0" promptText="Arrival Airport" style="-fx-border-color: blue;" />
+            <DatePicker fx:id="dpDeparture" layoutX="3.0" layoutY="288.0" prefHeight="29.0" prefWidth="183.0" promptText="Departure Date/Time" style="-fx-border-color: blue;" />
+            <TextField fx:id="txtCrewId" layoutX="3.0" layoutY="486.0" prefHeight="27.0" prefWidth="183.0" promptText="Crew ID" style="-fx-border-color: blue;" />
+            <TextArea fx:id="txtOptionalRemarkt" layoutX="253.0" layoutY="87.0" prefHeight="496.0" prefWidth="312.0" promptText="Additional remarkt (optional)" style="-fx-border-color: blue;" />
+            <Button fx:id="btnSubmit" defaultButton="true" layoutX="649.0" layoutY="83.0" mnemonicParsing="false" onAction="#getFlightData" prefHeight="68.0" prefWidth="144.0" style="-fx-border-color: blue;" text="Submit" textAlignment="CENTER">
+               <textFill>
+                  <RadialGradient centerX="0.5112359550561798" centerY="0.47596153846153844" radius="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.2677631676197052" green="0.14473684132099152" blue="0.5789473652839661" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="0.0694444477558136" blue="0.0694444477558136" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
                <font>
-                  <Font name="Times New Roman" size="13.0" />
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="btnCancel" cancelButton="true" layoutX="649.0" layoutY="515.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="68.0" prefWidth="144.0" style="-fx-border-color: blue;" text="Cancel" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5112359550561798" centerY="0.47596153846153844" radius="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.08947368711233139" blue="0.31578946113586426" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill></Button>
+            <Button fx:id="btnGoBack" alignment="CENTER" layoutX="6.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" onMouseReleased="#back" style="-fx-border-color: blue;" text="Go Back" textAlignment="JUSTIFY" underline="true">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
                </font>
                <effect>
                   <Blend />
                </effect>
+               <textFill>
+                  <RadialGradient centerX="0.5112359550561798" centerY="0.47596153846153844" radius="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.23018193244934082" green="0.05068226158618927" blue="0.6842105388641357" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.007518796992481203">
+                           <color>
+                              <Color red="0.23018193244934082" green="0.05068226158618927" blue="0.6842105388641357" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
             </Button>
-            <Label fx:id="registerFlights" layoutX="210.0" layoutY="14.0" text="Register Flights">
+            <Label fx:id="registerFlights" layoutX="213.0" layoutY="12.0" text="Register Flights">
                <font>
-                  <Font name="System Font" size="34.0" />
+                  <Font size="52.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5056179775280899" centerY="0.5" radius="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color green="0.2987857162952423" blue="0.8899999856948853" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.007518796992481203">
+                           <color>
+                              <Color green="0.2987857162952423" blue="0.8899999856948853" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="0.07999999821186066" blue="0.07999999821186066" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Label>
+            <Label layoutX="6.0" layoutY="66.0" text="Flight ID:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="6.0" layoutY="131.0" text="Departure airport:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="6.0" layoutY="198.0" text="Arrival airport:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="3.0" layoutY="268.0" text="Departure Date/Time:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="7.0" layoutY="333.0" text="Arrival Date/time:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dpArrival" layoutY="355.0" prefHeight="29.0" prefWidth="183.0" promptText="Arrival Date/Time" style="-fx-border-color: blue;" />
+            <TextField fx:id="txtRoute" layoutX="3.0" layoutY="560.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="183.0" promptText="Route" style="-fx-border-color: blue;" />
+            <TextField fx:id="txtPlaneId" layoutX="3.0" layoutY="421.0" prefHeight="27.0" prefWidth="183.0" promptText="Plane ID" style="-fx-border-color: blue;" />
+            <Label layoutX="7.0" layoutY="399.0" text="Plane ID:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="7.0" layoutY="464.0" text="Crew ID:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="7.0" layoutY="538.0" text="Route:">
+               <font>
+                  <Font size="17.0" />
                </font>
             </Label>
       </children>
