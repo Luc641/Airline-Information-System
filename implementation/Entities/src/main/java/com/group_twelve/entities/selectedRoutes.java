@@ -13,8 +13,9 @@ public class selectedRoutes {
     private LocalDateTime departureDateTime;
     private LocalDateTime arrivalDateTime;
     private int price;
+    private int ticketCount;
 
-    public selectedRoutes(int flightID, Plane plane, Airport arrivalAirport, Airport departureAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int price) {
+    public selectedRoutes(int flightID, Plane plane, Airport arrivalAirport, Airport departureAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int price, int ticketCount) {
         this.flightID = flightID;
         this.plane = plane;
         this.arrivalAirport = arrivalAirport;
@@ -22,6 +23,7 @@ public class selectedRoutes {
         this.departureDateTime = departureDateTime;
         this.arrivalDateTime = arrivalDateTime;
         this.price = price;
+        this.ticketCount = ticketCount;
 
         this.departureAirportName = departureAirport.getName();
         this.arrivalAirportName = arrivalAirport.getName();
