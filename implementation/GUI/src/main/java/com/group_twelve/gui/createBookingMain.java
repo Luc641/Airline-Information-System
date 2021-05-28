@@ -40,10 +40,6 @@ public class createBookingMain {
     @FXML
     private Button btnSearchFlightRoutes;
     @FXML
-    private ListView clistSelectedFlights;
-    @FXML
-    private DatePicker dpDepartureDate;
-    @FXML
     private Button btnSaveBooking;
     @FXML
     private Button btnCancel;
@@ -61,6 +57,10 @@ public class createBookingMain {
     public TableColumn<selectedRoutes, String> tsColPrice;
     @FXML
     private Label lblWarning;
+    @FXML
+    private TextField txtNrOfTickets;
+
+    private int tCount;
 
     private ObservableList<Flight> foundRoutes = FXCollections.observableArrayList();
     private ObservableList<selectedRoutes> selectedRoutes = FXCollections.observableArrayList();
@@ -68,11 +68,12 @@ public class createBookingMain {
     AirportManager apm;
     RouteManager rm;
     FlightManager fm;
+
     /**
-     * Initialize the tableviews and their columns
+     * Initialize the double mouseclick events and the table columns.
      */
     @FXML
-    public void initialize(){
+    private void initialize(){
 
         // Init managers
         apm = (AirportManager) GUIApp.getBusinessLogicAPI().getManager(Airport.class);
@@ -119,51 +120,63 @@ public class createBookingMain {
      * tableview.
      */
     @FXML
-    public void searchFlightRoutes(){
+    private void searchFlightRoutes(){
 
-        // Get values from UI
-        String depAirport = txtDepatureAirport.getText();
-        String arAirport = txtArrivalAirport.getText();
-
-        /**
-         * temp override
-         */
-        depAirport = "Berlin";
-        arAirport = "New York";
-
-        // Get flight route(s) that have matching airports
-        List<Route> routes = rm.getRouteBasesOnAirports(apm.getAirportId(depAirport), apm.getAirportId(arAirport));
-
-        //TODO: Get all flights attached to the available flight routes.
-
-        /**
-         * From here on out stuff is mocked. The above calls work and are implemented.
-         * The mocked data assumes that the user entered "berlin" and "New york" as airports.
-         */
-        // Empty list before showing newly found routes.
+        // Empty warning label
+        lblWarning.setText("");
+        // Empty the previously found flightRoutes
         foundRoutes = FXCollections.observableArrayList();
-        foundRoutes.addAll(mockFlights());
-        
-        tViewPossibleRoutes.setItems(foundRoutes);
 
+        // Get values from the UI and validate them.
+        ArrayList<String> validatedInput = validateInput(txtDepatureAirport.getText(), txtArrivalAirport.getText(), txtNrOfTickets.getText());
+
+        // Check if the arraylist is empty. If true, display error and cancel the lookup.
+        if(validatedInput.isEmpty()){
+            lblWarning.setText("The entered input isn't correct!");
+        }else {
+
+            String depAirport = validatedInput.get(0);
+            String arAirport = validatedInput.get(1);
+            this.tCount = Integer.parseInt(validatedInput.get(2));
+
+            /**
+             * temp override so that I don't have to enter names continiously + the flights are temporarily mocked anyways :)
+             */
+            depAirport = "Berlin";
+            arAirport = "New York";
+
+            // Get flight route(s) that have matching airports
+            List<Route> routes = rm.getRouteBasesOnAirports(apm.getAirportId(depAirport), apm.getAirportId(arAirport));
+
+            /**
+             * From here on out stuff is mocked. The above calls work and are implemented.
+             * The mocked data assumes that the user entered "berlin" and "New york" as airports.
+             *
+             * to make this working "normally", only the call has to be switched out by one of the managers.
+             */
+            foundRoutes.addAll(mockFlights());
+
+            tViewPossibleRoutes.setItems(foundRoutes);
+        }
     }
 
     /**
      * Remove the double-clicked flight from the "possible flights" table into the "selected flights" table.
-     * Furthermore, the selected flight will be added into a hashmap.
+     * Furthermore, the selected flight will be added into the selectedRoutes observableList.
      * @param f = the selected flight
      */
     @FXML
-    public void selectRoute(Flight f) {
+    private void selectRoute(Flight f) {
         // Reset the warningLabel in case that there is a warning active.
         lblWarning.setText("");
 
-        // Check if the selected flight overlaps with the last inserted selected flight. (others dont have to be
-        // checked because those cannot overlap.
+        // If one or more flights have already been selected:
+        // Check:
+        // - if arrival and departure times overlap
         if (selectedRoutes.size() > 0 && fm.checkForFlightOverlap(selectedRoutes.get(selectedRoutes.size() - 1), f)) {
             // If overlap, show error and cancel the selection of the route.
             lblWarning.setText("ERROR: The departure and arrival times overlap!");
-        } else {
+        }else{
             // Check if the flight hasn't been inserted into the hashmap already.
             Long matchingFlights = selectedRoutes.stream()
                     .map(v -> v.getFlightID())
@@ -181,7 +194,7 @@ public class createBookingMain {
                 }
 
                 // Create a new selectedRoute entity.
-                selectedRoutes sl = new selectedRoutes(f.getID(), f.getPlane(), f.getArrivalAirport(), f.getDepartureAirport(), f.getDepartureTime(), f.getArrivalTime(), f.getFlightPrice());
+                selectedRoutes sl = new selectedRoutes(f.getID(), f.getPlane(), f.getArrivalAirport(), f.getDepartureAirport(), f.getDepartureTime(), f.getArrivalTime(), f.getFlightPrice(), this.tCount);
 
                 // Add to the selected routes tableview
                 selectedRoutes.add(sl);
@@ -198,7 +211,7 @@ public class createBookingMain {
      * and puts it back into the foundRoutes arraylist.
      * @param r
      */
-    public void removeSelectedRoute(selectedRoutes r){
+    private void removeSelectedRoute(selectedRoutes r){
 
         // Remove flight from the selectedRoutes list
         for (int i = 0; i < selectedRoutes.size(); i++) {
@@ -215,6 +228,43 @@ public class createBookingMain {
 
     }
 
+    /**
+     * Validates the input given by the user and uppercases the first letter of the a1 and a2 string.
+     * @param a1 = Departure Airport
+     * @param a2 = Arrival Airport
+     * @param tCount = Count of the number of tickets.
+     * @return true or false
+     */
+    private ArrayList<String> validateInput(String a1, String a2, String tCount){
+
+        // 1: Validate that both a1 and a2 only contain letters and that tCount only contains number(s). Also check that the strings arent empty.
+        if(!a1.matches("[a-zA-Z]+") || !a2.matches("[a-zA-Z]+") || !tCount.matches("\\d+") && !a1.isEmpty() && !a2.isEmpty() && !tCount.isEmpty()){
+            return new ArrayList<String>();
+        }
+
+        // 3: Uppercase the first letter of both a1 and a2 so that it conforms with the style of the DB.
+        String ua1 = a1.substring(0, 1).toUpperCase() + a1.substring(1);
+        String ua2 = a2.substring(0, 1).toUpperCase() + a2.substring(1);
+
+        // Send back the new data
+        ArrayList<String> t = new ArrayList<>();
+        t.add(a1);
+        t.add(a2);
+        t.add(tCount);
+
+        return t;
+
+    }
+
+    private void saveBooking(){
+        // TODO: Push the selectedRoutes table into the database.
+    }
+
+    /**
+     * Temporary method which mocks flights to show in the tableview. This will be deleted later once the functionality
+     * has been implemented into the managers.
+     * @return list of mocked flights.
+     */
     private ObservableList<Flight> mockFlights(){
         Plane p1 = new Plane(1, 100, 100000);
         Airport berlin = new Airport(1, "Berlin");
