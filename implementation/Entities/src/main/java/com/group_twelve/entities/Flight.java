@@ -52,11 +52,12 @@ public class Flight {
         
     }
 
-   
-
-
     public int getID() {
         return ID;
+    }
+
+    public int getFlightPrice(){
+        return flightPrice;
     }
 
     public LocalDateTime getArrivalTime() {
@@ -81,5 +82,8 @@ public class Flight {
             arrivalAirport = location;
         }
     }
-     
+
+    public Plane getPlane() {
+        return plane;
+    }
 }
