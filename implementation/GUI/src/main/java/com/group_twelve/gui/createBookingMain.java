@@ -128,11 +128,14 @@ public class createBookingMain {
         foundRoutes = FXCollections.observableArrayList();
 
         // Get values from the UI and validate them.
-        ArrayList<String> validatedInput = validateInput(txtDepatureAirport.getText(), txtArrivalAirport.getText(), txtNrOfTickets.getText());
+        ArrayList<String> validatedInput = validateInput(txtArrivalAirport.getText(), txtDepatureAirport.getText(), txtNrOfTickets.getText());
 
         // Check if the arraylist is empty. If true, display error and cancel the lookup.
         if(validatedInput.isEmpty()){
-            lblWarning.setText("The entered input isn't correct!");
+            lblWarning.setText("The inserted input isn't correct!");
+            txtArrivalAirport.setText("");
+            txtDepatureAirport.setText("");
+            txtNrOfTickets.setText("");
         }else {
 
             String depAirport = validatedInput.get(0);
@@ -142,21 +145,21 @@ public class createBookingMain {
             /**
              * temp override so that I don't have to enter names continiously + the flights are temporarily mocked anyways :)
              */
-            depAirport = "Berlin";
-            arAirport = "New York";
+//            depAirport = "Berlin";
+//            arAirport = "New York";
 
             // Get flight route(s) that have matching airports
             List<Route> routes = rm.getRouteBasesOnAirports(apm.getAirportId(depAirport), apm.getAirportId(arAirport));
+            List<Integer> flightIds = routes.stream().map(Route::getFlightID).collect(Collectors.toList());
 
-            /**
-             * From here on out stuff is mocked. The above calls work and are implemented.
-             * The mocked data assumes that the user entered "berlin" and "New york" as airports.
-             *
-             * to make this working "normally", only the call has to be switched out by one of the managers.
-             */
-            foundRoutes.addAll(mockFlights());
-
+            // Collect all flights and add them to the foundRoutes list.
+            flightIds.stream().forEach(id -> foundRoutes.add(fm.getFlightById(id)));
             tViewPossibleRoutes.setItems(foundRoutes);
+
+            // Check if the table is empty. If so, display error message.
+            if(foundRoutes.isEmpty()){
+                lblWarning.setText("No flights could be found with these airports.");
+            }
         }
     }
 
@@ -199,6 +202,11 @@ public class createBookingMain {
                 // Add to the selected routes tableview
                 selectedRoutes.add(sl);
                 selectedRoutesTableView.setItems(selectedRoutes);
+
+                // Empty the airport textfields for easy-of-use
+                txtDepatureAirport.setText("");
+                txtArrivalAirport.setText("");
+
             } else {
                 lblWarning.setText("You have already selected this flight!");
             }
@@ -238,22 +246,23 @@ public class createBookingMain {
     private ArrayList<String> validateInput(String a1, String a2, String tCount){
 
         // 1: Validate that both a1 and a2 only contain letters and that tCount only contains number(s). Also check that the strings arent empty.
-        if(!a1.matches("[a-zA-Z]+") || !a2.matches("[a-zA-Z]+") || !tCount.matches("\\d+") && !a1.isEmpty() && !a2.isEmpty() && !tCount.isEmpty()){
+        if(!a1.matches("[a-zA-Z]+") || !a2.matches("[a-zA-Z]+") || !tCount.matches("\\d+") || a1.equals("") || a2.equals("") || tCount.equals("")){
             return new ArrayList<String>();
+        }else{
+            // 3: Uppercase the first letter of both a1 and a2 so that it conforms with the style of the DB.
+            String ua1 = a1.substring(0, 1).toUpperCase() + a1.substring(1);
+            String ua2 = a2.substring(0, 1).toUpperCase() + a2.substring(1);
+
+            // Send back the new data
+            ArrayList<String> t = new ArrayList<>();
+            t.add(ua1);
+            t.add(ua2);
+            t.add(tCount);
+
+            System.out.println(tCount.matches("\\d+"));
+
+            return t;
         }
-
-        // 3: Uppercase the first letter of both a1 and a2 so that it conforms with the style of the DB.
-        String ua1 = a1.substring(0, 1).toUpperCase() + a1.substring(1);
-        String ua2 = a2.substring(0, 1).toUpperCase() + a2.substring(1);
-
-        // Send back the new data
-        ArrayList<String> t = new ArrayList<>();
-        t.add(a1);
-        t.add(a2);
-        t.add(tCount);
-
-        return t;
-
     }
 
     private void saveBooking(){
