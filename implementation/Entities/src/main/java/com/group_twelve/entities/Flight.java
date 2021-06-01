@@ -48,6 +48,17 @@ public class Flight {
         this.departureAirport = dp;
     }
 
+    // Constructor to return an empty flight. Used when the DB for example cant make / find one but still needs to return it.
+    public Flight(int id){
+        this.ID = -1;
+        this.plane = null;
+        this.arrivalTime = null;
+        this.departureTime = null;
+        this.flightPrice = -1;
+        this.arrivalAirport = null;
+        this.departureAirport = null;
+    }
+
     public Flight() {
 
     }
