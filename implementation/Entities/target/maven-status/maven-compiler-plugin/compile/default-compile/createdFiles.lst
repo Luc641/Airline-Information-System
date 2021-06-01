@@ -1,7 +1,7 @@
 com/group_twelve/entities/PriceReductionType.class
-com/group_twelve/entities/Route.class
 com/group_twelve/entities/PriceReduction.class
-com/group_twelve/entities/Flight.class
+com/group_twelve/entities/Route.class
 module-info.class
+com/group_twelve/entities/Flight.class
 com/group_twelve/entities/Plane.class
 com/group_twelve/entities/Airport.class

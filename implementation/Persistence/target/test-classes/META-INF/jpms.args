@@ -1,4 +1,0 @@
---patch-module
-persistence_module=_
---add-reads
-persistence_module=ALL-UNNAMED

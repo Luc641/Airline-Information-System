@@ -30,13 +30,13 @@ public class Flight {
 //        this.departureAirportID = departureAirportID;
 //    }
 
-    private final int ID;
-    private final Plane plane;
+    private int ID;
+    private Plane plane;
     private LocalDateTime arrivalTime;
-    private final LocalDateTime departureTime;
-    private final int flightPrice;
+    private LocalDateTime departureTime;
+    private int flightPrice;
     private Airport arrivalAirport;
-    private final Airport departureAirport;
+    private Airport departureAirport;
 
     public Flight(int ID, Plane pl, LocalDateTime at, LocalDateTime dt, int flightPrice, Airport ap, Airport dp){
         this.ID = ID;
@@ -48,9 +48,16 @@ public class Flight {
         this.departureAirport = dp;
     }
 
+    public Flight() {
+
+    }
 
     public int getID() {
         return ID;
+    }
+
+    public int getFlightPrice(){
+        return flightPrice;
     }
 
     public LocalDateTime getArrivalTime() {
@@ -90,5 +97,9 @@ public class Flight {
     }
 
 
-     
+
+
+    public Plane getPlane() {
+        return plane;
+    }
 }

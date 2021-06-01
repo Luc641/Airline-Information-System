@@ -1,5 +1,8 @@
 package com.group_twelve.gui;
-
+// imports
+import com.group_twelve.businesslogic.FlightManager;
+import com.group_twelve.entities.Flight;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,7 +12,11 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.Label;
 
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+//define the GUI registerFlight class
 public class registerFlight {
 
     // Define all of the FXML textfield / labels.
@@ -32,12 +39,17 @@ public class registerFlight {
     @FXML
     private TextArea txtOptionalRemarkt;
     @FXML
-    private Button btnAccept;
+    private Button btnCancel;//
     @FXML
-    private Button btnCancel;
+    private Button btnGoBack;
+    @FXML
+    private AnchorPane registerFlightPane;
+    @FXML
+    private Label registerFlights;
+    @FXML
+    private Button btnSubmit;
 
 
-    @FXML
     public boolean storeFlight() {
         List<Object> flightData = getFlightData();
 
@@ -48,18 +60,19 @@ public class registerFlight {
 
         // No empty fields, hurray! we can continue.
         if(emptyFields != 0){
-            //Flight flight = new Flight();
-            //new FlightMangaer().save(flight)
+            Flight flight = new Flight();
+        // new FlightManager().save(flight);
             // Check business logic stuff
 
-            // airport manager -> retrieve list. if empty then no airplane
+//           airport manager -> retrieve list. if empty then no airplane
 
+        } else {
+          
         }
         return false;
     }
 
     //LUC/PATRICK/RICK
-    @FXML
     public void storeInformation() {
 
     }
@@ -85,9 +98,9 @@ public class registerFlight {
         returnList.add(txtPlaneId.getText());
         returnList.add(txtCrewId.getText());
 
-        // Check if optional remarks has been filled in, otherwise enter false.
+        // Check if optional remarks has been filled in, otherwise enter none.
         if(txtOptionalRemarkt.getText().equals("")){
-            txtOptionalRemarkt.setText("false");
+            txtOptionalRemarkt.setText("none");
         }
 
         returnList.add(txtOptionalRemarkt.getText());
@@ -96,4 +109,20 @@ public class registerFlight {
 
         return returnList;
     }
-}
+
+    private void back(ActionEvent event) throws IOException {
+                GUIApp.setRoot("Homepage");
+
+    }
+
+    @FXML
+    private void back(MouseEvent event) {
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) throws IOException {
+                GUIApp.setRoot("Homepage");
+
+    }
+    }
+
