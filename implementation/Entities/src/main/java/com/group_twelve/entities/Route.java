@@ -31,4 +31,8 @@ public class Route {
         return routeName;
     }
 
+    public int getFlightID(){
+        return this.flightID;
+    }
+
 }
