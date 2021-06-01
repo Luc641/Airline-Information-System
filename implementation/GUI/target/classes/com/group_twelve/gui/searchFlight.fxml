@@ -25,5 +25,7 @@
             <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
             <TextField fx:id="textField" prefHeight="25.0" prefWidth="421.0" />
          </children></HBox>
+      <Button fx:id="edit" layoutX="503.0" layoutY="362.0" mnemonicParsing="false" text="Edit" textFill="#ffe700" />
+      <Button fx:id="delete" layoutX="445.0" layoutY="362.0" mnemonicParsing="false" onAction="#deleteRowFromTable" text="Delete" textFill="RED" />
    </children>
 </AnchorPane>
