@@ -50,6 +50,15 @@ public class FlightManager implements Manager<Flight> {
         return new ArrayList<>();
     }
 
+    public Flight getFlightById(int ID){
+        try{
+            return persistence.getFlightFromId(ID);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return new Flight(-1);
+    }
+
     public void save() {
 
     }
