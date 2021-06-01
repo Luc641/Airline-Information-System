@@ -58,4 +58,16 @@ public class FlightPersistence implements Persistence<Flight>{
         
         return list;
     }
+
+    public Flight getFlightFromId(int ID){
+        var query = String.format("SELECT * FROM flight WHERE id = %d", ID);
+        var flights = database.query(query);
+        try{
+            flights.next();
+            return creator.apply(new Object[]{flights.getString(1), flights.getString(2), flights.getObject(3), flights.getObject(4), flights.getString(5), flights.getString(6), flights.getString(7)});
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return new Flight(-1);
+    }
 }
