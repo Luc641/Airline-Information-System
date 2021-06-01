@@ -110,14 +110,32 @@ INSERT INTO Airport(ID, airportName) VALUES
 INSERT INTO AirplaneType(ID, typeName) values
 (1, 'Airbus a380');
 
+INSERT INTO AirplaneType(ID, typeName) values
+(2, 'Boeing 747');
+
 INSERT INTO Plane(ID, planeTypeID) values
 (1, 1);
 
+INSERT INTO Plane(ID, planeTypeID) values
+(2, 2);
+
 INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
-(1, 1, '2021-06-22 19:10:25-07','2021-06-21 19:10:25-07', 100, 3, 6);
+(1, 1, '2021-06-23 19:10:25-07','2021-06-22 19:10:25-07', 100, 3, 6);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(2, 1, '2021-06-23 21:10:25-07','2021-06-23 20:10:25-07', 50, 9, 3);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(3, 2, '2021-06-25 05:10:25-07','2021-06-24 19:10:25-07', 2000, 8, 9);
 
 INSERT INTO FLIGHTROUTE (ID, routeName, flightID) VALUES
-	(1, 'idk lol', 1);
+	(1, 'NYC->BER', 1);
+
+INSERT INTO FLIGHTROUTE (ID, routeName, flightID) VALUES
+	(2, 'BER->AMS', 2);
+
+INSERT INTO FLIGHTROUTE (ID, routeName, flightID) VALUES
+	(3, 'AMS->DUB', 3);
 
 INSERT INTO EmployeeType (ID, typeName) VALUES
 	(1, 'Sales Officer');
