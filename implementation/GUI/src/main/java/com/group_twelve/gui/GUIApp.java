@@ -35,6 +35,7 @@ public class GUIApp extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
+
     protected static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GUIApp.class.getResource(fxml + ".fxml"));
         System.out.println(fxml);

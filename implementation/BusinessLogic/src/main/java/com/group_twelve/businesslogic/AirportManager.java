@@ -12,55 +12,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author Timo Mattern (t.mattern@student.fontys.nl, github: @t-mattern)
  */
-public class AirportManager implements Manager<Airport>{
+public class AirportManager implements Manager<Airport> {
 
-    AirportPersistence airportPersistence;
-    
+    static AirportPersistence airportPersistence;
+
     public AirportManager(AirportPersistence ap) {
-        this.airportPersistence = ap;
+        airportPersistence = ap;
 
     }
 
-    public static Airport create() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public static Airport create(String[] args) {
         return new Airport(Integer.parseInt(args[0]), args[1]);
     }
 
-    public static Airport createFromID(Integer ID){
-        return new Airport(1,"t");
+    public static Airport createFromId(Integer id) {
+        return airportPersistence.getAirportFromId(id);
     }
-    
+
     public void add(Airport airport) {
     }
-    
+
     public List<Airport> getAll() {
-        try{
+        try {
             return airportPersistence.load();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Failed to get all airports");
             e.printStackTrace();
         }
         return new ArrayList<>();
     }
 
-    public int getAirportId(String name){
-        try{
+    public Airport get(Integer id) {
+        return airportPersistence.getAirportFromId(id);
+    }
+
+    public int getAirportId(String name) {
+        try {
             return airportPersistence.getAirportIdByName(name);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return -1;
     }
-    
+
     public void clear() {
     }
-    
+
     public void setAll(List<Airport> airports) {
     }
 

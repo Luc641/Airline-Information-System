@@ -7,45 +7,50 @@ package com.group_twelve.businesslogic;
 
 import com.group_twelve.entities.Airport;
 import com.group_twelve.entities.Flight;
+import com.group_twelve.entities.Plane;
 import com.group_twelve.persistence.FlightPersistence;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
- *
  * @author Timo Mattern (t.mattern@student.fontys.nl, github: @t-mattern)
  */
-public class FlightManager implements Manager<Flight>{
+public class FlightManager implements Manager<Flight> {
 
-    FlightPersistence persistence;
+    static FlightPersistence persistence;
 
     public FlightManager(FlightPersistence per) {
-        this.persistence = per;
+        persistence = per;
     }
-    
+
     public static Flight create(Object[] args) {
-        //TODO: Convert some args to the desired entities.
-//        return new Flight(Integer.valueOf(args[0]), args[1], args[2], args[3], Integer.valueOf(args[4]), args[5], args[6]);
-        return null;
+        var id = Integer.parseInt((String) args[0]);
+        Plane plane = new Plane(Integer.parseInt((String) args[1]), 0, 0);
+        LocalDateTime at = ((Timestamp) args[2]).toLocalDateTime();
+        LocalDateTime dt = ((Timestamp) args[3]).toLocalDateTime();
+        int flightPrice = Integer.parseInt((String) args[4]);
+        Airport ap = persistence.airportCreator.apply(Integer.parseInt((String) args[5]));
+        Airport dp = persistence.airportCreator.apply(Integer.parseInt((String) args[6]));
+
+        return new Flight(id, plane, at, dt, flightPrice, ap, dp);
     }
 
-    public List<Flight> getAll(){
-        try{
+    public List<Flight> getAll() {
+        try {
             // Get from DB
-            ArrayList<Flight> returnedFlights = persistence.load();
-
-            // Create needed entities
-            // TODO: Create entities.
-//            Airport test = new Airport();
-
-        }catch(Exception e){
+            return persistence.load();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new ArrayList<>();
     }
 
     public void save() {
-        
+
     }
 
 }

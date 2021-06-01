@@ -6,7 +6,6 @@
 package com.group_twelve.entities;
 
 /**
- *
  * @author Timo Mattern (t.mattern@student.fontys.nl, github: @t-mattern)
  */
 public class Airport {
@@ -31,5 +30,10 @@ public class Airport {
 //    public String getLocation() {
 //        return location;
 //    }
-    
+
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

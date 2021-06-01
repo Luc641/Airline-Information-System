@@ -4,17 +4,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_twelve.gui.searchFlight">
    <children>
-      <TextField layoutX="31.0" layoutY="73.0" promptText="Departure" />
-      <TextField layoutX="31.0" layoutY="108.0" promptText="Arrival" />
-      <DatePicker layoutX="193.0" layoutY="73.0" promptText="Date" />
-      <TableView layoutX="5.0" layoutY="140.0" prefHeight="225.0" prefWidth="591.0">
+      <TableView fx:id="flightTable" layoutX="6.0" layoutY="137.0" prefHeight="225.0" prefWidth="591.0">
         <columns>
-          <TableColumn minWidth="25.0" prefWidth="150.0" text="Departure" />
-          <TableColumn minWidth="25.0" prefWidth="150.0" text="Arrival" />
-            <TableColumn minWidth="25.0" prefWidth="150.0" text="Date" />
-            <TableColumn minWidth="25.0" prefWidth="150.0" text="Id" />
+          <TableColumn fx:id="departure" minWidth="25.0" prefWidth="112.0" text="Departure" />
+            <TableColumn fx:id="departureTime" minWidth="25.0" prefWidth="145.0" text="Departure Date" />
+          <TableColumn fx:id="arrival" minWidth="25.0" prefWidth="89.0" text="Arrival" />
+            <TableColumn fx:id="arrivalDate" minWidth="25.0" prefWidth="133.0" text="Arrival Date" />
+            <TableColumn fx:id="flightId" minWidth="25.0" prefWidth="108.0" text="Flight Number" />
         </columns>
       </TableView>
       <Label layoutX="131.0" layoutY="14.0" prefHeight="36.0" prefWidth="340.0" text="Search for a Registered Flight">
@@ -22,7 +20,12 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button layoutX="512.0" layoutY="108.0" mnemonicParsing="false" text="Search" textAlignment="CENTER" underline="true" />
-      <TextField layoutX="193.0" layoutY="108.0" promptText="Id" />
+      <HBox fx:id="hBox" layoutX="1.0" layoutY="82.0" prefHeight="28.0" prefWidth="600.0">
+         <children>
+            <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
+            <TextField fx:id="textField" prefHeight="25.0" prefWidth="421.0" />
+         </children></HBox>
+      <Button fx:id="edit" layoutX="503.0" layoutY="362.0" mnemonicParsing="false" text="Edit" textFill="#ffe700" />
+      <Button fx:id="delete" layoutX="445.0" layoutY="362.0" mnemonicParsing="false" onAction="#deleteRowFromTable" text="Delete" textFill="RED" />
    </children>
 </AnchorPane>

@@ -30,13 +30,13 @@ public class Flight {
 //        this.departureAirportID = departureAirportID;
 //    }
 
-    private int ID;
-    private Plane plane;
+    private final int ID;
+    private final Plane plane;
     private LocalDateTime arrivalTime;
-    private LocalDateTime departureTime;
-    private int flightPrice;
+    private final LocalDateTime departureTime;
+    private final int flightPrice;
     private Airport arrivalAirport;
-    private Airport departureAirport;
+    private final Airport departureAirport;
 
     public Flight(int ID, Plane pl, LocalDateTime at, LocalDateTime dt, int flightPrice, Airport ap, Airport dp){
         this.ID = ID;
@@ -75,5 +75,20 @@ public class Flight {
             arrivalAirport = location;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "ID=" + ID +
+                ", plane=" + plane +
+                ", arrivalTime=" + arrivalTime +
+                ", departureTime=" + departureTime +
+                ", flightPrice=" + flightPrice +
+                ", arrivalAirport=" + arrivalAirport +
+                ", departureAirport=" + departureAirport +
+                '}';
+    }
+
+
      
 }

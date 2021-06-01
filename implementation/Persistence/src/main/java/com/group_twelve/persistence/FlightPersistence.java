@@ -15,10 +15,10 @@ import com.group_twelve.entities.Route;
 public class FlightPersistence implements Persistence<Flight>{
     
     SQLConnection database;
-    Function<? super Object[], ? extends Flight> creator;
-    Function<? super Integer, ? extends Plane> planeCreator;
-    Function<? super Integer, ? extends Airport> airportCreator;
-    Function<? super Integer, ? extends Route> routeCreator;
+    public Function<? super Object[], ? extends Flight> creator;
+    public Function<? super Integer, ? extends Plane> planeCreator;
+    public Function<? super Integer, ? extends Airport> airportCreator;
+    public Function<? super Integer, ? extends Route> routeCreator;
     
     public FlightPersistence(SQLConnection database, 
             Function<? super Object[], ? extends Flight> creator,
@@ -43,14 +43,14 @@ public class FlightPersistence implements Persistence<Flight>{
 //
 //        database.query(insertString);
 //    }
-    
+
     public ArrayList<Flight> load() throws SQLException {
         ArrayList<Flight> list = new ArrayList<>();
         
         try{
             ResultSet flights = database.query("SELECT * from Flight");
             while(flights.next()) {
-                list.add(creator.apply(new Object[]{flights.getString(1), flights.getString(2), flights.getString(3), flights.getString(4), flights.getString(5), flights.getString(6)}));
+                list.add(creator.apply(new Object[]{flights.getString(1), flights.getString(2), flights.getObject(3), flights.getObject(4), flights.getString(5), flights.getString(6), flights.getString(7)}));
             }
         }catch(SQLException e){
             //e.printStackTrace();
