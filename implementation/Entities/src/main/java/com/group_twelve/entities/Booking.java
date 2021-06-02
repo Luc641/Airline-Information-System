@@ -1,16 +1,17 @@
 package com.group_twelve.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Booking {
 
     private int ID;
-    private LocalDateTime bookingDate;
+    private LocalDate bookingDate;
     private int flightRouteID;
     private int employeeID;
     private int priceReductionID;
 
-    public Booking(int ID, LocalDateTime bookingDate, int flightRouteID, int employeeID, int priceReductionID) {
+    public Booking(int ID, LocalDate bookingDate, int flightRouteID, int employeeID, int priceReductionID) {
         this.ID = ID;
         this.bookingDate = bookingDate;
         this.flightRouteID = flightRouteID;
@@ -22,7 +23,7 @@ public class Booking {
         return ID;
     }
 
-    public LocalDateTime getBookingDate() {
+    public LocalDate getBookingDate() {
         return bookingDate;
     }
 
