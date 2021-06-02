@@ -39,12 +39,12 @@ public class BookingPersistence implements Persistence<Booking>{
         String queryString = String.format("INSERT INTO booking (bookingdate, flightrouteid, employeeid, pricereductionid) VALUES ('%s',%s,%s,%s)", b.getBookingDate(), b.getFlightRouteID(), b.getEmployeeID(), b.getPriceReductionID());
         System.out.println("queryString = " + queryString);
         try{
-            database.query(queryString);
+           ResultSet t = database.query(queryString);
+            System.out.println(t);
             return true;
         }catch(Exception e){
             e.printStackTrace();
         }
         return false;
     }
-
 }
