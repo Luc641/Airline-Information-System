@@ -1,13 +1,10 @@
 package com.group_twelve.gui;
 
 import com.group_twelve.businesslogic.AirportManager;
+import com.group_twelve.businesslogic.BookingManager;
 import com.group_twelve.businesslogic.FlightManager;
 import com.group_twelve.businesslogic.RouteManager;
-import com.group_twelve.entities.Airport;
-import com.group_twelve.entities.Flight;
-import com.group_twelve.entities.Plane;
-import com.group_twelve.entities.Route;
-import com.group_twelve.entities.selectedRoutes;
+import com.group_twelve.entities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -68,6 +65,7 @@ public class createBookingMain {
     AirportManager apm;
     RouteManager rm;
     FlightManager fm;
+    BookingManager bm;
 
     /**
      * Initialize the double mouseclick events and the table columns.
@@ -79,6 +77,9 @@ public class createBookingMain {
         apm = (AirportManager) GUIApp.getBusinessLogicAPI().getManager(Airport.class);
         rm = (RouteManager) GUIApp.getBusinessLogicAPI().getManager(Route.class);
         fm = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
+        bm = (BookingManager) GUIApp.getBusinessLogicAPI().getManager(Booking.class);
+
+        System.out.println(bm.getAll().get(0).toString());
 
         // Enable the double-mouseclick functionality for the tables.
         tViewPossibleRoutes.setRowFactory(tv -> {
@@ -142,12 +143,6 @@ public class createBookingMain {
             String arAirport = validatedInput.get(1);
             this.tCount = Integer.parseInt(validatedInput.get(2));
 
-            /**
-             * temp override so that I don't have to enter names continiously + the flights are temporarily mocked anyways :)
-             */
-//            depAirport = "Berlin";
-//            arAirport = "New York";
-
             // Get flight route(s) that have matching airports
             List<Route> routes = rm.getRouteBasesOnAirports(apm.getAirportId(depAirport), apm.getAirportId(arAirport));
             List<Integer> flightIds = routes.stream().map(Route::getFlightID).collect(Collectors.toList());
@@ -203,8 +198,8 @@ public class createBookingMain {
                 selectedRoutes.add(sl);
                 selectedRoutesTableView.setItems(selectedRoutes);
 
-                // Empty the airport textfields for easy-of-use
-                txtDepatureAirport.setText("");
+                // Set the departure airport textfield to the previous arrival airport and empty the arrival field for ease-of-use
+                txtDepatureAirport.setText(sl.getArrivalAirportName());
                 txtArrivalAirport.setText("");
 
             } else {
