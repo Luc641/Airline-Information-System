@@ -19,6 +19,13 @@ public class Booking {
         this.priceReductionID = priceReductionID;
     }
 
+    public Booking(LocalDate bookingDate, int flightRouteID, int employeeID, int priceReductionID) {
+        this.bookingDate = bookingDate;
+        this.flightRouteID = flightRouteID;
+        this.employeeID = employeeID;
+        this.priceReductionID = priceReductionID;
+    }
+
     public int getID() {
         return ID;
     }
