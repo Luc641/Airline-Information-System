@@ -2,6 +2,7 @@ package com.group_twelve.dbconnection;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 import org.mockito.*;
 
@@ -83,18 +84,15 @@ public class SQLConnection
         
         try{
             if(query.toUpperCase().contains("SELECT")){
-                return statement.executeQuery(query);
+                 var pst = connection.prepareStatement(query);
+                return pst.executeQuery();
             }else if(query.toUpperCase().contains("CREATE") || query.toUpperCase().contains("INSERT")){
                 statement.executeUpdate(query);
-                final ResultSet resultSet = Mockito.mock(ResultSet.class); // Placeholder so that NULL is reserved for errors
-                Mockito.when(resultSet.getString(1)).thenReturn("Success");
-                return resultSet;
+                return null;
             }else{
-                System.out.println("No command found, query will be forwarded to database");
+                System.out.println("Query will be forwarded to database");
                 statement.executeUpdate(query);
-                final ResultSet resultSet = Mockito.mock(ResultSet.class); // Placeholder so that NULL is reserved for errors
-                Mockito.when(resultSet.getString(1)).thenReturn("Success");
-                return resultSet;
+                return null;
             }
         }catch(SQLException e){
             System.out.println("Query could not be executed:\n");
