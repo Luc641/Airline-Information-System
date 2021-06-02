@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -178,7 +179,7 @@ public class createBookingMain {
             lblWarning.setText("ERROR: The departure and arrival times overlap!");
         }else{
             // Check if the flight hasn't been inserted into the hashmap already.
-            Long matchingFlights = selectedRoutes.stream()
+            long matchingFlights = selectedRoutes.stream()
                     .map(v -> v.getFlightID())
                     .filter(v -> v == f.getID())
                     .count();
@@ -280,6 +281,7 @@ public class createBookingMain {
             Booking b = new Booking(LocalDate.now(), sl.getFlightID(), 1, 1);
             success = bm.saveBooking(b);
             if(!success){
+                System.out.println("break");
                 break;
             }
         }
@@ -287,9 +289,29 @@ public class createBookingMain {
         // If the success boolean is false, display warning.
         if(!success){
             lblWarning.setText("Error whilst saving booking.");
+        }else{
+            // Booking created! display green message and clear all the fields.
+            lblWarning.setTextFill(Color.rgb(0,128,0));
+            lblWarning.setText("Booking created!");
+            resetUI();
         }
 
+    }
 
+    /**
+     * Reset the UI and lists.
+     */
+    private void resetUI(){
+        txtDepatureAirport.setText("");
+        txtArrivalAirport.setText("");
+        txtNrOfTickets.setText("");
+
+        for (int i = 0; i < selectedRoutes.size(); i++) {
+            selectedRoutes.remove(i);
+        }
+        for (int i = 0; i < foundRoutes.size(); i++) {
+            foundRoutes.remove(i);
+        }
     }
 
     @FXML
@@ -301,6 +323,7 @@ public class createBookingMain {
     public void cancel() throws IOException {
         GUIApp.setRoot("createBookingMain");
     }
+
 
     /**
      * Temporary method which mocks flights to show in the tableview. This will be deleted later once the functionality

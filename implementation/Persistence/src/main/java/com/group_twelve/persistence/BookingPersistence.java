@@ -3,6 +3,7 @@ package com.group_twelve.persistence;
 import com.group_twelve.dbconnection.SQLConnection;
 import com.group_twelve.entities.Booking;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
@@ -37,14 +38,25 @@ public class BookingPersistence implements Persistence<Booking>{
 
     public boolean saveBooking(Booking b){
         String queryString = String.format("INSERT INTO booking (bookingdate, flightrouteid, employeeid, pricereductionid) VALUES ('%s',%s,%s,%s)", b.getBookingDate(), b.getFlightRouteID(), b.getEmployeeID(), b.getPriceReductionID());
-        System.out.println("queryString = " + queryString);
         try{
-           ResultSet t = database.query(queryString);
-            System.out.println(t);
-            return true;
+            return database.insertBooking(queryString);
         }catch(Exception e){
             e.printStackTrace();
         }
         return false;
     }
+
+//    public boolean saveBooking(Booking b){
+//        String queryString = String.format("INSERT INTO booking (bookingdate, flightrouteid, employeeid, pricereductionid) VALUES ('%s',%s,%s,%s)", b.getBookingDate(), b.getFlightRouteID(), b.getEmployeeID(), b.getPriceReductionID());
+//        System.out.println("queryString = " + queryString);
+//        try{
+//            ResultSet t = database.query(queryString);
+//            System.out.println(t);
+//            return true;
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
+
 }
