@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -67,6 +68,8 @@ public class createBookingMain {
     RouteManager rm;
     FlightManager fm;
     BookingManager bm;
+
+    // TODO: Make a select window for the price reductions and have it be selectable.
 
     /**
      * Initialize the double mouseclick events and the table columns.
@@ -259,12 +262,44 @@ public class createBookingMain {
         }
     }
 
+    /**
+     * This method saves all of the selected routes as individual bookings.
+     * It then grabs the tickets and pushes those into the ticket table, coupled to the booking itself.
+     *
+     * When done, display a success message and then empty all of the tables and textfields.
+     */
     @FXML
     private void saveBooking(){
-        System.out.println("test");
-        LocalDate t = LocalDate.of(2021,6,23);
-        Booking test = new Booking(2, t, 2, 1, 1);
-        bm.saveBooking(test);
+        // Prepare variable
+        boolean success = true;
+
+        // Loop through selected flights and create the bookings
+        // todo: TICKETS
+        for (int i = 0; i < selectedRoutes.size(); i++) {
+            selectedRoutes sl = selectedRoutes.get(i);
+            Booking b = new Booking(LocalDate.now(), sl.getFlightID(), 1, 1);
+            success = bm.saveBooking(b);
+            if(!success){
+                break;
+            }
+        }
+
+        // If the success boolean is false, display warning.
+        if(!success){
+            lblWarning.setText("Error whilst saving booking.");
+        }
+
+
+    }
+
+    @FXML
+    public void goBack() throws IOException {
+        GUIApp.setRoot("Homepage");
+    }
+
+    @FXML
+    public void cancel() throws IOException {
+        GUIApp.setRoot("createBookingMain");
     }
 
     /**
