@@ -61,7 +61,7 @@
             <TextField fx:id="txtArrivalAirport" layoutX="15.0" layoutY="90.0" prefHeight="27.0" prefWidth="142.0" promptText="Arr. Airport" />
             <Button fx:id="btnSearchFlightRoutes" layoutX="19.0" layoutY="178.0" mnemonicParsing="false" onAction="#searchFlightRoutes" prefHeight="27.0" prefWidth="136.0" text="Search for route" />
             <Separator layoutX="167.0" orientation="VERTICAL" prefHeight="252.0" prefWidth="19.0" />
-            <Button fx:id="btnSaveBooking" disable="true" layoutX="15.0" layoutY="476.0" mnemonicParsing="false" style="-fx-background-color: green;" text="Save Booking" textAlignment="CENTER" />
+            <Button fx:id="btnSaveBooking" defaultButton="true" layoutX="15.0" layoutY="476.0" mnemonicParsing="false" onAction="#saveBooking" style="-fx-background-color: green;" text="Save Booking" textAlignment="CENTER" />
             <Button fx:id="btnCancel" layoutX="121.0" layoutY="476.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="93.0" style="-fx-background-color: red;" text="Cancel" />
             <Label layoutX="316.0" layoutY="14.0" text="2: Select one of the possible routes" />
             <Label layoutX="243.0" layoutY="250.0" text="Selected flights overview" />
