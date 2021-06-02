@@ -31,5 +31,6 @@
       <Button layoutX="14.0" layoutY="362.0" mnemonicParsing="false" onAction="#loadRegisterFlight" text="Register a new Flight" />
       <Button layoutX="479.0" layoutY="362.0" mnemonicParsing="false" onAction="#loadCreateBooking" text="Create a Booking" />
       <Button layoutX="31.0" layoutY="20.0" mnemonicParsing="false" onAction="#loadHomepage" text="Homepage" />
+      <Label fx:id="lblInfo" layoutX="160.0" layoutY="366.0" prefHeight="17.0" prefWidth="169.0" />
    </children>
 </AnchorPane>

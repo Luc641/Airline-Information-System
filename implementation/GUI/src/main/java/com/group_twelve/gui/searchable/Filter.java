@@ -17,7 +17,7 @@ public enum Filter implements Searchable<Flight> {
         }
     },
 
-    FLIGHT_ID("FlightId") {
+    FLIGHT_ID("Flight Number") {
         @Override
         public Predicate<Flight> search(String searchTerm) {
             try {
@@ -29,7 +29,7 @@ public enum Filter implements Searchable<Flight> {
         }
     },
 
-    FLIGHT_PRICE("FLightPrice") {
+    FLIGHT_PRICE("Flight Price") {
         @Override
         public Predicate<Flight> search(String searchTerm) {
             try {

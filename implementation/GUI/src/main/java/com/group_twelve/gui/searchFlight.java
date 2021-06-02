@@ -13,10 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 
@@ -29,8 +26,9 @@ import java.util.stream.Collectors;
 
 public class searchFlight {
     @FXML
-    private TableView<Flight> flightTable;
+    public Label lblInfo;
     @FXML
+    private TableView<Flight> flightTable;
     private final ObservableList<Flight> data = getFlights();
     @FXML
     private TableColumn<Flight, Integer> flightId, departureTime, arrivalDate, flightPrice;
@@ -53,8 +51,7 @@ public class searchFlight {
         flightPrice.setCellValueFactory(new PropertyValueFactory<>("FlightPrice"));
         flightTable.setEditable(true);
 
-        FilteredList<Flight> flFlights = new FilteredList<>(data, p -> true); //passing data
-        flightTable.setItems(flFlights); //Set the table's items using the filtered list
+        flightTable.setItems(data); //Set the table's items using the filtered list
         //Adding ChoiceBox and TextField here!
         choiceBox.getItems().addAll("Flight Number", "Departure", "Arrival", "Departure Time", "Arrival Time", "Flight Price");
         choiceBox.setValue("Flight Number");
@@ -62,7 +59,7 @@ public class searchFlight {
         textField.setPromptText("Search here!");
         textField.textProperty().addListener((obs, oldValue, newValue) -> {
                     Filter p = Filter.findFilter(choiceBox.getValue());
-                    var f = observableArrayList(flFlights.stream().filter(p.search(newValue)).collect(Collectors.toList()));
+                    var f = observableArrayList(data.stream().filter(p.search(newValue)).collect(Collectors.toList()));
                     flightTable.setItems(f);
                 }
         );
@@ -83,13 +80,16 @@ public class searchFlight {
 
     @FXML
     private void deleteRowFromTable(ActionEvent event) {
-        flightTable.getItems().removeAll(flightTable.getSelectionModel().getSelectedItem());
+        var manager = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
+        var x = flightTable.getSelectionModel().getSelectedItem();
+        manager.delete(x.getID());
+        flightTable.getItems().remove(x);
+        lblInfo.setText("Flight deleted!");
     }
 
     @FXML
     private void loadRegisterFlight(ActionEvent event) throws IOException {
         GUIApp.setRoot("registerFlight");
-
     }
 
     @FXML

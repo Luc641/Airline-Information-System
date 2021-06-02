@@ -50,10 +50,10 @@ public class FlightManager implements Manager<Flight> {
         return new ArrayList<>();
     }
 
-    public Flight getFlightById(int ID){
-        try{
+    public Flight getFlightById(int ID) {
+        try {
             return persistence.getFlightFromId(ID);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new Flight(-1);
@@ -63,7 +63,11 @@ public class FlightManager implements Manager<Flight> {
 
     }
 
-    public boolean checkForFlightOverlap(selectedRoutes f1, Flight f2){
+    public void delete(int id) {
+        persistence.deleteById(id);
+    }
+
+    public boolean checkForFlightOverlap(selectedRoutes f1, Flight f2) {
 
         LocalDateTime arrival = f1.getArrivalDateTime();
         LocalDateTime departure = f2.getDepartureTime();
