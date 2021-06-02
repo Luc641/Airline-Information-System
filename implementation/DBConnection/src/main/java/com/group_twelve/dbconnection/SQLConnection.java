@@ -1,6 +1,8 @@
 package com.group_twelve.dbconnection;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+
 import org.mockito.*;
 
 /**
@@ -101,4 +103,17 @@ public class SQLConnection
         }
         //return null;
     }
+
+    public boolean insertBooking(String query){
+        try{
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.executeUpdate();
+            System.out.println("Booking inserted!");
+            return true;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
 }
