@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -78,8 +79,6 @@ public class createBookingMain {
         rm = (RouteManager) GUIApp.getBusinessLogicAPI().getManager(Route.class);
         fm = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
         bm = (BookingManager) GUIApp.getBusinessLogicAPI().getManager(Booking.class);
-
-        System.out.println(bm.getAll().get(0).toString());
 
         // Enable the double-mouseclick functionality for the tables.
         tViewPossibleRoutes.setRowFactory(tv -> {
@@ -260,8 +259,12 @@ public class createBookingMain {
         }
     }
 
+    @FXML
     private void saveBooking(){
-        // TODO: Push the selectedRoutes table into the database.
+        System.out.println("test");
+        LocalDate t = LocalDate.of(2021,6,23);
+        Booking test = new Booking(2, t, 2, 1, 1);
+        bm.saveBooking(test);
     }
 
     /**
