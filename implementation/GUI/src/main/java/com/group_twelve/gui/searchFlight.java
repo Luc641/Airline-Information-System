@@ -22,6 +22,8 @@ import javafx.scene.layout.HBox;
 
 import static javafx.collections.FXCollections.observableArrayList;
 import static javafx.collections.FXCollections.observableList;
+
+import java.io.IOException;
 import java.util.stream.Collectors;
 
 
@@ -31,7 +33,7 @@ public class searchFlight {
     @FXML
     private final ObservableList<Flight> data = getFlights();
     @FXML
-    private TableColumn<Flight, Integer> flightId, departureTime, arrivalDate;
+    private TableColumn<Flight, Integer> flightId, departureTime, arrivalDate, flightPrice;
     @FXML
     private TableColumn<Flight, String> arrival, departure;
     @FXML
@@ -48,12 +50,13 @@ public class searchFlight {
         arrival.setCellValueFactory(new PropertyValueFactory<>("arrivalAirport"));
         departureTime.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
         arrivalDate.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        flightPrice.setCellValueFactory(new PropertyValueFactory<>("FlightPrice"));
         flightTable.setEditable(true);
 
         FilteredList<Flight> flFlights = new FilteredList<>(data, p -> true); //passing data
         flightTable.setItems(flFlights); //Set the table's items using the filtered list
         //Adding ChoiceBox and TextField here!
-        choiceBox.getItems().addAll("Flight Number", "Departure", "Arrival" , "Departure Time" , "Arrival Time");
+        choiceBox.getItems().addAll("Flight Number", "Departure", "Arrival", "Departure Time", "Arrival Time", "Flight Price");
         choiceBox.setValue("Flight Number");
 
         textField.setPromptText("Search here!");
@@ -79,8 +82,23 @@ public class searchFlight {
     }
 
     @FXML
-    private void  deleteRowFromTable(ActionEvent event){
+    private void deleteRowFromTable(ActionEvent event) {
         flightTable.getItems().removeAll(flightTable.getSelectionModel().getSelectedItem());
     }
 
+    @FXML
+    private void loadRegisterFlight(ActionEvent event) throws IOException {
+        GUIApp.setRoot("registerFlight");
+
+    }
+
+    @FXML
+    private void loadHomepage(ActionEvent event) throws IOException {
+        GUIApp.setRoot("Homepage");
+    }
+
+    @FXML
+    private void loadCreateBooking(ActionEvent event) throws IOException {
+        GUIApp.setRoot("createBookingMain");
+    }
 }

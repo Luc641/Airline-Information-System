@@ -12,24 +12,6 @@ import java.time.LocalDateTime;
  */
 public class Flight {
 
-//    private int ID;
-//    private int planeID;
-//    private LocalDateTime arrivalTime;
-//    private LocalDateTime departureTime;
-//    private int flightPrice;
-//    private int arrivalAirportID;
-//    private int departureAirportID;
-//
-//    public Flight(int ID, int planeID, LocalDateTime at, LocalDateTime dt, int flightPrice, int arrivalAirportID, int departureAirportID) {
-//        this.ID = ID;
-//        this.planeID = planeID;
-//        this.arrivalTime = at;
-//        this.departureTime = dt;
-//        this.flightPrice = flightPrice;
-//        this.arrivalAirportID = arrivalAirportID;
-//        this.departureAirportID = departureAirportID;
-//    }
-
     private int ID;
     private Plane plane;
     private LocalDateTime arrivalTime;

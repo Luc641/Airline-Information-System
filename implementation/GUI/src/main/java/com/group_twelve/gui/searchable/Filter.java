@@ -29,11 +29,22 @@ public enum Filter implements Searchable<Flight> {
         }
     },
 
-    DEP_TIME("DepartureDate") {
+    FLIGHT_PRICE("FLightPrice") {
         @Override
         public Predicate<Flight> search(String searchTerm) {
             try {
                 var number = Integer.parseInt(searchTerm);
+                return f -> f.getFlightPrice() == number;
+            } catch (NumberFormatException e) {
+                return f -> false;
+            }
+        }
+    },
+
+    DEP_TIME("DepartureDate") {
+        @Override
+        public Predicate<Flight> search(String searchTerm) {
+            try {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                 var parsed = LocalDateTime.parse(searchTerm, formatter);
                 return f -> f.getDepartureTime().equals(parsed);
