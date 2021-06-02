@@ -83,7 +83,7 @@ CREATE TABLE FlightRoute (
 
 CREATE TABLE Booking (
   ID SERIAL NOT NULL,
-  bookingDate timestamptz NOT NULL,
+  bookingDate date NOT NULL,
   flightRouteID int NOT NULL,
   employeeID int4 NOT NULL,
   priceReductionID int,
