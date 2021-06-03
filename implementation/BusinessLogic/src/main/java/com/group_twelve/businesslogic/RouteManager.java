@@ -54,6 +54,11 @@ public class RouteManager implements Manager<Route>{
         return new ArrayList<>();
     }
 
+    @Override
+    public ArrayList<String> validateInput(String a1, String a2, String tCount) {
+        return null;
+    }
+
     /**
      *
      * @param aID = arrivalAirportID

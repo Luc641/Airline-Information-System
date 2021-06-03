@@ -40,6 +40,11 @@ public class FlightManager implements Manager<Flight> {
         return new Flight(id, plane, at, dt, flightPrice, ap, dp);
     }
 
+    @Override
+    public ArrayList<String> validateInput(String a1, String a2, String tCount) {
+        return null;
+    }
+
     public List<Flight> getAll() {
         try {
             // Get from DB

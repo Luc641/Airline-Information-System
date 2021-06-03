@@ -38,4 +38,9 @@ public class PriceReductionManager implements Manager<PriceReduction>{
         }
         return new ArrayList<PriceReduction>();
     }
+
+    @Override
+    public ArrayList<String> validateInput(String a1, String a2, String tCount) {
+        return null;
+    }
 }

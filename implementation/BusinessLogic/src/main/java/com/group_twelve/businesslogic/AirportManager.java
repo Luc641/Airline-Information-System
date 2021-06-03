@@ -23,6 +23,8 @@ public class AirportManager implements Manager<Airport> {
 
     }
 
+    public AirportManager(){}
+
     public static Airport create(String[] args) {
         return new Airport(Integer.parseInt(args[0]), args[1]);
     }
@@ -42,6 +44,11 @@ public class AirportManager implements Manager<Airport> {
             e.printStackTrace();
         }
         return new ArrayList<>();
+    }
+
+    @Override
+    public ArrayList<String> validateInput(String a1, String a2, String tCount) {
+        return null;
     }
 
     public Airport get(Integer id) {

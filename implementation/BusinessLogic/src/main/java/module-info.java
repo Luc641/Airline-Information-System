@@ -3,4 +3,5 @@ module businesslogic_module {
     requires transitive persistence_module;
     requires java.sql;
     exports com.group_twelve.businesslogic;
+    requires mockito.all;
 }

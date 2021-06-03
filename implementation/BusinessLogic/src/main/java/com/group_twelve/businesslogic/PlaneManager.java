@@ -44,7 +44,12 @@ public class PlaneManager implements Manager<Plane>{
     public List<Plane> getAll() {
         return planes;
     }
-    
+
+    @Override
+    public ArrayList<String> validateInput(String a1, String a2, String tCount) {
+        return null;
+    }
+
     public void clear() {
         planes.clear();
     }

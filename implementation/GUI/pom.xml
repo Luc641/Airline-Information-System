@@ -70,12 +70,12 @@
                         e.g. junit, assertj, mockito, and jacoco, to name a few.
                         Also leave ${argLine} because it is set/used by the coverage plugin.
                     -->
-                    <argLine> 
-                        ${argLine}
-                        --add-opens GUI_module/fontys.frontend=ALL-UNNAMED 
-                        --add-opens javafx.graphics/com.sun.javafx.application.ParametersImpl=ALL-UNNAMED
-			--add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
-                    </argLine>
+<!--                    <argLine> -->
+<!--                        ${argLine}-->
+<!--                        &#45;&#45;add-opens GUI_module/fontys.frontend=ALL-UNNAMED -->
+<!--                        &#45;&#45;add-opens javafx.graphics/com.sun.javafx.application.ParametersImpl=ALL-UNNAMED-->
+<!--			&#45;&#45;add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED-->
+<!--                    </argLine>-->
                 </configuration>
             </plugin>
         </plugins>
