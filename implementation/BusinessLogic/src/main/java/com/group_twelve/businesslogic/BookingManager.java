@@ -2,6 +2,8 @@ package com.group_twelve.businesslogic;
 
 import com.group_twelve.entities.Booking;
 import com.group_twelve.persistence.BookingPersistence;
+import com.group_twelve.persistence.Persistence;
+
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,9 +11,9 @@ import java.util.List;
 
 public class BookingManager implements Manager<Booking> {
 
-    static BookingPersistence persistence;
+    Persistence<Booking> persistence;
 
-    public BookingManager(BookingPersistence bp) {
+    public BookingManager(Persistence<Booking> bp) {
         persistence = bp;
     }
 
@@ -33,9 +35,11 @@ public class BookingManager implements Manager<Booking> {
         return new ArrayList<>();
     }
 
-    public boolean saveBooking(Booking b){
+    public boolean saveBooking(Booking booking){
         try{
-            return persistence.saveBooking(b);
+            // TODO: Refactor correctly.
+            persistence.save(booking);
+            return true;
         }catch(Exception e){
             e.printStackTrace();
         }

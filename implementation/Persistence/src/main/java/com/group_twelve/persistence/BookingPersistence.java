@@ -36,6 +36,12 @@ public class BookingPersistence implements Persistence<Booking>{
         return list;
     }
 
+    @Override
+    public void save(Booking entity) {
+        // TODO
+        throw new UnsupportedOperationException("Finish method");
+    }
+
     public boolean saveBooking(Booking b){
         String queryString = String.format("INSERT INTO booking (bookingdate, flightrouteid, employeeid, pricereductionid) VALUES ('%s',%s,%s,%s)", b.getBookingDate(), b.getFlightRouteID(), b.getEmployeeID(), b.getPriceReductionID());
         try{

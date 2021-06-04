@@ -52,6 +52,12 @@ public class RoutePersistence implements Persistence<Route> {
         return list;
     }
 
+    @Override
+    public void save(Route entity) {
+        // TODO
+        throw new UnsupportedOperationException("Finish method");
+    }
+
     /**
      * @param a1 = Arrival airport ID
      * @param a2 = departure airport iD

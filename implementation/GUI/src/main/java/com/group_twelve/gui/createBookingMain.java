@@ -132,7 +132,7 @@ public class createBookingMain {
         foundRoutes = FXCollections.observableArrayList();
 
         // Get values from the UI and validate them.
-        ArrayList<String> validatedInput = validateInput(txtArrivalAirport.getText(), txtDepatureAirport.getText(), txtNrOfTickets.getText());
+        ArrayList<String> validatedInput = bm.validateInput(txtArrivalAirport.getText(), txtDepatureAirport.getText(), txtNrOfTickets.getText());
 
         // Check if the arraylist is empty. If true, display error and cancel the lookup.
         if(validatedInput.isEmpty()){
@@ -241,9 +241,9 @@ public class createBookingMain {
      * @param tCount = Count of the number of tickets.
      * @return true or false
      */
-    public ArrayList<String> validateInput(String a1, String a2, String tCount){
-        return bm.validateInput(a1, a2, tCount);
-    }
+//    public ArrayList<String> validateInput(String a1, String a2, String tCount){
+//        return bm.validateInput(a1, a2, tCount);
+//    }
 
     /**
      * This method saves all of the selected routes as individual bookings.

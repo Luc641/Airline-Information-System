@@ -49,5 +49,11 @@ public class PlanePersistence implements Persistence<Plane>{
         
         return list;
     }
-    
+
+    @Override
+    public void save(Plane entity) {
+        // TODO
+        throw new UnsupportedOperationException("Finish method");
+    }
+
 }

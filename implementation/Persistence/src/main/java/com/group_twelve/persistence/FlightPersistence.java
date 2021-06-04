@@ -61,6 +61,12 @@ public class FlightPersistence implements Persistence<Flight> {
         return list;
     }
 
+    @Override
+    public void save(Flight entity) {
+        // TODO
+        throw new UnsupportedOperationException("Finish method");
+    }
+
     public Flight getFlightFromId(int ID) {
         var query = String.format("SELECT * FROM flight WHERE id = %d", ID);
         var flights = database.query(query);

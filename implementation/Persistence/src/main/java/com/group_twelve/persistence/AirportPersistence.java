@@ -50,6 +50,12 @@ public class AirportPersistence implements Persistence<Airport> {
         return list;
     }
 
+    @Override
+    public void save(Airport entity) {
+        // TODO
+        throw new UnsupportedOperationException("Finish method");
+    }
+
 
     public Airport getAirportFromId(int id) {
         var query = String.format("SELECT * FROM airport WHERE id = %d", id);

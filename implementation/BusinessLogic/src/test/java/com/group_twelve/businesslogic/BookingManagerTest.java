@@ -3,12 +3,15 @@ package com.group_twelve.businesslogic;
 import com.group_twelve.entities.Booking;
 import com.group_twelve.persistence.BookingPersistence;
 import com.group_twelve.persistence.Persistence;
+
 import static org.assertj.core.api.Assertions.*;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import static org.mockito.Mockito.*;
+
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -17,18 +20,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.when;
-
 @ExtendWith( MockitoExtension.class )
 public class BookingManagerTest {
 
     // Interface
     @Mock
-    Persistence persistenceMock;
-
-    // Actual class
-    @Mock
-    BookingPersistence bookingPersistence;
+    Persistence<Booking> persistenceMock;
 
     // SUT
     BookingManager bookingManager;//= new BookingManager(bookingPersistence);
@@ -91,9 +88,10 @@ public class BookingManagerTest {
         // Train the Booking persistence to return two mocked rows from the database.
         Booking b1 = new Booking( 1, LocalDate.now(), 1, 1, 1 );
         Booking b2 = new Booking( 2, LocalDate.now(), 2, 3, 4 );
-        ArrayList<Booking> dbr = (ArrayList<Booking>) List.of( b1, b2 );
-        when( bookingPersistence.load() ).thenReturn( dbr );
+        List<Booking> dbr = List.of( b1, b2 );
+        when( persistenceMock.load() ).thenReturn( dbr );
 
+//        verify(persistenceMock, times(1)).load();
         assertThat( this.bookingManager.getAll() ).isEqualTo( dbr );
 
     }
@@ -103,12 +101,12 @@ public class BookingManagerTest {
      * retrieve data from the database.
      */
     @Test
-    void getAllBookingsReturnEmptyArrayListWhenDBIsEmpty() {
+    void getAllBookingsReturnEmptyArrayListWhenDBIsEmpty() throws SQLException {
 
         ArrayList<Booking> dbr = new ArrayList<>();
-        when( this.bookingPersistence.load() ).thenReturn( dbr );
+        when( this.persistenceMock.load() ).thenReturn( dbr );
 
-        ArrayList<Booking> t = this.bookingPersistence.load();
+        List<Booking> t = this.persistenceMock.load();
 
 //        assertThat(this.bookingManager.getAll()).isEqualTo(dbr);
     }

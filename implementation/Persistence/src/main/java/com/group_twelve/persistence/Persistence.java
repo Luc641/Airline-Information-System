@@ -7,6 +7,7 @@ package com.group_twelve.persistence;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,6 +15,9 @@ import java.util.ArrayList;
  */
 public interface Persistence<E> {
 
-    ArrayList<E> load() throws SQLException;
+    List<E> load() throws SQLException;
+
+    //TODO: Change to entity
+    void save(E entity);
 
 }
