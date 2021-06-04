@@ -3,5 +3,5 @@ module persistence_module {
     requires transitive dbconnection_module;
     requires java.sql;
     exports com.group_twelve.persistence;
-
+    requires mockito.all;
 }

@@ -5,9 +5,15 @@
  */
 package com.group_twelve.persistence;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
  * @author Timo Mattern (t.mattern@student.fontys.nl, github: @t-mattern)
  */
 public interface Persistence<E> {
+
+    ArrayList<E> load() throws SQLException;
+
 }

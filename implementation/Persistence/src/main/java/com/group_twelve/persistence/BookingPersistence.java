@@ -22,6 +22,8 @@ public class BookingPersistence implements Persistence<Booking>{
         this.creator = creator;
     }
 
+    public BookingPersistence(){}
+
     public ArrayList<Booking> load(){
         ArrayList<Booking> list = new ArrayList<>();
 

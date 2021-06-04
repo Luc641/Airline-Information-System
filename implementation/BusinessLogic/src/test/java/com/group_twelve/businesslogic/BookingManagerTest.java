@@ -1,41 +1,43 @@
 package com.group_twelve.businesslogic;
-import com.group_twelve.businesslogic.AirportManager;
-import com.group_twelve.businesslogic.BookingManager;
+
 import com.group_twelve.entities.Booking;
 import com.group_twelve.persistence.BookingPersistence;
 import com.group_twelve.persistence.Persistence;
 import org.assertj.core.api.SoftAssertions;
-import static org.assertj.core.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import static org.mockito.Mockito.*;
+import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public class BookingManagerTest {
 
-    BookingManager bookingManager;
-
-    @Mock
-    AirportManager mockAirportManager;
-
+    // Interface
     @Mock
     Persistence persistenceMock;
 
+    // Actual class
     @Mock
     BookingPersistence bookingPersistence;
 
-    @BeforeEach
-    public void setup(){
-        //Setup real classes
-        this.bookingManager = new BookingManager((BookingPersistence) this.persistenceMock);
-    }
+    // SUT
+    BookingManager bookingManager = new BookingManager(bookingPersistence);
+
+//    @BeforeEach
+//    public void setup(){
+//        //Setup system under test
+//        this.bookingManager = new BookingManager((BookingPersistence) persistenceMock);
+//    }
 
     /**
      * This method checks whether the validateInput method in the createBookingMain controller works
@@ -84,15 +86,31 @@ public class BookingManagerTest {
      * called from the getAll() method. (The persistence is mocked).
      */
     @Test
-    public void getAllBookingsReturnValidBookingEntity(){
+    public void getAllBookingsReturnValidBookingEntity() throws SQLException {
 
         // Train the Booking persistence to return two mocked rows from the database.
+        Booking b1 = new Booking(1, LocalDate.now(),1,1,1);
+        Booking b2 = new Booking(2,LocalDate.now(), 2,3,4);
+        ArrayList<Booking> dbr = (ArrayList<Booking>) List.of(b1,b2);
+        when(bookingPersistence.load()).thenReturn(dbr);
+
+        assertThat(this.bookingManager.getAll()).isEqualTo(dbr);
+
+    }
+
+    /**
+     * Test whether the getAll() method returns an empty arraylist when it can't retrieve data
+     * from the database.
+     */
+    @Test
+    void getAllBookingsReturnEmptyArrayListWhenDBIsEmpty(){
+
         ArrayList<Booking> dbr = new ArrayList<>();
-        dbr.add(new Booking(1, LocalDate.now(),1,1,1));
-        dbr.add(new Booking(2,LocalDate.now(), 2,3,4));
         when(this.bookingPersistence.load()).thenReturn(dbr);
 
-        assertThat(this.bookingManager.getAll()).isSameAs(dbr);
+        ArrayList<Booking> t = this.bookingPersistence.load();
+
+//        assertThat(this.bookingManager.getAll()).isEqualTo(dbr);
 
     }
 

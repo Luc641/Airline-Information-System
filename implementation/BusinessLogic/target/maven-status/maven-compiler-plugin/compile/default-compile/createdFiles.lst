@@ -3,6 +3,7 @@ com/group_twelve/businesslogic/ManagerAPI.class
 com/group_twelve/businesslogic/AirportManager.class
 com/group_twelve/businesslogic/PriceReductionManager.class
 com/group_twelve/businesslogic/Manager.class
+com/group_twelve/businesslogic/BookingManager.class
 com/group_twelve/businesslogic/PlaneManager.class
 com/group_twelve/businesslogic/BusinessLogic.class
 com/group_twelve/businesslogic/FlightManager.class
