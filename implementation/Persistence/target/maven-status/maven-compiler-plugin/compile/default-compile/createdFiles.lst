@@ -1,9 +1,0 @@
-com/group_twelve/persistence/PersistenceAPI.class
-com/group_twelve/persistence/Persistence.class
-com/group_twelve/persistence/PriceReductionPersistence.class
-module-info.class
-com/group_twelve/persistence/AirportPersistence.class
-com/group_twelve/persistence/FlightPersistence.class
-com/group_twelve/persistence/BookingPersistence.class
-com/group_twelve/persistence/RoutePersistence.class
-com/group_twelve/persistence/PlanePersistence.class

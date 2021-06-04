@@ -1,4 +1,0 @@
---patch-module
-businessentities_api_module=_
---add-reads
-businessentities_api_module=ALL-UNNAMED
