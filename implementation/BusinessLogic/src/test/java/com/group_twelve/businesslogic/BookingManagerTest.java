@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 @ExtendWith( MockitoExtension.class )
 public class BookingManagerTest {
@@ -108,7 +109,16 @@ public class BookingManagerTest {
 
         List<Booking> t = this.persistenceMock.load();
 
-//        assertThat(this.bookingManager.getAll()).isEqualTo(dbr);
+        assertThat(this.bookingManager.getAll()).isEqualTo(dbr);
     }
 
+    /**
+     * Verify that a booking is able to be saved through the manager.
+     */
+    @Test
+    void verifyThatABookingCanBeSavedThroughManager(){
+
+        Booking booking = new Booking(1,LocalDate.now(),1,1,1);
+        assertThat(this.bookingManager.saveBooking(booking)).isTrue();
+    }
 }
