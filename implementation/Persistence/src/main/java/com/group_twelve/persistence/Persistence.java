@@ -17,7 +17,9 @@ public interface Persistence<E> {
 
     List<E> load() throws SQLException;
 
-    //TODO: Change to entity
+    //TODO: Make it so that when something has been saved that it returns the entity instead of for example a boolean
     void save(E entity);
+
+
 
 }
