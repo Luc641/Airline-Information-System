@@ -2,11 +2,8 @@ package com.group_twelve.businesslogic;
 
 import com.group_twelve.entities.Booking;
 import com.group_twelve.persistence.BookingPersistence;
-
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 

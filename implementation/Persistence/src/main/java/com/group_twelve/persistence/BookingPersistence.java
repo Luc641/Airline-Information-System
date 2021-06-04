@@ -3,10 +3,8 @@ package com.group_twelve.persistence;
 import com.group_twelve.dbconnection.SQLConnection;
 import com.group_twelve.entities.Booking;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.logging.Logger;

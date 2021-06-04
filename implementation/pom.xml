@@ -4,7 +4,7 @@
     <parent>
         <groupId>nl.fontys.sebivenlo</groupId>
         <artifactId>sebipom</artifactId>
-        <version>3.0.0</version>
+        <version>3.0.4</version>
         <relativePath/>
     </parent>
     <groupId>fontys</groupId>
@@ -15,12 +15,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <modules>
-        <module>Assembler</module>
-        <module>GUI</module>
-        <module>BusinessLogic</module>        
-        <module>Persistence</module>
         <module>Entities</module>
         <module>DBConnection</module>
+        <module>Persistence</module>
+        <module>BusinessLogic</module>        
+        <module>GUI</module>
+        <module>Assembler</module>
     </modules>
     <name>AirlineInformationSystem</name>
 </project>

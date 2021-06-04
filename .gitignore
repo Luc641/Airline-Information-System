@@ -18,7 +18,7 @@
 *.zip
 *.tar.gz
 *.rar
-
+*/target/*
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 implementation/GUI/src/main/resources/fontys/.DS_Store
@@ -52,3 +52,7 @@ implementation/.idea/libraries/Maven__org_openjfx_javafx_graphics_15_0_1.xml
 implementation/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_15_0_1.xml
 analysis/.DS_Store
 implementation/.idea/uiDesigner.xml
+/implementation/target/
+/implementation/BusinessLogic/nbproject/
+/implementation/GUI/target/
+/implementation/Assembler/target/

@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.group_twelve.persistence;
 
-import com.group_twelve.entities.Airport;
-
-import java.util.ArrayList;
-import java.util.NoSuchElementException;
-import java.util.function.Function;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import com.group_twelve.dbconnection.SQLConnection;
+import com.group_twelve.entities.Airport;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.function.Function;
+import java.util.logging.Logger;
 
 /**
  * @author Timo Mattern (t.mattern@student.fontys.nl, github: @t-mattern)
