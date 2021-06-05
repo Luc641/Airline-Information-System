@@ -8,6 +8,11 @@
     </parent>
     <artifactId>Persistence</artifactId>
     <packaging>jar</packaging>
+    <properties>
+        <surefire.opens>
+            --add-opens persistence_module/com.group_twelve.persistence=ALL-UNNAMED
+        </surefire.opens>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>fontys</groupId>
