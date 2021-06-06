@@ -41,6 +41,11 @@ public class FlightManager implements Manager<Flight> {
     }
 
     @Override
+    public boolean save(Flight object) {
+        return false;
+    }
+
+    @Override
     public ArrayList<String> validateInput(String a1, String a2, String tCount) {
         return null;
     }
@@ -62,10 +67,6 @@ public class FlightManager implements Manager<Flight> {
             e.printStackTrace();
         }
         return new Flight(-1);
-    }
-
-    public void save() {
-
     }
 
     public void delete(int id) {

@@ -20,6 +20,8 @@ public interface Manager<E> {
         return null;
     }
 
+    boolean save(E object);
+
     ArrayList<String> validateInput(String a1, String a2, String tCount);
 
 

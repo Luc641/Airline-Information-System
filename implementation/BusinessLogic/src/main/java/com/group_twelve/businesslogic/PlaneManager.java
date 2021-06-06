@@ -46,6 +46,11 @@ public class PlaneManager implements Manager<Plane>{
     }
 
     @Override
+    public boolean save(Plane object) {
+        return false;
+    }
+
+    @Override
     public ArrayList<String> validateInput(String a1, String a2, String tCount) {
         return null;
     }

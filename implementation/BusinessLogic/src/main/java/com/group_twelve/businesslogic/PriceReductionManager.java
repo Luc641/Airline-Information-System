@@ -25,8 +25,9 @@ public class PriceReductionManager implements Manager<PriceReduction>{
         return new PriceReduction(Integer.valueOf(args[0]), args[1], args[2], Double.valueOf(args[3]), PriceReductionType.valueOf(args[4]));
     }
     
-    public void save(PriceReduction pr) {
-        
+    public boolean save(PriceReduction pr) {
+        // TODO: implement
+        return false;
     }
     
     public ArrayList<PriceReduction> getAll() {

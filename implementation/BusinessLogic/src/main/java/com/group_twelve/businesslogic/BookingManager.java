@@ -35,7 +35,7 @@ public class BookingManager implements Manager<Booking> {
         return new ArrayList<>();
     }
 
-    public boolean saveBooking(Booking booking){
+    public boolean save(Booking booking){
         try{
             // TODO: Refactor correctly.
             persistence.save(booking);
