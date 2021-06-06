@@ -42,9 +42,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_twelve.gui.Homepage">
+<VBox minHeight="560.0" minWidth="980.0" prefHeight="560.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_twelve.gui.Homepage">
   <children>
-    <AnchorPane fx:id="rootPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="rootPane" maxHeight="-1.0" maxWidth="-1.0" minHeight="517.0" minWidth="877.0" prefHeight="517.0" prefWidth="877.0" VBox.vgrow="ALWAYS">
          <children>
             <Label layoutX="200.0" layoutY="37.0" text="Homepage" textAlignment="CENTER" underline="true">
                <font>
