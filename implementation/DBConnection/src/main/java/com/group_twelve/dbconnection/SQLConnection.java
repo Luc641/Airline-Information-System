@@ -102,7 +102,6 @@ public class SQLConnection
         try{
             PreparedStatement pst = connection.prepareStatement(query);
             pst.executeUpdate();
-            System.out.println("Booking inserted!");
             return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

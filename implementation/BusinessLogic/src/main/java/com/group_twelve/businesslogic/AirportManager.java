@@ -47,6 +47,11 @@ public class AirportManager implements Manager<Airport> {
     }
 
     @Override
+    public boolean save(Airport object) {
+        return false;
+    }
+
+    @Override
     public ArrayList<String> validateInput(String a1, String a2, String tCount) {
         return null;
     }
