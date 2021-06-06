@@ -36,7 +36,6 @@ CREATE TABLE AirplaneType (
   typeName varchar(255) NOT NULL,
   primary key (ID)
 );
-
 CREATE TABLE Plane (
   ID SERIAL NOT NULL,
   planeTypeID int NOT NULL,
@@ -76,10 +75,8 @@ CREATE TABLE Ticket (
   ID SERIAL NOT NULL,
   seatNr int4 NOT NULL,
   flightID int not null,
-  options int not null,
   customerID int not null,
   PRIMARY KEY (ID),
-  FOREIGN key (options) REFERENCES Options(ID),
   FOREIGN KEY (flightID) REFERENCES Flight(ID),
   FOREIGN KEY (customerID) REFERENCES Customer(ID)
 );
@@ -102,6 +99,15 @@ CREATE TABLE Booking (
   FOREIGN KEY (employeeID) REFERENCES Employee(ID),
   FOREIGN KEY (priceReductionID) REFERENCES PriceReduction(ID)
 );
+
+CREATE TABLE TicketOptions(
+  ID SERIAL NOT NULL,
+  flightID int NOT NULL,
+  optionId int NOT NULL,
+  PRIMARY KEY(ID),
+  FOREIGN KEY (flightID) REFERENCES Flight(ID),
+  FOREIGN KEY (optionId) REFERENCES Options(ID)
+)
 
 INSERT INTO Airport(ID, airportName) VALUES
 	(1, 'Frankfurt'),
