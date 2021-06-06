@@ -58,11 +58,27 @@ public class createBookingMain {
     private Label lblWarning;
     @FXML
     private TextField txtNrOfTickets;
+    @FXML
+    private TableView<Option> tViewOptions;
+    @FXML
+    private TableColumn<Option, String> tColOptionsName;
+    @FXML
+    private TableColumn<Option, Integer> tColOptionsPrice;
+    @FXML
+    private TableView<Option> tViewSelectedOptions;
+    @FXML
+    private TableColumn<Option, String> tColSelectedOptionName;
+    @FXML
+    private TableColumn<Option, Integer> tColSelectedOptionPrice;
+    @FXML
+    private Label lblTotalPrice;
 
     private int tCount;
 
     private ObservableList<Flight> foundRoutes = FXCollections.observableArrayList();
     private ObservableList<selectedRoutes> selectedRoutesList = FXCollections.observableArrayList();
+    private ObservableList<Option> foundOptions = FXCollections.observableArrayList();
+    private ObservableList<Option> selectedOptions = FXCollections.observableArrayList();
 
     AirportManager apm;
     RouteManager rm;
@@ -71,8 +87,6 @@ public class createBookingMain {
     CustomerManager cm;
     TicketManager tm;
     OptionManager om;
-
-    // TODO: Make a select window for the price reductions and have it be selectable.
 
     /**
      * Initialize the double mouseclick events and the table columns.
@@ -89,7 +103,40 @@ public class createBookingMain {
         tm = (TicketManager) GUIApp.getBusinessLogicAPI().getManager(Ticket.class);
         om = (OptionManager) GUIApp.getBusinessLogicAPI().getManager(Option.class);
 
+
+        // init the tableviews.
+        initTableViews();
+
+        // Get all of the options and populate the options tableview
+        foundOptions.addAll(om.getAll());
+        tViewOptions.setItems(foundOptions);
+
+    }
+
+    public void initTableViews(){
         // Enable the double-mouseclick functionality for the tables.
+        tViewOptions.setRowFactory(tv -> {
+            TableRow<Option> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if(event.getClickCount() == 2 && (! row.isEmpty())){
+                    // Send data to the select flight method.
+                    selectOption(row.getItem());
+                }
+            });
+            return row;
+        });
+
+        tViewSelectedOptions.setRowFactory(tv -> {
+            TableRow<Option> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if(event.getClickCount() == 2 && (! row.isEmpty())){
+                    // Send data to the select flight method.
+                    removeSelectedOption(row.getItem());
+                }
+            });
+            return row;
+        });
+
         tViewPossibleRoutes.setRowFactory(tv -> {
             TableRow<Flight> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
@@ -111,7 +158,14 @@ public class createBookingMain {
             return row;
         });
 
-        // Init the columns of the 2 tables.
+
+        // Init the columns
+        tColOptionsName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tColOptionsPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        tColSelectedOptionName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tColSelectedOptionPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+
         tColDepTime.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
         tColArrTime.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
         tColPrice.setCellValueFactory(new PropertyValueFactory<>("flightPrice"));
@@ -121,7 +175,6 @@ public class createBookingMain {
         tsColDepartureTime.setCellValueFactory(new PropertyValueFactory<>("departureDateTime"));
         tsColArrivalTime.setCellValueFactory(new PropertyValueFactory<>("arrivalDateTime"));
         tsColPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-
     }
 
     /**
@@ -183,7 +236,7 @@ public class createBookingMain {
             // If overlap, show error and cancel the selection of the route.
             lblWarning.setText("ERROR: The departure and arrival times overlap!");
         }else{
-            // Check if the flight hasn't been inserted into the hashmap already.
+            // Check if the flight hasn't been inserted into the list already.
             long matchingFlights = selectedRoutesList.stream()
                     .map(v -> v.getFlightID())
                     .filter(v -> v == f.getID())
@@ -209,6 +262,9 @@ public class createBookingMain {
                 // Set the departure airport textfield to the previous arrival airport and empty the arrival field for ease-of-use
                 txtDepatureAirport.setText(sl.getArrivalAirportName());
                 txtArrivalAirport.setText("");
+
+                // Update total price
+                updatePrice();
 
             } else {
                 lblWarning.setText("You have already selected this flight!");
@@ -237,6 +293,9 @@ public class createBookingMain {
         // Add flight to the possible routes list
         foundRoutes.add(t);
 
+        // Update total price
+        updatePrice();
+
     }
 
     /**
@@ -263,8 +322,9 @@ public class createBookingMain {
                     selectedRoutes sl = selectedRoutesList.get(i);
 
                     // Create tickets (ID = -1 because it isnt used for the insertion and we dont have it yet at this stage)
+                    List<Integer> optionIds = selectedOptions.stream().map(Option::getID).collect(Collectors.toList());
                     for (int j = 0; j < tCount; j++) {
-                        Ticket ticket = new Ticket(-1, -1, sl.getFlightID(), 1, customer.getID());
+                        Ticket ticket = new Ticket(-1, -1, sl.getFlightID(), optionIds, customer.getID());
                         tm.save(ticket);
                     }
 
@@ -288,6 +348,83 @@ public class createBookingMain {
                 }
             }
         }
+
+    }
+
+    /**
+     * Move an option from the found to the selected lists and tableview.
+     * @param option
+     */
+    private void selectOption(Option option){
+        // Reset the warningLabel in case that there is a warning active.
+        lblWarning.setText("");
+
+        // Check whether or not the option has been selected already
+        Long matching = foundOptions.stream().map(v -> v.getID()).count();
+
+        if(matching == 0){
+            lblWarning.setText("Option already selected!");
+        }else{
+            // Remove flight from the found options table
+            for (int i = 0; i < foundOptions.size(); i++) {
+                if(foundOptions.get(i).getID() == option.getID()){
+                    foundOptions.remove(i);
+                    break;
+                }
+            }
+            // Add the option to the selected options tableview & list
+            selectedOptions.add(option);
+            tViewSelectedOptions.setItems(selectedOptions);
+
+            // Update total price
+            updatePrice();
+        }
+
+    }
+
+    /**
+     * Move an option from the selected to the found list and tableview.
+     * @param option
+     */
+    private void removeSelectedOption(Option option){
+        // Remove from selected list
+        for (int i = 0; i < selectedOptions.size(); i++) {
+            if(selectedOptions.get(i).getID() == option.getID()){
+                selectedOptions.remove(i);
+                break;
+            }
+        }
+
+        // Add to found list
+        foundOptions.add(option);
+
+        // Update total price
+        updatePrice();
+
+    }
+
+    /**
+     * Update the total price of the booking
+     */
+    private void updatePrice(){
+        int newPrice = 0;
+
+        // Get all the prices from the selectedRoutes.
+        newPrice += selectedRoutesList.stream()
+                .map(selectedRoutes::getPrice).mapToInt(v -> v).sum();
+
+        // Same for the selected options
+        newPrice += selectedOptions.stream()
+                .map(Option::getPrice).mapToInt(v -> v).sum();
+
+        // Multiply the cost by amount of tickets.
+        if(tCount <= 1) {
+            newPrice = newPrice * 1;
+        }else{
+            newPrice = newPrice * tCount;
+        }
+        // Display the new price.
+        lblTotalPrice.setText(String.valueOf(newPrice));
 
     }
 

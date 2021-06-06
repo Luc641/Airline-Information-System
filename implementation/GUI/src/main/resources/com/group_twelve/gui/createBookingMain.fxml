@@ -83,7 +83,7 @@
                   <TableColumn fx:id="tsColPrice" prefWidth="74.0" text="Price" />
               </columns>
             </TableView>
-            <Label fx:id="lblWarning" layoutX="262.0" layoutY="481.0" prefHeight="17.0" prefWidth="692.0" textAlignment="CENTER" textFill="#da0a0a" />
+            <Label fx:id="lblWarning" layoutX="249.0" layoutY="466.0" prefHeight="47.0" prefWidth="383.0" textAlignment="CENTER" textFill="#da0a0a" />
             <TextField fx:id="txtNrOfTickets" layoutX="14.0" layoutY="120.0" prefHeight="27.0" prefWidth="142.0" promptText="# of tickets" />
             <TextField fx:id="txtCustomerName" layoutX="14.0" layoutY="155.0" prefHeight="27.0" prefWidth="142.0" promptText="Customer Name" />
             <Separator layoutX="641.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="526.0" prefWidth="19.0" />
@@ -100,6 +100,9 @@
                 <TableColumn fx:id="tColSelectedOptionPrice" prefWidth="73.0" text="Price" />
               </columns>
             </TableView>
+            <Label layoutX="660.0" layoutY="481.0" prefHeight="17.0" prefWidth="67.0" text="Total Price:" />
+            <Label fx:id="lblTotalPrice" layoutX="727.0" layoutY="481.0" prefWidth="122.0" text="0" />
+            <Label layoutX="768.0" layoutY="250.0" text="Selected options:" />
       </children>
     </AnchorPane>
   </children>
