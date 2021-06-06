@@ -6,6 +6,7 @@ import com.group_twelve.persistence.Persistence;
 import com.group_twelve.persistence.TicketPersistence;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TicketManager implements Manager<Ticket> {
@@ -17,7 +18,7 @@ public class TicketManager implements Manager<Ticket> {
     }
 
     public static Ticket create(Integer[] args){
-        return new Ticket(args[0],args[1],args[2],args[3],args[4]);
+        return new Ticket(args[0],args[1],args[2], Collections.singletonList(args[3]),args[4]);
     }
 
     @Override

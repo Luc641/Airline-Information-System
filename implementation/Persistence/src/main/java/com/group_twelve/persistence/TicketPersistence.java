@@ -41,9 +41,20 @@ public class TicketPersistence implements Persistence<Ticket>{
 
     @Override
     public boolean save(Ticket ticket) {
-        String query = String.format("INSERT INTO ticket (seatnr, flightid, options, customerid) VALUES (%s,%s,%s,%s)", ticket.getSeatNr(), ticket.getFlightID(), ticket.getOptionID(), ticket.getCustomerID());
+        String ticketQuery = String.format("INSERT INTO ticket (seatnr, flightid, customerid) VALUES (%s,%s,%s)", ticket.getSeatNr(), ticket.getFlightID(),ticket.getCustomerID());
+
         try{
-            db.query(query);
+            // Save row into the ticket table
+            db.query(ticketQuery);
+            // Insert all the options into the ticketoptions table.
+            if(!ticket.getOptionID().isEmpty()) {
+                for (int i = 0; i < ticket.getOptionID().size(); i++) {
+                    // Prepare query
+                    String optionsQuery = String.format("INSERT INTO ticketoptions (flightid, optionid) VALUES (%s,%s)", ticket.getFlightID(), ticket.getOptionID().get(i));
+                    // Execute
+                    db.query(optionsQuery);
+                }
+            }
             return true;
         }catch(Exception e){
             e.printStackTrace();

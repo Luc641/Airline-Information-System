@@ -1,14 +1,16 @@
 package com.group_twelve.entities;
 
+import java.util.List;
+
 public class Ticket {
 
     private int ID;
     private int seatNr;
     private int flightID;
-    private int optionID;
+    private List<Integer> optionID;
     private int customerID;
 
-    public Ticket(int ID, int seatNr, int flightID, int optionID, int c) {
+    public Ticket(int ID, int seatNr, int flightID, List<Integer> optionID, int c) {
         this.ID = ID;
         this.seatNr = seatNr;
         this.flightID = flightID;
@@ -32,7 +34,7 @@ public class Ticket {
         return flightID;
     }
 
-    public int getOptionID() {
+    public List<Integer> getOptionID() {
         return optionID;
     }
 }
