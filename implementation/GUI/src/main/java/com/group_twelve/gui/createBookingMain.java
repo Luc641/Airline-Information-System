@@ -70,6 +70,7 @@ public class createBookingMain {
     BookingManager bm;
     CustomerManager cm;
     TicketManager tm;
+    OptionManager om;
 
     // TODO: Make a select window for the price reductions and have it be selectable.
 
@@ -86,6 +87,7 @@ public class createBookingMain {
         bm = (BookingManager) GUIApp.getBusinessLogicAPI().getManager(Booking.class);
         cm = (CustomerManager) GUIApp.getBusinessLogicAPI().getManager(Customer.class);
         tm = (TicketManager) GUIApp.getBusinessLogicAPI().getManager(Ticket.class);
+        om = (OptionManager) GUIApp.getBusinessLogicAPI().getManager(Option.class);
 
         // Enable the double-mouseclick functionality for the tables.
         tViewPossibleRoutes.setRowFactory(tv -> {
@@ -249,37 +251,41 @@ public class createBookingMain {
         boolean success = true;
 
         // Get customer details
-        Customer customer = cm.getOrCreateCustomerByName(cm.capitalizeName(txtCustomerName.getText()));
-        if(customer.getID() == -1){
-            lblWarning.setText("Error with creating / fetching customer");
+        if(txtCustomerName.getText().equals("")) {
+            lblWarning.setText("Please insert customer name");
         }else {
-            // Loop through selected flights and create the bookings
-            for (int i = 0; i < selectedRoutesList.size(); i++) {
-                selectedRoutes sl = selectedRoutesList.get(i);
-
-                // Create tickets (ID = -1 because it isnt used for the insertion and we dont have it yet at this stage)
-                for (int j = 0; j < tCount; j++) {
-                    Ticket ticket = new Ticket(-1,-1, sl.getFlightID(),1,customer.getID());
-                    tm.save(ticket);
-                }
-
-                // Create and save the booking
-                Booking b = new Booking(LocalDate.now(), sl.getFlightID(), 1, 1);
-                success = bm.save(b);
-                if (!success) {
-                    System.out.println("break");
-                    break;
-                }
-            }
-
-            // If the success boolean is false, display warning.
-            if (!success) {
-                lblWarning.setText("Error whilst saving booking.");
+            Customer customer = cm.getOrCreateCustomerByName(cm.capitalizeName(txtCustomerName.getText()));
+            if (customer.getID() == -1) {
+                lblWarning.setText("Error with creating / fetching customer");
             } else {
-                // Booking created! display green message and clear all the fields.
-                lblWarning.setTextFill(Color.rgb(0, 128, 0));
-                lblWarning.setText("Booking created!");
-                resetUI();
+                // Loop through selected flights and create the bookings
+                for (int i = 0; i < selectedRoutesList.size(); i++) {
+                    selectedRoutes sl = selectedRoutesList.get(i);
+
+                    // Create tickets (ID = -1 because it isnt used for the insertion and we dont have it yet at this stage)
+                    for (int j = 0; j < tCount; j++) {
+                        Ticket ticket = new Ticket(-1, -1, sl.getFlightID(), 1, customer.getID());
+                        tm.save(ticket);
+                    }
+
+                    // Create and save the booking
+                    Booking b = new Booking(LocalDate.now(), sl.getFlightID(), 1, 1);
+                    success = bm.save(b);
+                    if (!success) {
+                        System.out.println("break");
+                        break;
+                    }
+                }
+
+                // If the success boolean is false, display warning.
+                if (!success) {
+                    lblWarning.setText("Error whilst saving booking.");
+                } else {
+                    // Booking created! display green message and clear all the fields.
+                    lblWarning.setTextFill(Color.rgb(0, 128, 0));
+                    lblWarning.setText("Booking created!");
+                    resetUI();
+                }
             }
         }
 
