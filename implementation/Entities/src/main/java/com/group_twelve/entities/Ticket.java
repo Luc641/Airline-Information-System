@@ -6,12 +6,18 @@ public class Ticket {
     private int seatNr;
     private int flightID;
     private int optionID;
+    private int customerID;
 
-    public Ticket(int ID, int seatNr, int flightID, int optionID) {
+    public Ticket(int ID, int seatNr, int flightID, int optionID, int c) {
         this.ID = ID;
         this.seatNr = seatNr;
         this.flightID = flightID;
         this.optionID = optionID;
+        this.customerID = c;
+    }
+
+    public int getCustomerID() {
+        return customerID;
     }
 
     public int getID() {

@@ -17,7 +17,7 @@ public class TicketManager implements Manager<Ticket> {
     }
 
     public static Ticket create(Integer[] args){
-        return new Ticket(args[0],args[1],args[2],args[3]);
+        return new Ticket(args[0],args[1],args[2],args[3],args[4]);
     }
 
     @Override
