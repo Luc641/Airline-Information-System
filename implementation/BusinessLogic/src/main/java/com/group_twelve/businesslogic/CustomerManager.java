@@ -18,6 +18,10 @@ public class CustomerManager implements Manager<Customer> {
         return new Customer(Integer.parseInt((String) args[0]), (String) args[1]);
     }
 
+    public String capitalizeName(String name){
+        return name.substring(0, 1).toUpperCase() + name.substring(1);
+    }
+
     public Customer getCustomerById(int ID){
         try{
             return persistence.getCustomerById(ID);
@@ -25,6 +29,15 @@ public class CustomerManager implements Manager<Customer> {
             e.printStackTrace();
         }
         return new Customer(0, "null");
+    }
+
+    public Customer getOrCreateCustomerByName(String name){
+        try{
+            return persistence.getOrCreateCustomerByName(name);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return new Customer(-1, "null");
     }
 
     @Override
@@ -41,4 +54,6 @@ public class CustomerManager implements Manager<Customer> {
     public ArrayList<String> validateInput(String a1, String a2, String tCount) {
         throw new UnsupportedOperationException("Not implemented");
     }
+
+
 }
