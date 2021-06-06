@@ -27,6 +27,7 @@ CREATE TABLE Employee (
 CREATE TABLE Options (
   ID SERIAL NOT NULL,
   optionName varchar(255) NOT NULL,
+  price int not null,
   PRIMARY KEY (ID)
 );
 
@@ -158,11 +159,15 @@ INSERT INTO PRICEREDUCTIONTYPE (ID, typeName, description) VALUES
 INSERT INTO PRICEREDUCTION (ID, prName, description, amount, prType) VALUES
 	(1, '35% static price reduction', 'description', 0.35, 1);
 
-INSERT INTO Booking(ID, bookingDate, flightRouteID, employeeID, priceReductionID) VALUES
-	(1, '2020-04-21 08:51:22+1', 1, 1, 1);
+-- INSERT INTO Booking(ID, bookingDate, flightRouteID, employeeID, priceReductionID) VALUES
+-- 	(1, '2020-04-21 08:51:22+1', 1, 1, 1);
 
-INSERT INTO Customer(ID, fullname) VALUES (1, 'Patrick');
-INSERT INTO Customer(ID, fullname) VALUES (2, 'Luc');
-INSERT INTO Customer(ID, fullname) VALUES (3, 'Timo');
-INSERT INTO Customer(ID, fullname) VALUES (4, 'Alex');
-INSERT INTO Customer(ID, fullname) VALUES (5, 'Alexandra');
+-- INSERT INTO Customer(ID, fullname) VALUES (1, 'Patrick');
+-- INSERT INTO Customer(ID, fullname) VALUES (2, 'Luc');
+-- INSERT INTO Customer(ID, fullname) VALUES (3, 'Timo');
+-- INSERT INTO Customer(ID, fullname) VALUES (4, 'Alex');
+-- INSERT INTO Customer(ID, fullname) VALUES (5, 'Alexandra');
+
+INSERT INTO options(ID, price, optionName) VALUES (1, 10, 'extra legroom');
+INSERT INTO options(ID, price, optionName) VALUES (2, 50, 'Unlimited drinks');
+INSERT INTO options(ID, price, optionName) VALUES (3, 25, '10kg extra baggage');
