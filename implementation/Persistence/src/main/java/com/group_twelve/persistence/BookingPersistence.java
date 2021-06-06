@@ -35,14 +35,15 @@ public class BookingPersistence implements Persistence<Booking>{
     }
 
     @Override
-    public void save(Booking b) {
+    public boolean save(Booking b) {
         String queryString = String.format("INSERT INTO booking (bookingdate, flightrouteid, employeeid, pricereductionid) VALUES ('%s',%s,%s,%s)", b.getBookingDate(), b.getFlightRouteID(), b.getEmployeeID(), b.getPriceReductionID());
         try{
             database.insertBooking(queryString);
+            return true;
         }catch(Exception e){
             e.printStackTrace();
         }
-//        return false;
+        return false;
     }
 
 //    public boolean saveBooking(Booking b){

@@ -51,7 +51,7 @@ public class AirportPersistence implements Persistence<Airport> {
     }
 
     @Override
-    public void save(Airport entity) {
+    public boolean save(Airport entity) {
         // TODO
         throw new UnsupportedOperationException("Finish method");
     }

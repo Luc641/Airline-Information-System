@@ -51,7 +51,7 @@ public class PlanePersistence implements Persistence<Plane>{
     }
 
     @Override
-    public void save(Plane entity) {
+    public boolean save(Plane entity) {
         // TODO
         throw new UnsupportedOperationException("Finish method");
     }

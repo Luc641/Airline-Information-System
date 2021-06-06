@@ -53,7 +53,7 @@ public class RoutePersistence implements Persistence<Route> {
     }
 
     @Override
-    public void save(Route entity) {
+    public boolean save(Route entity) {
         // TODO
         throw new UnsupportedOperationException("Finish method");
     }

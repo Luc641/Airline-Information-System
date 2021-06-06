@@ -26,10 +26,11 @@ public class PriceReductionPersistence implements Persistence<PriceReduction>{
         this.creator = creator;
     }
     
-    public void save(PriceReduction pr) {
+    public boolean save(PriceReduction pr) {
         ArrayList<PriceReduction> prList = new ArrayList<>();
         prList.add(pr);
         save(prList);
+        return true;
     }
     
     public void save(ArrayList<PriceReduction> data) {

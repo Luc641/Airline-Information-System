@@ -62,7 +62,7 @@ public class FlightPersistence implements Persistence<Flight> {
     }
 
     @Override
-    public void save(Flight entity) {
+    public boolean save(Flight entity) {
         // TODO
         throw new UnsupportedOperationException("Finish method");
     }

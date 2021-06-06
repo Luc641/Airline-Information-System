@@ -119,6 +119,6 @@ public class BookingManagerTest {
     void verifyThatABookingCanBeSavedThroughManager(){
 
         Booking booking = new Booking(1,LocalDate.now(),1,1,1);
-        assertThat(this.bookingManager.saveBooking(booking)).isTrue();
+        assertThat(this.bookingManager.save(booking)).isTrue();
     }
 }

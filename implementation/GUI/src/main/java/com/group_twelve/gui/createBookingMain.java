@@ -261,7 +261,7 @@ public class createBookingMain {
         for (int i = 0; i < selectedRoutes.size(); i++) {
             selectedRoutes sl = selectedRoutes.get(i);
             Booking b = new Booking(LocalDate.now(), sl.getFlightID(), 1, 1);
-            success = bm.saveBooking(b);
+            success = bm.save(b);
             if(!success){
                 System.out.println("break");
                 break;
