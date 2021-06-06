@@ -46,6 +46,7 @@ public class BookingManager implements Manager<Booking> {
         return false;
     }
 
+
     public ArrayList<String> validateInput(String a1, String a2, String tCount){
 
         // 1: Validate that both a1 and a2 only contain letters and that tCount only contains number(s). Also check that the strings arent empty.

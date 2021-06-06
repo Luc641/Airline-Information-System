@@ -1,9 +1,6 @@
 package com.group_twelve.gui;
 
-import com.group_twelve.businesslogic.AirportManager;
-import com.group_twelve.businesslogic.BookingManager;
-import com.group_twelve.businesslogic.FlightManager;
-import com.group_twelve.businesslogic.RouteManager;
+import com.group_twelve.businesslogic.*;
 import com.group_twelve.entities.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -44,6 +41,8 @@ public class createBookingMain {
     @FXML
     private Button btnCancel;
     @FXML
+    private TextField txtCustomerName;
+    @FXML
     private TableView<selectedRoutes> selectedRoutesTableView;
     @FXML
     public TableColumn<selectedRoutes, String> tsColDepAirport;
@@ -63,12 +62,14 @@ public class createBookingMain {
     private int tCount;
 
     private ObservableList<Flight> foundRoutes = FXCollections.observableArrayList();
-    private ObservableList<selectedRoutes> selectedRoutes = FXCollections.observableArrayList();
+    private ObservableList<selectedRoutes> selectedRoutesList = FXCollections.observableArrayList();
 
     AirportManager apm;
     RouteManager rm;
     FlightManager fm;
     BookingManager bm;
+    CustomerManager cm;
+    TicketManager tm;
 
     // TODO: Make a select window for the price reductions and have it be selectable.
 
@@ -83,6 +84,8 @@ public class createBookingMain {
         rm = (RouteManager) GUIApp.getBusinessLogicAPI().getManager(Route.class);
         fm = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
         bm = (BookingManager) GUIApp.getBusinessLogicAPI().getManager(Booking.class);
+        cm = (CustomerManager) GUIApp.getBusinessLogicAPI().getManager(Customer.class);
+        tm = (TicketManager) GUIApp.getBusinessLogicAPI().getManager(Ticket.class);
 
         // Enable the double-mouseclick functionality for the tables.
         tViewPossibleRoutes.setRowFactory(tv -> {
@@ -174,12 +177,12 @@ public class createBookingMain {
         // If one or more flights have already been selected:
         // Check:
         // - if arrival and departure times overlap
-        if (selectedRoutes.size() > 0 && fm.checkForFlightOverlap(selectedRoutes.get(selectedRoutes.size() - 1), f)) {
+        if (selectedRoutesList.size() > 0 && fm.checkForFlightOverlap(selectedRoutesList.get(selectedRoutesList.size() - 1), f)) {
             // If overlap, show error and cancel the selection of the route.
             lblWarning.setText("ERROR: The departure and arrival times overlap!");
         }else{
             // Check if the flight hasn't been inserted into the hashmap already.
-            long matchingFlights = selectedRoutes.stream()
+            long matchingFlights = selectedRoutesList.stream()
                     .map(v -> v.getFlightID())
                     .filter(v -> v == f.getID())
                     .count();
@@ -198,8 +201,8 @@ public class createBookingMain {
                 selectedRoutes sl = new selectedRoutes(f.getID(), f.getPlane(), f.getArrivalAirport(), f.getDepartureAirport(), f.getDepartureTime(), f.getArrivalTime(), f.getFlightPrice(), this.tCount);
 
                 // Add to the selected routes tableview
-                selectedRoutes.add(sl);
-                selectedRoutesTableView.setItems(selectedRoutes);
+                selectedRoutesList.add(sl);
+                selectedRoutesTableView.setItems(selectedRoutesList);
 
                 // Set the departure airport textfield to the previous arrival airport and empty the arrival field for ease-of-use
                 txtDepatureAirport.setText(sl.getArrivalAirportName());
@@ -220,9 +223,9 @@ public class createBookingMain {
     private void removeSelectedRoute(selectedRoutes r){
 
         // Remove flight from the selectedRoutes list
-        for (int i = 0; i < selectedRoutes.size(); i++) {
-            if(selectedRoutes.get(i).getFlightID() == r.getFlightID()){
-                selectedRoutes.remove(i);
+        for (int i = 0; i < selectedRoutesList.size(); i++) {
+            if(selectedRoutesList.get(i).getFlightID() == r.getFlightID()){
+                selectedRoutesList.remove(i);
                 break;
             }
         }
@@ -235,17 +238,6 @@ public class createBookingMain {
     }
 
     /**
-     * Validates the input given by the user and uppercases the first letter of the a1 and a2 string.
-     * @param a1 = Departure Airport
-     * @param a2 = Arrival Airport
-     * @param tCount = Count of the number of tickets.
-     * @return true or false
-     */
-//    public ArrayList<String> validateInput(String a1, String a2, String tCount){
-//        return bm.validateInput(a1, a2, tCount);
-//    }
-
-    /**
      * This method saves all of the selected routes as individual bookings.
      * It then grabs the tickets and pushes those into the ticket table, coupled to the booking itself.
      *
@@ -256,26 +248,39 @@ public class createBookingMain {
         // Prepare variable
         boolean success = true;
 
-        // Loop through selected flights and create the bookings
-        // todo: TICKETS
-        for (int i = 0; i < selectedRoutes.size(); i++) {
-            selectedRoutes sl = selectedRoutes.get(i);
-            Booking b = new Booking(LocalDate.now(), sl.getFlightID(), 1, 1);
-            success = bm.save(b);
-            if(!success){
-                System.out.println("break");
-                break;
-            }
-        }
+        // Get customer details
+        Customer customer = cm.getOrCreateCustomerByName(cm.capitalizeName(txtCustomerName.getText()));
+        if(customer.getID() == -1){
+            lblWarning.setText("Error with creating / fetching customer");
+        }else {
+            // Loop through selected flights and create the bookings
+            for (int i = 0; i < selectedRoutesList.size(); i++) {
+                selectedRoutes sl = selectedRoutesList.get(i);
 
-        // If the success boolean is false, display warning.
-        if(!success){
-            lblWarning.setText("Error whilst saving booking.");
-        }else{
-            // Booking created! display green message and clear all the fields.
-            lblWarning.setTextFill(Color.rgb(0,128,0));
-            lblWarning.setText("Booking created!");
-            resetUI();
+                // Create tickets (ID = -1 because it isnt used for the insertion and we dont have it yet at this stage)
+                for (int j = 0; j < tCount; j++) {
+                    Ticket ticket = new Ticket(-1,-1, sl.getFlightID(),1,customer.getID());
+                    tm.save(ticket);
+                }
+
+                // Create and save the booking
+                Booking b = new Booking(LocalDate.now(), sl.getFlightID(), 1, 1);
+                success = bm.save(b);
+                if (!success) {
+                    System.out.println("break");
+                    break;
+                }
+            }
+
+            // If the success boolean is false, display warning.
+            if (!success) {
+                lblWarning.setText("Error whilst saving booking.");
+            } else {
+                // Booking created! display green message and clear all the fields.
+                lblWarning.setTextFill(Color.rgb(0, 128, 0));
+                lblWarning.setText("Booking created!");
+                resetUI();
+            }
         }
 
     }
@@ -288,8 +293,8 @@ public class createBookingMain {
         txtArrivalAirport.setText("");
         txtNrOfTickets.setText("");
 
-        for (int i = 0; i < selectedRoutes.size(); i++) {
-            selectedRoutes.remove(i);
+        for (int i = 0; i < selectedRoutesList.size(); i++) {
+            selectedRoutesList.remove(i);
         }
         for (int i = 0; i < foundRoutes.size(); i++) {
             foundRoutes.remove(i);
@@ -304,36 +309,6 @@ public class createBookingMain {
     @FXML
     public void cancel() throws IOException {
         GUIApp.setRoot("createBookingMain");
-    }
-
-
-    /**
-     * Temporary method which mocks flights to show in the tableview. This will be deleted later once the functionality
-     * has been implemented into the managers.
-     * @return list of mocked flights.
-     */
-    private ObservableList<Flight> mockFlights(){
-        Plane p1 = new Plane(1, 100, 100000);
-        Airport berlin = new Airport(1, "Berlin");
-        Airport nyc = new Airport(2, "New York");
-        LocalDateTime f1da = LocalDateTime.now().plusDays(5); // Arrival
-        LocalDateTime fl1dd = LocalDateTime.now().plusDays(4); // Departure
-        Flight f1 = new Flight(1, p1, f1da, fl1dd, 10, berlin, nyc);
-
-        Plane p2 = new Plane(2, 50, 5000);
-        Airport amsterdam = new Airport(2, "Amsterdam");
-        LocalDateTime f2da = LocalDateTime.now().plusDays(8); // Arrival
-        LocalDateTime fl2dd = LocalDateTime.now().plusDays(7); // Departure
-        Flight f2 = new Flight(2, p2, f2da, fl2dd, 100, amsterdam, nyc);
-
-        ObservableList<Flight> allFlights = FXCollections.observableArrayList();
-
-        allFlights.add(f1);
-        allFlights.add(f2);
-        allFlights.add(f1);
-
-        return allFlights;
-
     }
 
 }
