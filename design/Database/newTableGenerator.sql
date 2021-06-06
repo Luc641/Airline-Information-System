@@ -5,7 +5,7 @@ CREATE TABLE Customer(
   ID SERIAL NOT NULL,
   fullname varchar(255) NOT NULL,
   PRIMARY KEY (ID)
-)
+);
 
 CREATE TABLE Airport (
   ID SERIAL NOT NULL,
@@ -161,8 +161,8 @@ INSERT INTO PRICEREDUCTION (ID, prName, description, amount, prType) VALUES
 INSERT INTO Booking(ID, bookingDate, flightRouteID, employeeID, priceReductionID) VALUES
 	(1, '2020-04-21 08:51:22+1', 1, 1, 1);
 
-INSERT INTO Customer(ID, fullname) VALUES (1, "Patrick");
-INSERT INTO Customer(ID, fullname) VALUES (2, "Luc");
-INSERT INTO Customer(ID, fullname) VALUES (3, "Timo");
-INSERT INTO Customer(ID, fullname) VALUES (4, "Alex");
-INSERT INTO Customer(ID, fullname) VALUES (5, "Alexandra");
+INSERT INTO Customer(ID, fullname) VALUES (1, 'Patrick');
+INSERT INTO Customer(ID, fullname) VALUES (2, 'Luc');
+INSERT INTO Customer(ID, fullname) VALUES (3, 'Timo');
+INSERT INTO Customer(ID, fullname) VALUES (4, 'Alex');
+INSERT INTO Customer(ID, fullname) VALUES (5, 'Alexandra');
