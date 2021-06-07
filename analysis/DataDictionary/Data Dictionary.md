@@ -3,6 +3,9 @@
 ## Airport: 
 A complex of runways and buildings for the take-off, landing, and maintenance of civil aircraft, with facilities for passengers.
 
+## Arrival airport:
+The airport at which the flight ends 
+
 ## Arrival time:
 the moment at which a public conveyance is scheduled to get to a given destination.
 
@@ -17,6 +20,9 @@ The second pilot in an aircraft.
 
 ## Customer:
 The user group, which will be able to buy tickets through a sales employee to a flight and will be going on flights.
+
+## Departure airport:
+The airport from where the flight beggins.
 
 ## Departure time:
 Is that moment when the plane is taking of from a given point of origin.
@@ -76,6 +82,9 @@ A person who operates the flying controls of an aircraft.
 ## Plane:
 A powered flying vehicle with fixed wings and a weight greater than that of the air, which can transport people from a location to a destination.
 
+## Route:
+A way or course taken in getting from a starting point to a destination.
+
 ## Sale:
 The exchange of a commodity for money; the action of selling something.
 
@@ -118,4 +127,5 @@ A point as measured in hours and minutes happening thought the day.
 
 ## Total revenue:
 Total revenue is the full amount of total sales.
+
 
