@@ -1,7 +1,7 @@
 # User Stories
 
 ## Sales Officer
-- As a sales officer needs, I want to be able to register upcoming flights to provide customers with the latest flight possibilities.
+- As a sales officer, I want to be able to register upcoming flights to provide customers with the latest flight possibilities and to be able to start the sales process.
 - As a sales officer I want to start the sales process for registered flights to sell as much as possible right from the start.
 - As a sales officer I want to enable temporary price reductions providing customers with lucrative offers, they might be interested in.
 
