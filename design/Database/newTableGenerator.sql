@@ -129,11 +129,23 @@ INSERT INTO AirplaneType(ID, typeName) values
 INSERT INTO AirplaneType(ID, typeName) values
 (2, 'Boeing 747');
 
+INSERT INTO AirplaneType(ID, typeName) values
+(3, 'Boeing 777-300ER');
+
+INSERT INTO AirplaneType(ID, typeName) values
+(4, 'Airbus A350-900');
+
 INSERT INTO Plane(ID, planeTypeID) values
 (1, 1);
 
 INSERT INTO Plane(ID, planeTypeID) values
 (2, 2);
+
+INSERT INTO Plane(ID, planeTypeID) values
+(3, 3);
+
+INSERT INTO Plane(ID, planeTypeID) values
+(4, 4);
 
 INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
 (1, 1, '2021-06-23 19:10:25-07','2021-06-22 19:10:25-07', 100, 3, 6);
@@ -143,6 +155,39 @@ INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirp
 
 INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
 (3, 2, '2021-06-25 05:10:25-07','2021-06-24 19:10:25-07', 2000, 8, 9);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(4, 2, '2021-06-13 05:10:25-07','2021-06-12 19:10:25-07', 200, 7, 1);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(5, 3, '2021-08-25 05:10:25-07','2021-08-24 19:10:25-07', 2500, 6, 2);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(6, 4, '2021-03-25 05:10:25-07','2021-03-24 19:10:25-07', 250, 5, 3);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(7, 3, '2021-05-25 05:10:25-07','2021-05-24 19:10:25-07', 3000, 4, 5);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(8, 1, '2021-04-15 05:10:25-07','2021-04-14 19:10:25-07', 100, 3, 6);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(9, 2, '2021-06-10 05:10:25-07','2021-06-09 19:10:25-07', 150, 2, 7);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(10, 3, '2021-06-09 05:10:25-07','2021-06-08 19:10:25-07', 220, 1, 9);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(11, 4, '2021-06-04 05:10:25-07','2021-06-03 19:10:25-07', 200, 8, 9);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(12, 4, '2021-06-15 05:10:25-07','2021-06-14 19:10:25-07', 260, 7, 8);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(13, 1, '2021-06-28 05:10:25-07','2021-06-27 19:10:25-07', 230, 8, 9);
+
+INSERT INTO Flight(ID, planeID, arrivalTime, departureTime, flightPrice, arrAirportID, depAirportID) VALUES
+(14, 2, '2021-06-29 05:10:25-07','2021-06-28 19:10:25-07', 280, 6, 9);
 
 INSERT INTO FLIGHTROUTE (ID, routeName, flightID) VALUES
 	(1, 'NYC->BER', 1);
