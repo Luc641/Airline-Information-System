@@ -110,3 +110,4 @@ implementation/Entities/entities.iml
 implementation/GUI/GUI.iml
 implementation/Persistence/Persistence.iml
 design/sequence diagrams/.DS_Store
+design/sequence diagrams/createBooking/.DS_Store
