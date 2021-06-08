@@ -93,6 +93,7 @@ public class searchFlight {
     private void updatePriceForRow(int price, int flightId) {
         FlightManager flightManager = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
         flightManager.updatePriceById(flightId, price);
+        lblInfo.setText("Price changed!");
     }
 
     //getting the flights into an observable list

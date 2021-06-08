@@ -4,21 +4,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_twelve.gui.searchFlight">
+<AnchorPane minHeight="560.0" minWidth="980.0" prefHeight="560.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_twelve.gui.searchFlight">
    <children>
-      <TableView fx:id="flightTable" layoutX="6.0" layoutY="137.0" prefHeight="299.0" prefWidth="739.0">
+      <TableView fx:id="flightTable" layoutX="6.0" layoutY="137.0" prefHeight="299.0" prefWidth="961.0">
         <columns>
-            <TableColumn fx:id="flightId" minWidth="25.0" prefWidth="121.0" text="Flight Number" />
-          <TableColumn fx:id="departure" minWidth="25.0" prefWidth="75.0" text="Departure" />
-            <TableColumn fx:id="departureTime" minWidth="25.0" prefWidth="106.0" text="Departure Date" />
-          <TableColumn fx:id="arrival" minWidth="25.0" prefWidth="90.0" text="Arrival" />
-            <TableColumn fx:id="arrivalDate" minWidth="25.0" prefWidth="101.0" text="Arrival Date" />
-            <TableColumn fx:id="flightPrice" minWidth="25.0" prefWidth="96.0" text="Flight Price" />
-            <TableColumn fx:id="planeId" prefWidth="75.0" text="Plane Id" />
-            <TableColumn fx:id="planeName" prefWidth="75.0" text="Plane Name" />
+            <TableColumn fx:id="flightId" minWidth="-Infinity" prefWidth="120.0" text="Flight Number" />
+          <TableColumn fx:id="departure" minWidth="-Infinity" prefWidth="120.0" text="Departure" />
+            <TableColumn fx:id="departureTime" minWidth="-Infinity" prefWidth="120.0" text="Departure Date" />
+          <TableColumn fx:id="arrival" minWidth="-Infinity" prefWidth="120.0" text="Arrival" />
+            <TableColumn fx:id="arrivalDate" minWidth="-Infinity" prefWidth="120.0" text="Arrival Date" />
+            <TableColumn fx:id="flightPrice" minWidth="-Infinity" prefWidth="120.0" text="Flight Price" />
+            <TableColumn fx:id="planeId" minWidth="-Infinity" prefWidth="120.0" text="Plane Id" />
+            <TableColumn fx:id="planeName" minWidth="-Infinity" prefWidth="120.0" text="Plane Name" />
         </columns>
       </TableView>
-      <Label layoutX="131.0" layoutY="14.0" prefHeight="36.0" prefWidth="340.0" text="Search for a Registered Flight">
+      <Label layoutX="161.0" layoutY="23.0" prefHeight="36.0" prefWidth="644.0" text="Search for a Registered Flight and edit the desired options">
          <font>
             <Font size="25.0" />
          </font>
@@ -30,8 +30,8 @@
          </children></HBox>
       <Button fx:id="delete" layoutX="250.0" layoutY="446.0" mnemonicParsing="false" onAction="#deleteRowFromTable" text="Delete" textFill="RED" />
       <Button layoutX="14.0" layoutY="446.0" mnemonicParsing="false" onAction="#loadRegisterFlight" text="Register a new Flight" />
-      <Button layoutX="638.0" layoutY="446.0" mnemonicParsing="false" onAction="#loadCreateBooking" text="Create a Booking" />
-      <Button layoutX="31.0" layoutY="20.0" mnemonicParsing="false" onAction="#loadHomepage" text="Homepage" />
+      <Button layoutX="859.0" layoutY="446.0" mnemonicParsing="false" onAction="#loadCreateBooking" text="Create a Booking" />
+      <Button layoutX="6.0" layoutY="20.0" mnemonicParsing="false" onAction="#loadHomepage" prefHeight="42.0" prefWidth="100.0" text="Homepage" />
       <Label fx:id="lblInfo" layoutX="346.0" layoutY="450.0" prefHeight="17.0" prefWidth="169.0" />
    </children>
 </AnchorPane>
