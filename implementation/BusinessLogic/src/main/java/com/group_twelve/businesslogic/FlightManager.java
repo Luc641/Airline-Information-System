@@ -30,7 +30,7 @@ public class FlightManager implements Manager<Flight> {
 
     public static Flight create(Object[] args) {
         var id = Integer.parseInt((String) args[0]);
-        Plane plane = new Plane(Integer.parseInt((String) args[1]), 0, 0);
+        Plane plane = persistence.getPlaneFromId(Integer.parseInt((String) args[1]));
         LocalDateTime at = ((Timestamp) args[2]).toLocalDateTime();
         LocalDateTime dt = ((Timestamp) args[3]).toLocalDateTime();
         int flightPrice = Integer.parseInt((String) args[4]);
@@ -68,6 +68,11 @@ public class FlightManager implements Manager<Flight> {
         }
         return new Flight(-1);
     }
+
+    public void updatePriceById(int id, int price) {
+        persistence.editPriceById(id, price);
+    }
+
 
     public void delete(int id) {
         persistence.deleteById(id);

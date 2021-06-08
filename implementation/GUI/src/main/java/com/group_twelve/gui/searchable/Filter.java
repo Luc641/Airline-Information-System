@@ -29,6 +29,30 @@ public enum Filter implements Searchable<Flight> {
         }
     },
 
+    PLANE_ID("Plane Id") {
+        @Override
+        public Predicate<Flight> search(String searchTerm) {
+            try {
+                var number = Integer.parseInt(searchTerm);
+                return f -> f.getPlane().getID() == number;
+            } catch (NumberFormatException e) {
+                return f -> false;
+            }
+        }
+    },
+
+    PLANE_NAME("Plane") {
+        @Override
+        public Predicate<Flight> search(String searchTerm) {
+            try {
+                return f -> f.getPlane().getName().toLowerCase().contains(searchTerm.toLowerCase());
+            } catch (NumberFormatException e) {
+                return f -> false;
+            }
+        }
+    },
+
+
     FLIGHT_PRICE("Flight Price") {
         @Override
         public Predicate<Flight> search(String searchTerm) {

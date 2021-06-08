@@ -35,16 +35,6 @@ public class FlightPersistence implements Persistence<Flight> {
         this.routeCreator = routeCreator;
     }
 
-    // TODO: Refactor save method
-//    public void save(ArrayList<Flight> data) {
-//        String insertString = "INSERT INTO Flight (ID, flightNr, arrivalTime, departureTime,  flightPrice) VALUES ";
-//        for(Flight f : data ) {
-//            insertString += String.format("(%d, %d, %s, %s, %d, %d), ", f.getID(), f.getFlightNumber(), f.getArrivalTime().toString(), f.getDepartureTime().toString());
-//        }
-//        insertString += "ON CONFLICT (flightID) DO NOTHING;";
-//
-//        database.query(insertString);
-//    }
 
     public ArrayList<Flight> load() throws SQLException {
         ArrayList<Flight> list = new ArrayList<>();
@@ -62,9 +52,15 @@ public class FlightPersistence implements Persistence<Flight> {
     }
 
     @Override
-    public boolean save(Flight entity) {
-        // TODO
-        throw new UnsupportedOperationException("Finish method");
+    public boolean save(Flight flight) {
+        var query = String.format("INSERT INTO flight (planeid, arrivaltime, departuretime, flightprice, arrairportid, depairportid) VALUES(%s,'%s','%s',%s,%s,%s)", flight.getPlane().getID(), flight.getArrivalTime(), flight.getDepartureTime(), flight.getFlightPrice(), flight.getArrivalAirport(), flight.getDepartureAirport());
+        try {
+            database.query(query);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public Flight getFlightFromId(int ID) {
@@ -79,9 +75,28 @@ public class FlightPersistence implements Persistence<Flight> {
         return new Flight(-1);
     }
 
+    public Plane getPlaneFromId(int id) {
+        var query = String.format("SELECT id, typename FROM plane WHERE id = %d", id);
+        var result = database.query(query);
+        try {
+            result.next();
+            var planeId = (int) result.getObject(1);
+            var name = (String) result.getObject(2);
+            return new Plane(planeId, 0, 0, name);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return null;
+    }
+
 
     public void deleteById(int id) {
         database.query(String.format("DELETE FROM flightroute WHERE flightid = %d", id));
         database.query(String.format("DELETE FROM flight WHERE id = %d", id));
+    }
+
+    public void editPriceById(int id, int newPrice) {
+        database.query(String.format("UPDATE flight SET flightprice = %d WHERE id = %d", newPrice, id));
     }
 }
