@@ -38,7 +38,6 @@ public class CreateBookingImpl {
 
     public void searchFlightRoutes(String arrivalAirportName, String departureAirportName, String nrOfTickets) {
 
-        System.out.println("I arrived");
         // Validate input
         ArrayList<String> validatedInput = bm.validateInput(arrivalAirportName, departureAirportName, nrOfTickets);
 
