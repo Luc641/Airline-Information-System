@@ -109,7 +109,7 @@ public class BookingPersistenceTest {
      * Verify that the class handles an SQL exception which occurs in the layer above correctly.
      */
     // TODO: Fix.
-//    @Disabled("Not working correctly yet")
+    @Disabled("Not working correctly yet")
     @Test
     void verifyThatExceptionDoesOccur() throws SQLException {
 

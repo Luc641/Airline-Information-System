@@ -31,10 +31,10 @@ public class MockerTest {
     @Test
     public void tAPlusB() {
         // mock returns wrong answer.
-        when(op.applyAsInt( 6,7)).thenReturn( 42);
+        when(op.applyAsInt( 6,7)).thenReturn( 6+7);
        int result = op.applyAsInt( 6,7);
         assertThat(result).as("expected sum")
                 .isEqualTo( 6+7);
-        fail( "method tAPlusB reached end. You know what to do." );
+//        fail( "method tAPlusB reached end. You know what to do." );
     }
 }
