@@ -76,12 +76,12 @@ public class FlightPersistence implements Persistence<Flight> {
     }
 
     public Plane getPlaneFromId(int id) {
-        var query = String.format("SELECT id, typename FROM plane WHERE id = %d", id);
+        var query = String.format("SELECT * FROM plane p INNER JOIN airplanetype a ON p.planetypeid = a.id WHERE p.id = %d", id);
         var result = database.query(query);
         try {
             result.next();
             var planeId = (int) result.getObject(1);
-            var name = (String) result.getObject(2);
+            var name = (String) result.getObject(4);
             return new Plane(planeId, 0, 0, name);
         } catch (SQLException throwables) {
             throwables.printStackTrace();

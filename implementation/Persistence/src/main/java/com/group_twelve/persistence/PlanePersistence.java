@@ -48,7 +48,7 @@ public class PlanePersistence implements Persistence<Plane> {
             ResultSet planes = database.query("SELECT * from Plane");
 
             while (planes.next()) {
-                list.add(creator.apply(new String[]{planes.getString(1), planes.getString(2), planes.getString(3)}));
+                list.add(creator.apply(new String[]{planes.getString(1), planes.getString(2)}));
             }
         } catch (SQLException e) {
             //e.printStackTrace();
