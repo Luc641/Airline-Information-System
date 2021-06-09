@@ -13,4 +13,4 @@
 ## Sales Employee
 - As a sales employee I want to lookup available flights to see what flight options are left.
 - As a sales employee I want to create bookings for one or more persons for a specific flight to reserve that flight and create income.
-- As a sales employee I want to edit flight options to provide customers who changed their mind with the options they want.
+- As a sales employee I want to edit flight options to change the price of a certain flight, to attract more customers.
