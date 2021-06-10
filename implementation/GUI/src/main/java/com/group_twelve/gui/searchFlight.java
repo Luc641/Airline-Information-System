@@ -12,8 +12,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
 import javafx.util.converter.IntegerStringConverter;
+
 import static javafx.collections.FXCollections.observableArrayList;
 import static javafx.collections.FXCollections.observableList;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
@@ -40,26 +42,20 @@ public class searchFlight {
 
     @FXML
     public void initialize() {
+        //setting the values for the columns
         flightId.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getID()));
-        departure.setCellValueFactory(new PropertyValueFactory<>("departureAirport"));
-        arrival.setCellValueFactory(new PropertyValueFactory<>("arrivalAirport"));
-        departureTime.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
-        arrivalDate.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
-        flightPrice.setCellValueFactory(new PropertyValueFactory<>("FlightPrice"));
+        departure.setCellValueFactory(s-> new SimpleObjectProperty<>(s.getValue().getDepartureAirport().getName()));
+        arrival.setCellValueFactory(s-> new SimpleObjectProperty<>(s.getValue().getArrivalAirport().getName()));
+        departureTime.setCellValueFactory(s-> new SimpleObjectProperty<>(s.getValue().getDepartureTime()));
+        arrivalDate.setCellValueFactory(s-> new SimpleObjectProperty<>(s.getValue().getArrivalTime()));
+        flightPrice.setCellValueFactory(s-> new SimpleObjectProperty<>(s.getValue().getFlightPrice()));
         planeId.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getPlane().getID()));
         planeName.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getPlane().getName()));
-
 
         // edit the columns
         flightTable.setEditable(true);
         flightTable.getSelectionModel().setCellSelectionEnabled(true);
-        //flightId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        //departure.setCellFactory(TextFieldTableCell.forTableColumn());
-        //arrival.setCellFactory(TextFieldTableCell.forTableColumn());
-        //departureTime.setCellFactory(TextFieldTableCell.forTableColumn(DateTimeConverter.getInstance()));
-        //arrivalDate.setCellFactory(TextFieldTableCell.forTableColumn(DateTimeConverter.getInstance()));
         flightPrice.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        //planeId.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 
         flightPrice.setOnEditCommit(event -> {
             var selectedFlight = event.getRowValue();
@@ -90,6 +86,7 @@ public class searchFlight {
         });
     }
 
+    //updating the price for a certain db entry
     private void updatePriceForRow(int price, int flightId) {
         FlightManager flightManager = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
         flightManager.updatePriceById(flightId, price);
