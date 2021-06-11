@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 
 public class CreateBookingImpl {
 
-    private int tCount;
+    protected int tCount;
     private int totalPrice;
 
-    private List<Flight> foundRoutes = new ArrayList<>();
-    private List<selectedRoutes> selectedRoutesList = new ArrayList<>();
-    private List<Option> foundOptions = new ArrayList<>();
-    private List<Option> selectedOptions = new ArrayList<>();
+    protected List<Flight> foundRoutes = new ArrayList<>();
+    protected List<selectedRoutes> selectedRoutesList = new ArrayList<>();
+    protected List<Option> foundOptions = new ArrayList<>();
+    protected List<Option> selectedOptions = new ArrayList<>();
 
     AirportManager apm;
     RouteManager rm;
@@ -96,9 +96,10 @@ public class CreateBookingImpl {
             // Return
 //            return selectedRoutesList;
 
+        }else {
+            // Flight has already been selected, throw exception
+            throw new RuntimeException("Flight has already been selected!");
         }
-        // Flight has already been selected, return original list
-//        return selectedRoutesList;
     }
 
     public void removeSelectedRoute(selectedRoutes r) {

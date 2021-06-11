@@ -29,6 +29,8 @@ public class selectedRoutes {
         this.arrivalAirportName = arrivalAirport.getName();
     }
 
+    public selectedRoutes(){}
+
     public int getFlightID() {
         return flightID;
     }
@@ -64,4 +66,5 @@ public class selectedRoutes {
     public int getPrice() {
         return price;
     }
+
 }
