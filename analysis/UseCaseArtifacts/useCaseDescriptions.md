@@ -116,10 +116,10 @@
 |Name: | Lookup flights | 
 |-|-|
 | Actor: | Sales employee |
-| Description: | A sales employee wants to lookup available flights in order to edit the flight options, or create a new one |
+| Description: | A sales employee wants to lookup available flights in order to edit the flight pricing, create a new one or delete an existing one. |
 | Pre-condition | There must be registered flights |
-| Main success scenario: | 1. The actor opens the search flight page.<br> 2. The system shows a list of all flights that have been created yet.<br> 3. The sales employee chooses the desired filter and fills in the details to search for the desired flight he is looking for.<br> 4. The system displays the available flights. |
-| Extensions: | - |
-| Exceptions: | 4. System message: "There are no available flights for the chosen filter." <br> 4a. Return to step 3.<br> 4b. The actor chooses to edit the options of an existing flight or create a new one, to fit his preferences.|
+| Main success scenario: | 1. The actor opens the search flight page.<br> 2. The system shows a list of all flights that have been created yet.<br> 3. The sales employee chooses the desired filter and fills in the details to search for the desired flight he is looking for.<br> 4. The system displays the available flights.|
+| Extensions: | 5. The actor chooses to edit the pricing options of an existing flight to fit his preferences. <br> 5a. The actor chooses to create a new flight that fits his preferences. <br> 5b. The actor deletes an existing flight because of its incorrect data. <br> |
+| Exceptions: | 4. System message: "There are no available flights for the chosen filter." <br> 4a. Return to step 3.<br>|
 
 
