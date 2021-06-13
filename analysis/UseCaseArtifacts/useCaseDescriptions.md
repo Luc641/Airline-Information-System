@@ -17,10 +17,10 @@
 | Actor: | Sales officer |
 | Description: | Sales employee creates the booking for the customer |
 | Pre-condition: | 1. The sales employee needs to be logged in <br>2. Flight needs to exist in the system |
-| Main success scenario: | 1.Sales employee looks up flights <br>2.System gives option to book a flight <br>3.Sales employee selects flight <br>4.System asks for data (name, e-mail, id number, ...) <br>5.Sales employee enters the data |
+| Main success scenario: | 1.Sales Employee enters the destination and arrival airport of the first flight that belongs to the new booking <br>2.The system loads possible flights <br>3.Sales employee selects flight <br>4.The sales employee enters the desired extra options <br>5.System saves the new booking |
 | Result: | Booking has been made |
-| Extensions: | 5a. Sales employee choses to add options for the booking <br>  1.System lets sales employee edit the ticket options |
-| Exceptions: | - |
+| Extensions: | - |
+| Exceptions: | 2a.  1: There are no flights available. 2: Go back to step 1  |
 
 
 
