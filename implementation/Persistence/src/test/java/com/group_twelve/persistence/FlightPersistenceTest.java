@@ -113,7 +113,7 @@ public class FlightPersistenceTest {
     }
 
     @Test
-    void verifySavingBookingDoesntCauseException() {
+    void verifySavingFlightDoesntCauseException() {
 
         ThrowableAssert.ThrowingCallable code = () -> {
             flightPersistence.save(mockFLight);
@@ -121,21 +121,21 @@ public class FlightPersistenceTest {
         assertThatCode(code)
                 .doesNotThrowAnyException();
     }
-
+    @Disabled
     @Test
-    void verifyGettingAFlightFromTheIdWorks(){
-        /*
+    void verifyGettingAFlightFromTheIdWorks() throws SQLException{
+
         ResultSet mockResultSet = mock(ResultSet.class);
         when(mockResultSet.next()).thenReturn(false);
 
         // Train mock not to return anything when the query functionality is called within the load method
-        when(databaseMock.query("SELECT * FROM flight")).thenReturn(mockResultSet);
+        when(databaseMock.query("SELECT * from Plane")).thenReturn(mockResultSet);
 
         ThrowableAssert.ThrowingCallable code = () -> {
             flightPersistence.load();
         };
 
-         */
+
 
     }
 
