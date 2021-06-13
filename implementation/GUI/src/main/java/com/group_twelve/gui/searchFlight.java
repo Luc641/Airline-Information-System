@@ -1,23 +1,25 @@
 package com.group_twelve.gui;
 
+import com.group_twelve.businesslogic.*;
 import com.group_twelve.businesslogic.FlightManager;
 import com.group_twelve.entities.Flight;
-import com.group_twelve.gui.searchable.Filter;
+import com.group_twelve.businesslogic.searchable.Filter;
 import com.group_twelve.gui.utils.IntegerStringConv;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
-import javafx.util.converter.IntegerStringConverter;
 
 import static javafx.collections.FXCollections.observableArrayList;
 import static javafx.collections.FXCollections.observableList;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -69,8 +71,8 @@ public class searchFlight {
             var value = event.getNewValue();
             if (validateInputUpdate(value)) {
                 updatePriceForRow(value, selectedFlight.getID());
-            }else {
-                lblInfo.setText("Wrong type of input");
+            } else {
+                lblInfo.setText("Wrong type of input!");
             }
         });
 
@@ -105,6 +107,12 @@ public class searchFlight {
         });
     }
 
+    private ObservableList<Flight> getFlights() {
+        List<Flight> x = ((FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class)).getAll();
+        return FXCollections.observableList(x);
+    }
+
+
     private boolean validateInputUpdate(int input) {
         return input > 0;
     }
@@ -115,13 +123,6 @@ public class searchFlight {
     private void updateFlightTable(Filter filter, String searchTerm) {
         var f = observableArrayList(data.stream().filter(filter.search(searchTerm)).collect(Collectors.toList()));
         flightTable.setItems(f);
-    }
-
-    // *getting the flights into an observable list
-    private ObservableList<Flight> getFlights() {
-        FlightManager flightManager = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
-        var x = flightManager.getAll();
-        return observableList(x);
     }
 
     // *updating the price for a certain db entry table row

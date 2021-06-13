@@ -42,6 +42,12 @@ public class FlightManager implements Manager<Flight> {
 
     @Override
     public boolean save(Flight object) {
+        try {
+            persistence.save(object);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
