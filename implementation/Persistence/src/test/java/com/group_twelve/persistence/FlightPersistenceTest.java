@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,17 +28,17 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.function.Function;
-
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.when;
 
+
 @ExtendWith(MockitoExtension.class)
 
 public class FlightPersistenceTest {
 
-    Flight mockFLight = new Flight(1, new Plane(1, 1, 1, "Plane"), LocalDateTime.MIN, LocalDateTime.MAX, 150, new Airport(1, "B"), new Airport(2, "A"));
+    Flight mockFLight = new Flight(1, new Plane(1, 1, 1, "Plane"), LocalDateTime.MIN,LocalDateTime.MAX,150 , new Airport(1, "B"), new Airport(2, "A"));
 
     @Mock
     SQLConnection databaseMock;
@@ -59,22 +58,23 @@ public class FlightPersistenceTest {
         // Init the SUT
         this.flightPersistence = new FlightPersistence(databaseMock,creator, planeCreator,airportCreator,routeCreator);
     }
+
     @Disabled
     @Test
     void testLoadMethodReturnsValidFlightsThroughCreator() {
 
-        doReturn(mockFLight).when(this.creator).apply(new Object[]{"1", ""});
+        doReturn(mockFLight).when(this.creator).apply(new Object[]{"1","1", "1", "1","Plane",LocalDateTime.MIN,LocalDateTime.MAX,"150","1","B","2","A"});
 
-        Flight flight = creator.apply(new Object[]{});
+        Flight flight = creator.apply(new Object[]{"1","1", "1", "1","Plane",LocalDateTime.MIN,LocalDateTime.MAX,"150","1","B","2","A"});
 
         SoftAssertions.assertSoftly(softAssertions -> {
             softAssertions.assertThat(flight.getID()).isEqualTo(1);
-            softAssertions.assertThat(flight.getPlane()).isEqualTo(1);
-            softAssertions.assertThat(flight.getArrivalTime()).isEqualTo(1);
-            softAssertions.assertThat(flight.getDepartureTime()).isEqualTo(1);
-            softAssertions.assertThat(flight.getDepartureAirport()).isEqualTo(1);
-            softAssertions.assertThat(flight.getArrivalAirport()).isEqualTo(1);
-            softAssertions.assertThat(flight.getFlightPrice()).isEqualTo(1);
+            softAssertions.assertThat(flight.getPlane().getID()).isEqualTo(1);
+            softAssertions.assertThat(flight.getArrivalTime()).isEqualTo(LocalDateTime.MIN);
+            softAssertions.assertThat(flight.getDepartureTime()).isEqualTo(LocalDateTime.MAX);
+            softAssertions.assertThat(flight.getDepartureAirport().getID()).isEqualTo(2);
+            softAssertions.assertThat(flight.getArrivalAirport().getID()).isEqualTo(1);
+            softAssertions.assertThat(flight.getFlightPrice()).isEqualTo(150);
         });
     }
 
@@ -121,6 +121,7 @@ public class FlightPersistenceTest {
         assertThatCode(code)
                 .doesNotThrowAnyException();
     }
+
     @Disabled
     @Test
     void verifyGettingAFlightFromTheIdWorks() throws SQLException{
@@ -134,23 +135,6 @@ public class FlightPersistenceTest {
         ThrowableAssert.ThrowingCallable code = () -> {
             flightPersistence.load();
         };
-
-
-
-    }
-
-    @Test
-    void verifyThatGettingAPLaneFromTheIdWorks(){
-
-    }
-
-    @Test
-    void verifyThatWhenDeleteIsCalledAnEntryIsRemovedFromTheDatabase(){
-
-    }
-
-    @Test
-    void verifyThatWhenEditPriceISCalledAnEntryIsUpdatedInTheDatabase(){
 
     }
 
