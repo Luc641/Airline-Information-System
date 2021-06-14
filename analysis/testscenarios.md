@@ -13,11 +13,11 @@
 # Lookup Flight
 | Step Number | Description |
 |-|-|
-|1|The system must let the actor to interact with it in order to start the use case|
-|2|The system must output that message|
-|3|Assert that the actor inputs some data(date & time)|
-|4|Assert that there are available flights|
-|Exception:|Assert that there aren't available flighs|
+|1|Assert that flights have been saved before looking them up.|
+|2|Assert that flights are going to be correctly displayed.|
+|3|Assert that there are available flights.|
+|4|Assert that the filter that has been chosen to search with exists.|
+|Exception:|Assert that there aren't available flights,meaning the list is empty.|
 
 ---
 
