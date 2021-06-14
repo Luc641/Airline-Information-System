@@ -1,23 +1,25 @@
 package com.group_twelve.gui;
 
+import com.group_twelve.businesslogic.*;
 import com.group_twelve.businesslogic.FlightManager;
 import com.group_twelve.entities.Flight;
-import com.group_twelve.gui.searchable.Filter;
+import com.group_twelve.businesslogic.searchable.Filter;
+import com.group_twelve.gui.utils.IntegerStringConv;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.HBox;
-import javafx.util.converter.IntegerStringConverter;
 
 import static javafx.collections.FXCollections.observableArrayList;
 import static javafx.collections.FXCollections.observableList;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -42,65 +44,99 @@ public class searchFlight {
 
     @FXML
     public void initialize() {
-        //setting the values for the columns
+        /*
+         *setting the values for the table columns
+         */
         flightId.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getID()));
-        departure.setCellValueFactory(s-> new SimpleObjectProperty<>(s.getValue().getDepartureAirport().getName()));
-        arrival.setCellValueFactory(s-> new SimpleObjectProperty<>(s.getValue().getArrivalAirport().getName()));
-        departureTime.setCellValueFactory(s-> new SimpleObjectProperty<>(s.getValue().getDepartureTime()));
-        arrivalDate.setCellValueFactory(s-> new SimpleObjectProperty<>(s.getValue().getArrivalTime()));
-        flightPrice.setCellValueFactory(s-> new SimpleObjectProperty<>(s.getValue().getFlightPrice()));
+        departure.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getDepartureAirport().getName()));
+        arrival.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getArrivalAirport().getName()));
+        departureTime.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getDepartureTime()));
+        arrivalDate.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getArrivalTime()));
+        flightPrice.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getFlightPrice()));
         planeId.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getPlane().getID()));
         planeName.setCellValueFactory(s -> new SimpleObjectProperty<>(s.getValue().getPlane().getName()));
 
-        // edit the columns
+        /*
+         *edit the columns
+         */
         flightTable.setEditable(true);
         flightTable.getSelectionModel().setCellSelectionEnabled(true);
-        flightPrice.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        flightPrice.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConv()));
+        /*
+         *Edit the flight price of the selected flight *
+         */
 
         flightPrice.setOnEditCommit(event -> {
             var selectedFlight = event.getRowValue();
-            updatePriceForRow(event.getNewValue(), selectedFlight.getID());
+            var value = event.getNewValue();
+            if (validateInputUpdate(value)) {
+                updatePriceForRow(value, selectedFlight.getID());
+            } else {
+                lblInfo.setText("Wrong type of input!");
+            }
         });
 
-        //Set the table's items using the filtered list
+        /*
+         *Set the table's items using the filtered list
+         */
         flightTable.setItems(data);
 
-        //Adding ChoiceBox and TextField
+        /*
+         *Adding ChoiceBox and TextField
+         */
         choiceBox.getItems().addAll("Flight Number", "Departure", "Arrival", "Departure Time", "Arrival Time", "Flight Price", "Plane Id", "Plane");
         choiceBox.setValue("Flight Number");
 
-        //Adding the filters to the choiceBox and adding the db entries to an observable list
+        /*
+         *Adding the filters to the choiceBox and adding the db entries to an observable list and displaying the filtered results
+         */
         textField.setPromptText("Search here!");
         textField.textProperty().addListener((obs, oldValue, newValue) -> {
                     Filter p = Filter.findFilter(choiceBox.getValue());
-                    var f = observableArrayList(data.stream().filter(p.search(newValue)).collect(Collectors.toList()));
-                    flightTable.setItems(f);
+                    updateFlightTable(p, newValue);
                 }
         );
 
         choiceBox.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            //reset table and text field when new choice is selected
+            /*
+            reset table and text field when new choice of filter is selected
+             */
             if (newVal != null) {
                 textField.setText("");
             }
         });
     }
 
-    //updating the price for a certain db entry
+    private ObservableList<Flight> getFlights() {
+        List<Flight> x = ((FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class)).getAll();
+        return FXCollections.observableList(x);
+    }
+
+
+    private boolean validateInputUpdate(int input) {
+        return input > 0;
+    }
+
+    /*
+    finds filter, searches, updates the table
+     */
+    private void updateFlightTable(Filter filter, String searchTerm) {
+        var f = observableArrayList(data.stream().filter(filter.search(searchTerm)).collect(Collectors.toList()));
+        flightTable.setItems(f);
+    }
+
+    // *updating the price for a certain db entry table row
     private void updatePriceForRow(int price, int flightId) {
         FlightManager flightManager = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
         flightManager.updatePriceById(flightId, price);
         lblInfo.setText("Price changed!");
     }
 
-    //getting the flights into an observable list
-    private ObservableList<Flight> getFlights() {
-        FlightManager flightManager = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
-        var x = flightManager.getAll();
-        return observableList(x);
-    }
-
-    //deleting a row from the flight table and the db
+    /**
+     * deleting a row from the flight table and the db
+     *
+     * @param event = if a row is selected and the delete button has been pressed the entry will be deleted
+     **/
     @FXML
     private void deleteRowFromTable(ActionEvent event) {
         var manager = (FlightManager) GUIApp.getBusinessLogicAPI().getManager(Flight.class);
@@ -110,7 +146,9 @@ public class searchFlight {
         lblInfo.setText("Flight deleted!");
     }
 
-    //setting root links to direct to other pages
+    /*
+    setting root links to direct to other pages
+     */
     @FXML
     private void loadRegisterFlight(ActionEvent event) throws IOException {
         GUIApp.setRoot("registerFlight");

@@ -1,4 +1,4 @@
-package com.group_twelve.gui.searchable;
+package com.group_twelve.businesslogic.searchable;
 
 import java.util.function.Predicate;
 
