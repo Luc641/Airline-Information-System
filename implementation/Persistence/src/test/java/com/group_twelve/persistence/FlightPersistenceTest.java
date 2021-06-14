@@ -122,22 +122,6 @@ public class FlightPersistenceTest {
                 .doesNotThrowAnyException();
     }
 
-    @Disabled
-    @Test
-    void verifyGettingAFlightFromTheIdWorks() throws SQLException{
-
-        ResultSet mockResultSet = mock(ResultSet.class);
-        when(mockResultSet.next()).thenReturn(false);
-
-        // Train mock not to return anything when the query functionality is called within the load method
-        when(databaseMock.query("SELECT * from Plane")).thenReturn(mockResultSet);
-
-        ThrowableAssert.ThrowingCallable code = () -> {
-            flightPersistence.load();
-        };
-
-    }
-
 }
 
 
