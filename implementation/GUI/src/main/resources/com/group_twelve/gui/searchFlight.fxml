@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane minHeight="560.0" minWidth="980.0" prefHeight="560.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group_twelve.gui.searchFlight">
+   <children>
+      <TableView fx:id="flightTable" layoutX="6.0" layoutY="137.0" prefHeight="299.0" prefWidth="961.0">
+        <columns>
+            <TableColumn fx:id="flightId" minWidth="-Infinity" prefWidth="120.0" text="Flight Number" />
+          <TableColumn fx:id="departure" minWidth="-Infinity" prefWidth="120.0" text="Departure" />
+            <TableColumn fx:id="departureTime" minWidth="-Infinity" prefWidth="120.0" text="Departure Date" />
+          <TableColumn fx:id="arrival" minWidth="-Infinity" prefWidth="120.0" text="Arrival" />
+            <TableColumn fx:id="arrivalDate" minWidth="-Infinity" prefWidth="120.0" text="Arrival Date" />
+            <TableColumn fx:id="flightPrice" minWidth="-Infinity" prefWidth="120.0" text="Flight Price" />
+            <TableColumn fx:id="planeId" minWidth="-Infinity" prefWidth="120.0" text="Plane Id" />
+            <TableColumn fx:id="planeName" minWidth="-Infinity" prefWidth="120.0" text="Plane Name" />
+        </columns>
+      </TableView>
+      <Label layoutX="161.0" layoutY="23.0" prefHeight="36.0" prefWidth="644.0" text="Search for a Registered Flight and edit the desired options">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <HBox fx:id="hBox" layoutX="1.0" layoutY="82.0" prefHeight="28.0" prefWidth="600.0">
+         <children>
+            <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
+            <TextField fx:id="textField" prefHeight="25.0" prefWidth="421.0" />
+         </children></HBox>
+      <Button fx:id="delete" layoutX="250.0" layoutY="446.0" mnemonicParsing="false" onAction="#deleteRowFromTable" text="Delete" textFill="RED" />
+      <Button layoutX="14.0" layoutY="446.0" mnemonicParsing="false" onAction="#loadRegisterFlight" text="Register a new Flight" />
+      <Button layoutX="859.0" layoutY="446.0" mnemonicParsing="false" onAction="#loadCreateBooking" text="Create a Booking" />
+      <Button layoutX="6.0" layoutY="20.0" mnemonicParsing="false" onAction="#loadHomepage" prefHeight="42.0" prefWidth="100.0" text="Homepage" />
+      <Label fx:id="lblInfo" layoutX="346.0" layoutY="450.0" prefHeight="17.0" prefWidth="169.0" />
+   </children>
+</AnchorPane>
